@@ -19,3 +19,13 @@
 .col-md-4 ul li{
     font-size:14px;
 }
+.col-md-3{
+    display:flex;
+}
+.col-md-3 ul{
+    display: flex;
+    list-style: none;
+}
+.col-md-3 ul li{
+    padding-left:10px;
+}

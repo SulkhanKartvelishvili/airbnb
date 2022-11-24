@@ -1,0 +1,34 @@
+<div class="col-md-10 navbar">
+<div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png">
+</div>
+
+<div class="languageChange">
+    <li><fa-icon [icon]="faGlobe"></fa-icon></li>
+</div>
+<div class="userNavigator">
+    <div class="row">
+        <div class="col">
+            <div ngbDropdown class="d-inline-block dropdown">
+                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    <ul class="bars">
+                    <li><fa-icon [icon]="faBars" ></fa-icon></li>
+                </ul>
+                <ul>
+                 <li> <fa-icon [icon]="faUser"></fa-icon></li>
+                </ul>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Sign up</button>
+                    <button ngbDropdownItem>Login in</button>
+                    <hr>
+                    <button ngbDropdownItem>Airbnb your home</button>
+                    <button ngbDropdownItem>Host your experience</button>
+                    <button ngbDropdownItem>Help</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+</div>
+</div>
