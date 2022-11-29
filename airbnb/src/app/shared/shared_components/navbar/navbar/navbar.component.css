@@ -61,3 +61,44 @@
     list-style: none;
     font-size: 17px;
 }
+.modal-header{
+    justify-content: center;
+    padding: 0;
+}
+.continue{
+    background: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
+    color: white;
+    width: 90%;
+    margin: auto;
+    border: none;
+    background-size: 200% 200% !important;
+    height: 40px;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+.btn-close{
+    margin: 5px;
+}
+.Auth{
+    width: 90%;
+    margin: auto;
+    border: none;
+    background-size: 200% 200% !important;
+    height: 40px;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+.faFacebook{
+    float: left;
+    position: relative;
+    left: 15px;
+    font-size: 19px;
+}
+.faGoogle{
+    float: left;
+    position: relative;
+    left: 15px;
+    font-size: 19px;
+    color: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
+
+}

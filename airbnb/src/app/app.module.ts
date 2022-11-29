@@ -9,13 +9,15 @@ import { CoreModule } from './core/core.module';
 import { FooterComponent } from './shared/shared_components/footer/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './shared/shared_components/navbar/navbar/navbar.component';
+import { HotelCardComponent } from './shared/shared_components/hotel_card/hotel-card/hotel-card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    HotelCardComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import { NavbarComponent } from './shared/shared_components/navbar/navbar/navbar
     NgbModule,
     BrowserAnimationsModule,
     CoreModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

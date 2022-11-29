@@ -1,0 +1,24 @@
+.cardsArea{
+    width: 90%;
+    margin: auto;
+    }
+    .image{
+        width: -webkit-fill-available;
+        min-height: 250px;
+        height: 260px;
+        border-radius: 20px;
+        object-fit: cover;
+        vertical-align: bottom;
+    }
+    .card{
+        border: none;
+    }
+    .card-title, .card-price{
+        font-weight: 500;
+    }
+    .card-addDate, .card-date{
+        font-weight: 100;
+    }
+    h4, h5{
+        margin-bottom: 0px;
+    }

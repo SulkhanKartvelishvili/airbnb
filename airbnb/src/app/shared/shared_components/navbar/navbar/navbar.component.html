@@ -19,8 +19,8 @@
                 </ul>
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem>Sign up</button>
-                    <button ngbDropdownItem>Login in</button>
+                    <button ngbDropdownItem   (click)="openPopup()">Sign up</button>
+                    <button ngbDropdownItem (click)="openPopup()">Login in</button>
                     <hr>
                     <button ngbDropdownItem>Airbnb your home</button>
                     <button ngbDropdownItem>Host your experience</button>
@@ -30,5 +30,46 @@
         </div>
 </div>
 
+
 </div>
+</div>
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <button type="button" class="btn-close" 
+        (click)="closePopup()">
+ 
+</button>
+      <div class="modal-header">
+      
+        <h4 class="modal-title">Log in or sign up
+        </h4>
+      </div>
+      <div class="modal-body">
+       <div class="input-group mb-3">
+      
+        <input type="number" class="form-control" placeholder="Phone number" >
+      </div>
+      <div class="input-group mb-3">
+      
+        <input type="text" class="form-control" placeholder="Username" >
+      </div>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="continue">Continue  </button>
+  
+         <button type="button" class="googleAuth Auth"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
+         <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button>
+    
+      </div>
+    </div>
+  </div>
 </div>
