@@ -10,6 +10,7 @@ import { FooterComponent } from './shared/shared_components/footer/footer/footer
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './shared/shared_components/navbar/navbar/navbar.component';
 import { HotelCardComponent } from './shared/shared_components/hotel_card/hotel-card/hotel-card.component';
+import { HotelInnerComponent } from './shared/shared_components/hotel_inner/hotel-inner/hotel-inner.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HotelCardComponent } from './shared/shared_components/hotel_card/hotel-
     AppComponent,
     FooterComponent,
     NavbarComponent,
-    HotelCardComponent
+    HotelCardComponent,
+    HotelInnerComponent
   ],
   imports: [
     BrowserModule,
