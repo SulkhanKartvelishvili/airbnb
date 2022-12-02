@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hotel-inner',
@@ -11,5 +12,5 @@ export class HotelInnerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  faStar=faStar;
 }
