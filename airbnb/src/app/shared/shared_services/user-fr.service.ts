@@ -7,12 +7,11 @@ import { User } from '../shared_models/user.model';
   providedIn: 'root'
 })
 export class UserFrService {
-  static signUp(email: any, password: any) {
-    throw new Error('Method not implemented.');
-  }
+  firestore: any;
+
 
   constructor( public afs: AngularFirestore,
-  public afAuth: AngularFireAuth) { }
+  public auth: AngularFireAuth) { }
 
 
   // getUserDoc(id) {
@@ -28,32 +27,53 @@ export class UserFrService {
   //     .snapshotChanges();
   // }
 
-  signUp(email: string, password: string) {
-      return this.afAuth
-        .createUserWithEmailAndPassword(email, password)
-        .then((result) => {
+  // SignUp(email: string, password: string) {
+    
+  //   return this.auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((result) => {
+  //       /* Call the SendVerificaitonMail() function when new user sign 
+  //       up and returns promise */
         
-          this.SetUserData(result.user);
-        })
-        .catch((error) => {
-          window.alert(error.message);
-        });
-  }
-  
-  SetUserData(user: any) {
-    console.log(user);
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
-    const userData: User = {
-      id: user.uid,
-      email: user.email,
-      password: user.password,
-    };
-    return userRef.set(userData, {
-      merge: true,
-    });
-  }
-  
+  //       this.setUserDataForSignUp(result.user);
+  //     })
+  //     .catch((error) => {
+  //       window.alert(error.message);
+  //     });
+  // }
+ 
+  // setUserDataForSignUp(user: any) {
+    
+  //   const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
+  //     `users/${user.id}`
+  //   );
+  //   const userData: User = {
+  //     id: user.uid,
+  //     email: user.email,
+  //     password: user.password,
+  //   } as User;
+  //   return userRef.set(userData, {
+  //     merge: true,
+  //   });
+  // }
+
+
+login(email:string, password:string){
+  this.auth.signInWithEmailAndPassword(email,password).then( () => {
+    console.log(email);
+  }, err => {
+    alert(err.message);
+  })
+}
+
+register(email:string, password:string){
+  this.auth.createUserWithEmailAndPassword(email, password).then( () => {
+    alert('registration success');
+    },
+    err => {
+      alert(err.message);
+    })
+}
+
 
 }
