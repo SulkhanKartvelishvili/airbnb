@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../shared_models/user.model';
+import * as firebase from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserFrService {
-  firestore: any;
 
+  emailEmitter:EventEmitter<any>=new EventEmitter();
 
   constructor( public afs: AngularFirestore,
   public auth: AngularFireAuth) { }
@@ -61,6 +62,8 @@ export class UserFrService {
 login(email:string, password:string){
   this.auth.signInWithEmailAndPassword(email,password).then( () => {
     console.log(email);
+    this.emailEmitter.emit(email);
+
   }, err => {
     alert(err.message);
   })
@@ -69,10 +72,32 @@ login(email:string, password:string){
 register(email:string, password:string){
   this.auth.createUserWithEmailAndPassword(email, password).then( () => {
     alert('registration success');
+    this.emailEmitter.emit(email);
     },
     err => {
       alert(err.message);
     })
+}
+
+// getUserDoc(id:string):any{
+// return this.firestore.collection('users').doc(id).valueChanges();
+// }
+
+googleAuth() {
+  return this.authLogin(new firebase.GoogleAuthProvider());
+}
+// Auth logic to run auth providers
+authLogin(provider: any) {
+  return this.auth
+    .signInWithPopup(provider)
+    .then((result) => {
+      // this.router.navigate(['dashboard']);
+      // this.SetUserData(result.user);
+      console.log(result);
+    })
+    .catch((error) => {
+      window.alert(error);
+    });
 }
 
 

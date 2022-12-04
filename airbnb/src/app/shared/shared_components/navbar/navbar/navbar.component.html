@@ -1,11 +1,10 @@
 
 <div class="col-md-10 navbar">
+  <h1 *ngIf="userEmail != null">{{userEmail}}</h1>
   <div class="logo">
-<<<<<<< Updated upstream
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" routerLink="">
-=======
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" routerLink="home">
->>>>>>> Stashed changes
+
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" routerLink="/">
+
   </div>
   
   <div class="languageChange">
@@ -24,7 +23,8 @@
                   </ul>
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <button ngbDropdownItem  (click)="continuePoPup()">Continue</button>
+                      <button ngbDropdownItem  (click)="continuePoPup()" *ngIf="userEmail == null ">Continue</button>
+                      <button ngbDropdownItem  (click)="continuePoPup()" *ngIf="userEmail != null ">Dashboard</button>
                       <!-- <button ngbDropdownItem (click)="LoginInPopup()">Login in</button> -->
                       <hr>
                       <button ngbDropdownItem >Airbnb your home</button>
@@ -67,11 +67,17 @@
               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
               ngModel
               name="email"
+              #email="ngModel"
               type="email"
               placeholder="Enter here"
               class="form-control"
+              [ngStyle]="{
+                'border-color':
+                  !email.valid && email.dirty ? 'red' : '#ced4da'
+              }"
             />
           </div>
+        
           </div>
         
           
@@ -83,8 +89,16 @@
               ngModel
               name="password"
               type="password"
+              #password="ngModel"
               placeholder="Enter here"
               class="form-control"
+              minlength="6"
+              maxlength="40"
+              [ngStyle]="{
+                'border-color':
+                  !password.valid && password.touched ? 'red' : '#ced4da'
+              }"
+            
             />
           </div>
   
@@ -92,14 +106,13 @@
   <div class="modal-footer">
           <div class="form-group">
             <button
-              
+            [disabled]="!signUpForm.valid"
               type="submit"
               class="btn btn-dark col-md-12 d-block continue"
             >
               Continue
             </button>
-            <!-- <button type="button" class="googleAuth Auth"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
-            <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button> -->
+           
           </div>
           </div>
         </form>
@@ -123,13 +136,18 @@
               <label for="">Enter your email</label>
               <div class="input-group mb-3">
               <input
-                required
-                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
-                ngModel
-                name="email"
-                type="email"
-                placeholder="Enter here"
-                class="form-control"
+              required
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
+              ngModel
+              name="email"
+              #email="ngModel"
+              type="email"
+              placeholder="Enter here"
+              class="form-control"
+              [ngStyle]="{
+                'border-color':
+                  !email.valid && email.dirty ? 'red' : '#ced4da'
+              }"
               />
             </div>
             </div>
@@ -139,12 +157,19 @@
               <label for="">Enter your password</label>
               <div class="input-group mb-3">
               <input
-                required
-                ngModel
-                name="password"
-                type="password"
-                placeholder="Enter here"
-                class="form-control"
+              required
+              ngModel
+              name="password"
+              type="password"
+              #password="ngModel"
+              placeholder="Enter here"
+              class="form-control"
+              minlength="6"
+              maxlength="40"
+              [ngStyle]="{
+                'border-color':
+                  !password.valid && password.touched ? 'red' : '#ced4da'
+              }"
               />
             </div>
     
@@ -153,13 +178,14 @@
             <div class="form-group">
               <button
                 
-                type="submit"
-                class="btn btn-dark col-md-12 d-block continue"
-              >
-                Continue
+              [disabled]="!loginInForm.valid"
+              type="submit"
+              class="btn btn-dark col-md-12 d-block continue"
+            >
+              Continue
               </button>
-              <!-- <button type="button" class="googleAuth Auth"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
-              <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button> -->
+              <button type="button" class="googleAuth Auth" (click)="loginInWithGoogle()"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
+              <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button>
             </div>
             </div>
           </form>

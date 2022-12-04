@@ -16,8 +16,9 @@ import { User } from 'src/app/shared/shared_models/user.model';
 })
 export class NavbarComponent implements OnInit {
 
+  userEmail!:null;
 
-  constructor(private modalService: NgbModal, private signUpServ : UserFrService) {}
+  constructor(private modalService: NgbModal, private userServ : UserFrService) {}
 
   ngOnInit(): void {
   }
@@ -39,11 +40,13 @@ export class NavbarComponent implements OnInit {
     
 }
   onSignUpFormSubmit(signUpForm:NgForm){
-     console.log(signUpForm.value.password);
+     
     // var tmpUser = Object.assign(new User(),signUpForm.value);
     // this.signUpServ.SignUp(signUpForm.value.email, signUpForm.value.password);
-    this.signUpServ.register(signUpForm.value.email, signUpForm.value.password);
-
+    this.userServ.register(signUpForm.value.email, signUpForm.value.password);
+    this.userServ.emailEmitter.subscribe(response => {
+      this.userEmail = response;
+    })
     signUpForm.reset();
     // UserFrService.signUp(signUpForm.value.email, signUpForm.value.password);
     // this.signUpServ.signUp(tmpUser,signUpForm.value.password ).then(response => {
@@ -51,12 +54,17 @@ export class NavbarComponent implements OnInit {
     // });
   }
   onloginInFormSubmit(loginInForm:NgForm){
-    this.signUpServ.login(loginInForm.value.email, loginInForm.value.password);
+    this.userServ.login(loginInForm.value.email, loginInForm.value.password);
+    this.userServ.emailEmitter.subscribe(response => {
+      this.userEmail = response;
+    })
     loginInForm.reset();
   }
 
 
-
+  loginInWithGoogle(){
+    this.userServ.googleAuth();
+  }
 
 
 
