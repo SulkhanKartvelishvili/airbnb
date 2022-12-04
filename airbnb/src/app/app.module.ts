@@ -19,6 +19,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import {NgForm} from '@angular/forms';
+import { HomeComponent } from './view/home/home/home.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {NgForm} from '@angular/forms';
     NavbarComponent,
     HotelCardComponent,
     HotelInnerComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
