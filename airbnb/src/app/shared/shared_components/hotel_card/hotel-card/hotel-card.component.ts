@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgIf } from '@angular/common';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -17,6 +16,5 @@ export class HotelCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  faStar=faStar;
 
 }
