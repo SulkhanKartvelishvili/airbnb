@@ -4,8 +4,13 @@ import { HotelInnerComponent } from './shared/shared_components/hotel_inner/hote
 import { HomeComponent } from './view/home/home/home.component';
 
 const routes: Routes = [
+<<<<<<< Updated upstream
  {path:"home", component:HomeComponent},
  {path:"innerHotel", component:HotelInnerComponent}
+=======
+  {path:"", component:HomeComponent},
+  {path:"innerHotel", component:HotelInnerComponent}
+>>>>>>> Stashed changes
 ];
 
 @NgModule({
