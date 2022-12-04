@@ -39,3 +39,22 @@
     .hotelShortDescription .reviewsNum, .streetAdd{
         font-weight: 500;
     }
+    .hotelShortDescription{
+        margin-top: -17px;
+    }
+    .hotelInnerImage{
+        width: -webkit-fill-available;
+        object-fit: cover;
+        vertical-align: bottom;
+        border-radius: 13px;
+    }
+    .hotelInnerShortDescription{
+        display: flex;
+    }
+    .hotelInnerShortDescription ul li{
+        list-style: none;
+    }
+    .hotelInnerShortDescription ul {
+        padding-left: 10px!important;
+        font-size:16px;
+    }

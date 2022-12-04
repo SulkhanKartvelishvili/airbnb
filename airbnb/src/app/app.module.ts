@@ -11,7 +11,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './shared/shared_components/navbar/navbar/navbar.component';
 import { HotelCardComponent } from './shared/shared_components/hotel_card/hotel-card/hotel-card.component';
 import { HotelInnerComponent } from './shared/shared_components/hotel_inner/hotel-inner/hotel-inner.component';
+<<<<<<< Updated upstream
 import { HomeComponent } from './view/home/home/home.component';
+=======
+import { HomeComponent } from './shared/shared_components/home/home/home.component';
+>>>>>>> Stashed changes
 
 
 @NgModule({
