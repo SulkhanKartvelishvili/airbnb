@@ -4,6 +4,10 @@ import {faUser} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { NgForm } from '@angular/forms';
+import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserFrService } from 'src/app/shared/shared_services/user-fr.service';
+import { User } from 'src/app/shared/shared_models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +16,8 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private modalService: NgbModal, private signUpServ : UserFrService) {}
 
   ngOnInit(): void {
   }
@@ -23,13 +28,37 @@ export class NavbarComponent implements OnInit {
   faGoogle=faGoogle;
   displayStyle = "none";
   
-  openPopup() {
+  continuePoPup() {
     this.displayStyle = "block";
+   
   }
-  closePopup() {
+  close() {
     this.displayStyle = "none";
   }
-   
+  onclick(){
+    
+}
+  onSignUpFormSubmit(signUpForm:NgForm){
+     console.log(signUpForm.value.password);
+    // var tmpUser = Object.assign(new User(),signUpForm.value);
+    // this.signUpServ.SignUp(signUpForm.value.email, signUpForm.value.password);
+    this.signUpServ.register(signUpForm.value.email, signUpForm.value.password);
+
+    signUpForm.reset();
+    // UserFrService.signUp(signUpForm.value.email, signUpForm.value.password);
+    // this.signUpServ.signUp(tmpUser,signUpForm.value.password ).then(response => {
+    //   console.log(response);
+    // });
+  }
+  onloginInFormSubmit(loginInForm:NgForm){
+    this.signUpServ.login(loginInForm.value.email, loginInForm.value.password);
+    loginInForm.reset();
+  }
+
+
+
+
+
 
   
 }

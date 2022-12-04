@@ -11,7 +11,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './shared/shared_components/navbar/navbar/navbar.component';
 import { HotelCardComponent } from './shared/shared_components/hotel_card/hotel-card/hotel-card.component';
 import { HotelInnerComponent } from './shared/shared_components/hotel_inner/hotel-inner/hotel-inner.component';
-import { HomeComponent } from './home/home/home.component';
+import { FormsModule }   from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import {NgForm} from '@angular/forms';
+import { HomeComponent } from './view/home/home/home.component';
 
 
 @NgModule({
@@ -21,7 +29,7 @@ import { HomeComponent } from './home/home/home.component';
     NavbarComponent,
     HotelCardComponent,
     HotelInnerComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +38,13 @@ import { HomeComponent } from './home/home/home.component';
     BrowserAnimationsModule,
     CoreModule,
     FontAwesomeModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,     
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

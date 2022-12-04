@@ -1,75 +1,175 @@
+
 <div class="col-md-10 navbar">
-<div class="logo">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png">
-</div>
-
-<div class="languageChange">
-    <li><fa-icon [icon]="faGlobe"></fa-icon></li>
-</div>
-<div class="userNavigator">
-    <div class="row">
-        <div class="col">
-            <div ngbDropdown class="d-inline-block dropdown">
-                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                    <ul class="bars">
-                    <li><fa-icon [icon]="faBars" ></fa-icon></li>
-                </ul>
-                <ul>
-                 <li> <fa-icon [icon]="faUser"></fa-icon></li>
-                </ul>
-                </button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem   (click)="openPopup()">Sign up</button>
-                    <button ngbDropdownItem (click)="openPopup()">Login in</button>
-                    <hr>
-                    <button ngbDropdownItem >Airbnb your home</button>
-                    <button ngbDropdownItem>Host your experience</button>
-                    <button ngbDropdownItem>Help</button>
-                </div>
-            </div>
-        </div>
-</div>
-
-
-</div>
-</div>
-
-
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':displayStyle}">
+  <div class="logo">
+<<<<<<< Updated upstream
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" routerLink="">
+=======
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" routerLink="home">
+>>>>>>> Stashed changes
+  </div>
   
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <button type="button" class="btn-close" 
-        (click)="closePopup()">
- 
-</button>
-      <div class="modal-header">
-      
-        <h4 class="modal-title">Log in or sign up
-        </h4>
-      </div>
-      <div class="modal-body">
-       <div class="input-group mb-3">
-      
-        <input type="number" class="form-control" placeholder="Phone number" >
-      </div>
-      <div class="input-group mb-3">
-      
-        <input type="text" class="form-control" placeholder="Username" >
-      </div>
+  <div class="languageChange">
+      <li><fa-icon [icon]="faGlobe"></fa-icon></li>
+  </div>
+  <div class="userNavigator">
+      <div class="row">
+          <div class="col">
+              <div ngbDropdown class="d-inline-block dropdown">
+                  <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                      <ul class="bars">
+                      <li><fa-icon [icon]="faBars" ></fa-icon></li>
+                  </ul>
+                  <ul>
+                   <li> <fa-icon [icon]="faUser"></fa-icon></li>
+                  </ul>
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button ngbDropdownItem  (click)="continuePoPup()">Continue</button>
+                      <!-- <button ngbDropdownItem (click)="LoginInPopup()">Login in</button> -->
+                      <hr>
+                      <button ngbDropdownItem >Airbnb your home</button>
+                      <button ngbDropdownItem>Host your experience</button>
+                      <button ngbDropdownItem>Help</button>
+                  </div>
+              </div>
+          </div>
+  </div>
   
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="continue">Continue  </button>
   
-         <button type="button" class="googleAuth Auth"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
-         <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button>
+  </div>
+  </div>
+  
+  
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':displayStyle}">
     
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <button type="button" class="btn-close" 
+          (click)="close()">
+   
+  </button>
+        <div class="modal-header">
+        
+          <h4 class="modal-title">Sign up
+          </h4>
+        </div>
+        <div class="modal-body">
+        <form #signUpForm="ngForm" (ngSubmit)="onSignUpFormSubmit(signUpForm)">
+          <div class="form-group">
+            <label for="">Enter your email</label>
+            <div class="input-group mb-3">
+            <input
+              required
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
+              ngModel
+              name="email"
+              type="email"
+              placeholder="Enter here"
+              class="form-control"
+            />
+          </div>
+          </div>
+        
+          
+          <div class="form-group">
+            <label for="">Enter your password</label>
+            <div class="input-group mb-3">
+            <input
+              required
+              ngModel
+              name="password"
+              type="password"
+              placeholder="Enter here"
+              class="form-control"
+            />
+          </div>
+  
+  </div>
+  <div class="modal-footer">
+          <div class="form-group">
+            <button
+              
+              type="submit"
+              class="btn btn-dark col-md-12 d-block continue"
+            >
+              Continue
+            </button>
+            <!-- <button type="button" class="googleAuth Auth"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
+            <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button> -->
+          </div>
+          </div>
+        </form>
+        
+     
+        
+      
+        </div>
+     
+      
+        
+  <br>
+        <div class="modal-header">
+        
+          <h4 class="modal-title">Login in
+          </h4>
+        </div>
+        <div class="modal-body">
+          <form #loginInForm="ngForm" (ngSubmit)="onloginInFormSubmit(loginInForm)">
+            <div class="form-group">
+              <label for="">Enter your email</label>
+              <div class="input-group mb-3">
+              <input
+                required
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
+                ngModel
+                name="email"
+                type="email"
+                placeholder="Enter here"
+                class="form-control"
+              />
+            </div>
+            </div>
+          
+            
+            <div class="form-group">
+              <label for="">Enter your password</label>
+              <div class="input-group mb-3">
+              <input
+                required
+                ngModel
+                name="password"
+                type="password"
+                placeholder="Enter here"
+                class="form-control"
+              />
+            </div>
+    
+    </div>
+    <div class="modal-footer">
+            <div class="form-group">
+              <button
+                
+                type="submit"
+                class="btn btn-dark col-md-12 d-block continue"
+              >
+                Continue
+              </button>
+              <!-- <button type="button" class="googleAuth Auth"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
+              <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button> -->
+            </div>
+            </div>
+          </form>
+          
+       
+          
+        
+          </div>
+        <br>
       </div>
     </div>
-  </div>
-</div>
+  </div> 
+  
