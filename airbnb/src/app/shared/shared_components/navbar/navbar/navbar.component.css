@@ -39,6 +39,7 @@
     display: grid;
     grid-template-columns: 25% 50% 15% 10%;
     margin:auto;
+  
 }
 .logo{
     grid-column: 1;
@@ -110,4 +111,11 @@
 }
 button{
     display: block;
+}
+.userEmail ul{
+    float: right;
+   position: relative;
+   top:15px;
+    list-style: none;
+    font-size:16px;
 }

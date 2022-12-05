@@ -16,11 +16,15 @@ import { User } from 'src/app/shared/shared_models/user.model';
 })
 export class NavbarComponent implements OnInit {
 
-  userEmail!:null;
+  // userEmail!:null;
+
+  userData!:any;
+ 
 
   constructor(private modalService: NgbModal, private userServ : UserFrService) {}
 
   ngOnInit(): void {
+ 
   }
   faGlobe = faGlobe;
   faUser = faUser;
@@ -36,17 +40,22 @@ export class NavbarComponent implements OnInit {
   close() {
     this.displayStyle = "none";
   }
-  onclick(){
-    
-}
+
+  
+
   onSignUpFormSubmit(signUpForm:NgForm){
-     
+    var tmpUser = Object.assign(new User(),signUpForm.value);
+   
     // var tmpUser = Object.assign(new User(),signUpForm.value);
     // this.signUpServ.SignUp(signUpForm.value.email, signUpForm.value.password);
-    this.userServ.register(signUpForm.value.email, signUpForm.value.password);
-    this.userServ.emailEmitter.subscribe(response => {
-      this.userEmail = response;
+    this.userServ.signUp(tmpUser, signUpForm.value.password);
+    this.userServ.userDataEmitter.subscribe(response => {
+      this.userData = response;
+ 
     })
+ 
+    // this.userData = JSON.parse(localStorage.getItem('user')!);
+   
     signUpForm.reset();
     // UserFrService.signUp(signUpForm.value.email, signUpForm.value.password);
     // this.signUpServ.signUp(tmpUser,signUpForm.value.password ).then(response => {
@@ -54,17 +63,34 @@ export class NavbarComponent implements OnInit {
     // });
   }
   onloginInFormSubmit(loginInForm:NgForm){
-    this.userServ.login(loginInForm.value.email, loginInForm.value.password);
-    this.userServ.emailEmitter.subscribe(response => {
-      this.userEmail = response;
+    this.userServ.signIn(loginInForm.value.email, loginInForm.value.password);
+    // this.userServ.emailEmitter.subscribe(response => {
+
+    //   this.userEmail = response;
+    // })
+    // this.userData = JSON.parse(localStorage.getItem('user')!);
+    this.userServ.userDataEmitter.subscribe(response => {
+      this.userData = response;
+   
+      
     })
+  
     loginInForm.reset();
   }
 
+  logout(){
+      
 
-  loginInWithGoogle(){
-    this.userServ.googleAuth();
-  }
+    this.userData = localStorage.setItem('user', 'null');
+     
+     
+  } 
+  
+
+  
+  // loginInWithGoogle(){
+  //   this.userServ.googleAuth();
+  // }
 
 
 
