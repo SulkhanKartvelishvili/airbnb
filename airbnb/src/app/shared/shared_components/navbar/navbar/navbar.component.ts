@@ -83,12 +83,21 @@ export class NavbarComponent implements OnInit {
 
     this.userData = localStorage.setItem('user', 'null');
      
-     
   } 
-  
 
-  
-  // loginInWithGoogle(){
+
+  onSignInWithGoogleBtnClick(){
+    this.userServ.googleAuth().then(response => {
+      response.subscribe((user:any) => {
+        this.userServ.userDataEmitter.subscribe(response => {
+          this.userData = response;
+       
+          
+        })
+      })
+    })
+  }
+  // loginInWithGoogle(){s
   //   this.userServ.googleAuth();
   // }
 

@@ -27,6 +27,8 @@ export class UserFrService {
   // });
 }
 
+
+
 signUp(user: User, password: string) {
   
   return this.auth
@@ -92,7 +94,23 @@ getUserDoc(id: string): any {
 }
 
 
+googleAuth() {
+  return this.authLogin(new firebase.GoogleAuthProvider());
+}
 
+authLogin(provider: any) {
+  return this.auth
+    .signInWithPopup(provider)
+    .then((result) => {
+      localStorage.setItem('user', JSON.stringify(result.user));
+      this.userData =  JSON.parse(localStorage.getItem("user") || "null");
+      this.userDataEmitter.emit(result.user);
+      return this.getUserDoc(result.user?.uid ?? "");
+    })
+    .catch((error) => {
+      window.alert(error);
+    });
+}
 
 
 
