@@ -35,7 +35,7 @@
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                       <button ngbDropdownItem  (click)="continuePoPup()" *ngIf="userData == null ">Continue</button>
-                      <button ngbDropdownItem  (click)="continuePoPup()"  *ngIf="userData != null ">Dashboard</button>
+                      <button ngbDropdownItem  routerLink="dashboard"  *ngIf="userData != null ">Dashboard</button>
                       <!-- <button ngbDropdownItem (click)="LoginInPopup()">Login in</button> -->
                       <hr>
                       <button ngbDropdownItem >Airbnb your home</button>

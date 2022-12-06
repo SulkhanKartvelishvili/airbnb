@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
   constructor(private modalService: NgbModal, private userServ : UserFrService) {}
 
   ngOnInit(): void {
- 
+    this.userData = JSON.parse(localStorage.getItem('user')!);
   }
   faGlobe = faGlobe;
   faUser = faUser;
