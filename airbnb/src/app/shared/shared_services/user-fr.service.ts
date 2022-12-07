@@ -72,7 +72,7 @@ signIn(email: string, password: string) {
         if (user) {
           
           // console.log(user.email);
- 
+          
            
           localStorage.setItem('user', JSON.stringify(user));
           this.userData =  JSON.parse(localStorage.getItem("user") || "null");
@@ -112,7 +112,16 @@ authLogin(provider: any) {
     });
 }
 
-
+forgotPassword(passwordResetEmail: string) {
+  return this.auth
+    .sendPasswordResetEmail(passwordResetEmail)
+    .then(() => {
+      window.alert('Password reset email sent, check your inbox.');
+    })
+    .catch((error) => {
+      window.alert(error);
+    });
+}
 
 
 
