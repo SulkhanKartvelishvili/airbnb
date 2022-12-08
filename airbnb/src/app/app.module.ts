@@ -20,6 +20,13 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import {NgForm} from '@angular/forms';
 import { HomeComponent } from './view/home/home/home.component';
+import { DashboardComponent } from './view/dashboard/dashboard/dashboard.component';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { UserInfoComponent } from './view/user-info/user-info.component';
 
 
 @NgModule({
@@ -30,6 +37,8 @@ import { HomeComponent } from './view/home/home/home.component';
     HotelCardComponent,
     HotelInnerComponent,
     HomeComponent,
+    DashboardComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +53,11 @@ import { HomeComponent } from './view/home/home/home.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,     
+    MatFormFieldModule,
+    MatSelectModule,
+    MatSidenavModule
+
+
     
   ],
   providers: [],
