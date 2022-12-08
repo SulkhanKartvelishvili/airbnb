@@ -42,7 +42,6 @@ export class NavbarComponent implements OnInit {
   }
 
   
-
   onSignUpFormSubmit(signUpForm:NgForm){
     var tmpUser = Object.assign(new User(),signUpForm.value);
    
