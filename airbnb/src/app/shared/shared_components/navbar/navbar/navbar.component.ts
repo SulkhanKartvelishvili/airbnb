@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserFrService } from 'src/app/shared/shared_services/user-fr.service';
 import { User } from 'src/app/shared/shared_models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +22,7 @@ export class NavbarComponent implements OnInit {
   userData!:any;
  
 
-  constructor(private modalService: NgbModal, private userServ : UserFrService) {}
+  constructor(private modalService: NgbModal, private userServ : UserFrService, private router:Router) {}
 
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('user')!);
@@ -50,7 +51,7 @@ export class NavbarComponent implements OnInit {
     this.userServ.signUp(tmpUser, signUpForm.value.password);
     this.userServ.userDataEmitter.subscribe(response => {
       this.userData = response;
- 
+     this.close();
     })
  
     // this.userData = JSON.parse(localStorage.getItem('user')!);
@@ -70,8 +71,8 @@ export class NavbarComponent implements OnInit {
     // this.userData = JSON.parse(localStorage.getItem('user')!);
     this.userServ.userDataEmitter.subscribe(response => {
       this.userData = response;
-   
-      
+      // this.router.navigate(['dashboard']);
+      this.close();
     })
   
     loginInForm.reset();
@@ -81,7 +82,7 @@ export class NavbarComponent implements OnInit {
       
 
     this.userData = localStorage.setItem('user', 'null');
-     
+     this.router.navigate(['']);
   } 
 
 
@@ -90,7 +91,7 @@ export class NavbarComponent implements OnInit {
       response.subscribe((user:any) => {
         this.userServ.userDataEmitter.subscribe(response => {
           this.userData = response;
-       
+          this.close();
           
         })
       })

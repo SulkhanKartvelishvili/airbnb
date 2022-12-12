@@ -27,8 +27,11 @@ import {MatSelectModule} from '@angular/material/select';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { UserInfoComponent } from './view/user-info/user-info.component';
+import { CategoryFilterComponent } from './view/category-filter/category-filter.component';
+import { CategoryFilterCardComponent } from './shared/shared_components/category_filter_card/category-filter-card/category-filter-card.component';
 
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +42,8 @@ import { UserInfoComponent } from './view/user-info/user-info.component';
     HomeComponent,
     DashboardComponent,
     UserInfoComponent,
+    CategoryFilterComponent,
+    CategoryFilterCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,10 @@ import { UserInfoComponent } from './view/user-info/user-info.component';
     AngularFireDatabaseModule,     
     MatFormFieldModule,
     MatSelectModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule
+    
 
 
     

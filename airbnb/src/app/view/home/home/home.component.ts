@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+hotelCardList:[]=[];
+
+  constructor(private hotelCardServ:HotelCardService) { }
 
   ngOnInit(): void {
+    this.getAllHotelCard();
   }
 
+
+  getAllHotelCard(){
+    this.hotelCardServ.readAllHotelCard().subscribe(response => {
+    
+       this.hotelCardList = response;
+       console.log(this.hotelCardList);
+    });
+  }
 }

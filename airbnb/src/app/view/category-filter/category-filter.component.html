@@ -1,0 +1,19 @@
+
+  
+  <section class="category col-md-10">
+           
+                      <div class="holder">
+                          <ul class="slider">
+                         <app-category-filter-card *ngFor="let caterogryCard of categoryList" [categoryCardItem]="caterogryCard" ></app-category-filter-card> 
+                              
+                        
+                          </ul>
+                      </div>
+
+                      <div class="filter">
+         
+                   
+                      <button > <li><fa-icon [icon]="faSliders"></fa-icon></li>filter</button>
+
+                    </div>
+                  </section>
