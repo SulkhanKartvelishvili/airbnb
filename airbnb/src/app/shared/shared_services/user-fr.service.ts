@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../shared_models/user.model';
 import * as firebase from 'firebase/auth';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +13,7 @@ export class UserFrService {
   userData: any;
 
   constructor( public afs: AngularFirestore,
-  public auth: AngularFireAuth) { 
+  public auth: AngularFireAuth, private router:Router) { 
  
   // this.auth.authState.subscribe((user) => {
   //   if (user) {
@@ -41,6 +41,7 @@ signUp(user: User, password: string) {
       localStorage.setItem('user', JSON.stringify(user));
       this.userData =  JSON.parse(localStorage.getItem("user") || "null");
       this.userDataEmitter.emit(this.userData);
+      this.router.navigate(['dashboard']);
     })
     .catch((error) => {
       window.alert(error.message);
@@ -77,6 +78,7 @@ signIn(email: string, password: string) {
           localStorage.setItem('user', JSON.stringify(user));
           this.userData =  JSON.parse(localStorage.getItem("user") || "null");
           this.userDataEmitter.emit(this.userData);
+          this.router.navigate(['dashboard']);
         }
       });
       return this.getUserDoc(result.user?.uid ?? "");
@@ -105,6 +107,7 @@ authLogin(provider: any) {
       localStorage.setItem('user', JSON.stringify(result.user));
       this.userData =  JSON.parse(localStorage.getItem("user") || "null");
       this.userDataEmitter.emit(result.user);
+      this.router.navigate(['dashboard']);
       return this.getUserDoc(result.user?.uid ?? "");
     })
     .catch((error) => {
