@@ -12,8 +12,11 @@ export class HotelCardService {
 
   constructor(private httpClient:HttpClient) { 
   }
-    readAllHotelCard():Observable<any>{
 
+
+  
+    readAllHotelCard():Observable<any>{
+      
       return this.httpClient.get(this.getAllHotelCardApi);
     }
 

@@ -1,10 +1,12 @@
 
   
   <section class="category col-md-10">
-           
+
                       <div class="holder">
+                        
                           <ul class="slider">
-                         <app-category-filter-card *ngFor="let caterogryCard of categoryList" [categoryCardItem]="caterogryCard" ></app-category-filter-card> 
+                            <button (click)="showBackAllHotelCard()">Show All</button>
+                         <app-category-filter-card *ngFor="let caterogryCard of categoryList" [categoryCardItem]="caterogryCard" (categoryCardItemIdEmitter)="getCategoryCardItemId($event)"></app-category-filter-card> 
                               
                         
                           </ul>

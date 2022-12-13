@@ -69,7 +69,7 @@
     height: 2px;
   }
 
-  .filter button{
+  .filter button {
     border-width: thin;
     background: white;
     margin-top: 20px!important;
@@ -83,8 +83,21 @@
     padding-top: 12px;
     font-size: 15px;
     border-radius: 10px;
+    position: relative;
+    bottom: 10px;
   }
   .filter button li{
     list-style: none;
     padding-right: 10px;
+  }
+  .slider button{
+    border-width: thin;
+    background: white;
+    border-color: #abb0b540;
+    height: 50px;
+    width: 90px;
+    font-size: 15px;
+    border-radius: 10px;
+    position: relative;
+    bottom: 10px;
   }

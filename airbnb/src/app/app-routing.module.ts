@@ -9,9 +9,9 @@ const routes: Routes = [
 
 
   {path:"", component:HomeComponent},
+  // {path:"/id", component:HomeComponent},
   {path:"innerHotel", component:HotelInnerComponent},
-  {path:"dashboard", component:DashboardComponent,
-},
+  {path:"dashboard", component:DashboardComponent},
  {path:'dashboard/userInfo', component:UserInfoComponent}
   // {path:"/userInfo", component:UserInfoComponent, }
 ];

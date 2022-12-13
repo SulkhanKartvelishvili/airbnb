@@ -21,11 +21,11 @@ hotelCardItem:any;
   constructor() { }
 
   ngOnInit(): void {
-  console.log(this.hotelCardItem);
+ 
   }
   faStar=faStar;
   
-
+  
 
 
 }

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+
+import { Component, EventEmitter, Input,Output } from '@angular/core';
 
 @Component({
   selector: 'app-category-filter-card',
@@ -8,4 +9,10 @@ import { Component, Input } from '@angular/core';
 export class CategoryFilterCardComponent {
   @Input()
   categoryCardItem:any;
+  @Output()
+  categoryCardItemIdEmitter:EventEmitter<any>=new EventEmitter();
+
+  getCategoryId(){
+    this.categoryCardItemIdEmitter.emit(this.categoryCardItem.id);
+  }
 }
