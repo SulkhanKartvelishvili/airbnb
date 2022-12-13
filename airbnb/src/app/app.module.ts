@@ -32,6 +32,10 @@ import { CategoryFilterCardComponent } from './shared/shared_components/category
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +66,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSelectModule,
     MatSidenavModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+
     
 
 

@@ -19,6 +19,8 @@ export class HotelCardService {
       
       return this.httpClient.get(this.getAllHotelCardApi);
     }
+    
+    
 
 
  

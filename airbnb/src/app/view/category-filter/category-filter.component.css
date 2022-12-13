@@ -2,7 +2,7 @@
     margin: auto;
     text-align:center;
     display: grid;
-    grid-template-columns: 90% 10%;
+    grid-template-columns: 10% 80% 10%;
 }
 
 .category .holder {
@@ -69,7 +69,7 @@
     height: 2px;
   }
 
-  .filter button {
+  .btn{
     border-width: thin;
     background: white;
     margin-top: 20px!important;
@@ -90,14 +90,30 @@
     list-style: none;
     padding-right: 10px;
   }
-  .slider button{
-    border-width: thin;
-    background: white;
-    border-color: #abb0b540;
-    height: 50px;
-    width: 90px;
-    font-size: 15px;
-    border-radius: 10px;
-    position: relative;
-    bottom: 10px;
+
+
+  .type{
+   display: flex;
+  }
+  .type .typeOneText {
+    margin-left: 20px;
+  }
+
+  .type div input{
+    width: 20px;
+    height: 20px;
+  }
+.type div h3{
+    margin:0px;
+  }
+  .modal-dialog{
+    width: 700px!important;
+    max-width: inherit;
+  }
+  .typeOfPlaceSection{
+    display: grid;
+    grid-template-columns:50% 50%;
+  }
+  .typeOne{
+    grid-column: 1;
   }
