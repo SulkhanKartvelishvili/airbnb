@@ -18,6 +18,7 @@
                       <button class="btn" (click)="filterPopUp()" > <li><fa-icon [icon]="faSliders"></fa-icon></li>filter</button>
 
                     </div>
+                   
                   </section>
 
 
@@ -86,6 +87,7 @@
                        
                       
                         <select matNativeControl required [(ngModel)]="typeOfPlace">
+                 
                           <option value="entire place">Entire place</option>
                           <option value="private room">Private room</option>
                           <option value="shared room">Shared room</option>
@@ -98,7 +100,7 @@
                     
 
                      
-                       <button type="submit">submit</button>
+                       
                       
                       </div>
                    
@@ -108,48 +110,58 @@
 
                         </div> -->
 
-                        <div class="bedrooms">
-                          <label>Bedrooms</label>
-                          <button>Any</button>
-                          <button>1</button>
-                          <button>2</button>
-                          <button>3</button>
-                          <button>4</button>
-                          <button>5</button>
-                          <button>6</button>
+                        <div class="rooms"  >
+                          <label>Rooms</label>
+                          <select matNativeControl required [(ngModel)]="rooms">
+                           
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+  
+                          </select>
+                      
                         </div>
                         <div class="beds">
                           <label>Beds</label>
-                          <button>Any</button>
-                          <button>1</button>
-                          <button>2</button>
-                          <button>3</button>
-                          <button>4</button>
-                          <button>5</button>
-                          <button>6</button>
+                          <select matNativeControl required [(ngModel)]="beds">
+                           
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+  
+                          </select>
                         </div>
                         <div class="baths">
                           <label>Bathrooms</label>
-                          <button>Any</button>
-                          <button>1</button>
-                          <button>2</button>
-                          <button>3</button>
-                          <button>4</button>
-                          <button>5</button>
-                          <button>6</button>
+                          <select matNativeControl required [(ngModel)]="bathrooms">
+                           
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+  
+                          </select>
                         </div>
                       </div>
 
                       <div class="propertyType">
-                        <button>Home</button>
-                        <button>Villa</button>
+                        <button  (click)="onHomePropertyTypeClick()">Home</button>
+                        <button (click)="onVillaProperyTypeClick()">Villa</button>
                       </div>
 
                   
 
                   <div class="modal-footer">
                  
-                      <button [routerLink]="['/']" [queryParams]="{ PriceFrom : priceFrom, typeofplace: typeOfPlace}" (click)="showresults()"> Show results</button>
+                      <button [routerLink]="['/']" [queryParams]="{ PriceFrom : priceFrom, PriceTo: priceTo, typeOfPlace: typeOfPlace, RoomsCount:rooms, BedsPerRoomCount:beds, BathRoomsCount:bathrooms, PropertyType:propertyType  }" (click)="showresults()"> Show results</button>
                       
                
                           
