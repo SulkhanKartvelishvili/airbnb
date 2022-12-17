@@ -22,6 +22,8 @@ import {NgForm} from '@angular/forms';
 import { HomeComponent } from './view/home/home/home.component';
 import { DashboardComponent } from './view/dashboard/dashboard/dashboard.component';
 
+import { MatInputModule } from '@angular/material/input';
+
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 
@@ -33,6 +35,7 @@ import { CategoryFilterCardComponent } from './shared/shared_components/category
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 
+import {RouterModule} from '@angular/router';
 
 
 
@@ -63,11 +66,13 @@ import {MatIconModule} from '@angular/material/icon';
     AngularFireStorageModule,
     AngularFireDatabaseModule,     
     MatFormFieldModule,
+    MatInputModule,
     MatSelectModule,
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-
+    RouterModule
+    
     
 
 

@@ -40,61 +40,124 @@
 
 
                       <div class="modal-body">
-                        
+                       
                         <div class="priceRangeSection">
                         <label for="customRange3" class="form-label">Example range</label>
-                        <input type="range" class="form-range" min="10" max="500" step="5" id="customRange3" [(ngModel)]="price">
-                        <input type="range" class="form-range" min="{{price}}" max="500" step="5" id="customRange4" [(ngModel)]="pricetwo"  >
+                        <input type="range" class="form-range" min="10" max="500" step="5" id="customRange3" [(ngModel)]="priceFrom">
+                        <input type="range" class="form-range" min="{{priceFrom}}" max="500" step="5" id="customRange4" [(ngModel)]="priceTo"  >
                         
-                        <span>{{price}}</span>
+                        <span>{{priceFrom}}</span>
                         <br>
-                        <span>{{pricetwo}}</span>
+                        <span>{{priceTo}}</span>
                      
                         
                       </div>
 
                       <div class="typeOfPlaceSection">
                         <h2>Type of place</h2>
-                       <div class="typeOne type">
+                      
+                       <!-- <div class="entirePlace type">
                         <div >
-                          <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+                          <input ngModel name="entirePlace" class="form-check-input" type="checkbox" id="checkboxNoLabel" value="1" aria-label="...">
                         </div>
-                        <div class="typeOneText">
+                        <div class="entirePlaceText">
                           <h3>Entire Place</h3>
                           <h4>A place all to yourself</h4>
                         </div>
                        </div>
-                       <div class="typeTwo type">
+                       <div class="privateRoom type">
                         <div>
-                          <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+                          <input ngModel name="privateRoom" class="form-check-input" type="checkbox" id="checkboxNoLabel" value="2" aria-label="...">
                         </div>
-                        <div class="typeOneText">
+                        <div class="privateRoomText">
                           <h3>Private room</h3>
                           <h4>Your own room in a home or a hotel, plus some shared common spaces</h4>
                         </div>
                        </div>
-                       <div class="typeThree type">
+                       <div class="sharedRoom type">
                         <div>
-                          <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+                          <input ngModel name="sharedRoom" class="form-check-input" type="checkbox" id="checkboxNoLabel" value="3" aria-label="...">
                         </div>
-                        <div class="typeOneText">
+                        <div class="sharedRoomText">
                           <h3>Shared room</h3>
                           <h4>A sleeping space and common areas that may be shared with others</h4>
                         </div>
-                       </div>
+                       </div> -->
+                       
+                      
+                        <select matNativeControl required [(ngModel)]="typeOfPlace">
+                          <option value="entire place">Entire place</option>
+                          <option value="private room">Private room</option>
+                          <option value="shared room">Shared room</option>
+
+                        </select>
+                    
+
+               
+                      
+                    
+
+                     
+                       <button type="submit">submit</button>
+                      
+                      </div>
+                   
+                      <div class="roomsBedsBaths">
+                        <!-- <button (click)="AddFilterRooms()">add rooms</button>
+                        <div  *ngFor="let item of roomsCounter">
+
+                        </div> -->
+
+                        <div class="bedrooms">
+                          <label>Bedrooms</label>
+                          <button>Any</button>
+                          <button>1</button>
+                          <button>2</button>
+                          <button>3</button>
+                          <button>4</button>
+                          <button>5</button>
+                          <button>6</button>
+                        </div>
+                        <div class="beds">
+                          <label>Beds</label>
+                          <button>Any</button>
+                          <button>1</button>
+                          <button>2</button>
+                          <button>3</button>
+                          <button>4</button>
+                          <button>5</button>
+                          <button>6</button>
+                        </div>
+                        <div class="baths">
+                          <label>Bathrooms</label>
+                          <button>Any</button>
+                          <button>1</button>
+                          <button>2</button>
+                          <button>3</button>
+                          <button>4</button>
+                          <button>5</button>
+                          <button>6</button>
+                        </div>
                       </div>
 
-                      <div class="roomsAndBeds">
-                        <button>add rooms</button>
+                      <div class="propertyType">
+                        <button>Home</button>
+                        <button>Villa</button>
                       </div>
 
-                  </div>
+                  
 
                   <div class="modal-footer">
-                
-                          </div>
-                        
+                 
+                      <button [routerLink]="['/']" [queryParams]="{ PriceFrom : priceFrom, typeofplace: typeOfPlace}" (click)="showresults()"> Show results</button>
                       
+               
+                          
+
+                        </div>
+                     
                         </div> 
+
+
                       </div>
                     </div>

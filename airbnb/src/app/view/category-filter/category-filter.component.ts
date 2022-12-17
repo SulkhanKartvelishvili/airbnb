@@ -3,6 +3,8 @@ import { HttpClient} from '@angular/common/http';
 import { CategoryFilterService } from 'src/app/core/http/category/category-filter.service';
 import {faSliders} from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @Component({
@@ -18,8 +20,15 @@ export class CategoryFilterComponent implements OnInit {
    categoryCardItemIdEmitter:EventEmitter<any>=new EventEmitter();
    @Output()
    showAllHotelCardEventEmitter:EventEmitter<any>=new EventEmitter();
-   price:number = 0;
-   pricetwo:number =0;
+   priceFrom:number = 0;
+   priceTo:number =0;
+   typeOfPlace!:string;
+
+  //  entirePlace:string = '';
+  //  privateRoom:string = '';
+  //  sharedRoom:string = '';
+
+   roomsCounter:number[] =[];
 
   constructor(private httpClient:HttpClient, private categoryFilterService:CategoryFilterService, private modalService: NgbModal) { }
 
@@ -59,6 +68,15 @@ filterPopUp() {
   this.displayStyle = "block";
  
 }
+
+AddFilterRooms(){
+ this.roomsCounter.push(1);
+
+}
+showresults(){
+  this.close();
+}
+
 
 
 }
