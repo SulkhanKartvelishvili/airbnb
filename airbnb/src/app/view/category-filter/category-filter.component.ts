@@ -30,7 +30,7 @@ export class CategoryFilterComponent implements OnInit {
    beds!:number;
    bathrooms!:number;
    propertyType:string ='';
-   queryParams!:any;
+  
   //  entirePlace:string = '';
   //  privateRoom:string = '';
   //  sharedRoom:string = '';
@@ -85,19 +85,15 @@ onHomePropertyTypeClick(){
 onVillaProperyTypeClick(){
   this.propertyType = 'villa';
 }
-showresults(){
-  this.activatedRoute.queryParams.subscribe(response => {
-   this.queryParams = response;
-  })
-  console.log(this.queryParams);
+
+  // console.log(this.queryParams);
   // this.close();
  
-  this.hotelCardServ.readAllfilteredHotelCard(this.queryParams);
-  this.close();
-  this.hotelCardServ.readAllHotelCard().subscribe(response => {
-    console.log(response);
-  })
+ 
+  // this.close();
+  // this.activatedRoute.queryParams.subscribe(queryParams => {
+     
+      
   
 }
 
-}

@@ -36,6 +36,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 
 import {RouterModule} from '@angular/router';
+import { FilteredHotelCardComponent } from './view/filtered_hotel_card/filtered-hotel-card/filtered-hotel-card.component';
+// import { FilteredHotelCardComponent } from './shared/shared_components/filtered_hotel_card/filtered-hotel-card/filtered-hotel-card.component';
 
 
 
@@ -51,6 +53,7 @@ import {RouterModule} from '@angular/router';
     UserInfoComponent,
     CategoryFilterComponent,
     CategoryFilterCardComponent,
+    FilteredHotelCardComponent,
   ],
   imports: [
     BrowserModule,

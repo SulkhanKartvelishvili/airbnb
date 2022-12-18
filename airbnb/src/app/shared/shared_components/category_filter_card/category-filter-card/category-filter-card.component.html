@@ -1,5 +1,5 @@
 <li>
-    <a href={{categoryCardItem.id}} routerLink="/" (click)="getCategoryId()">
+    <a href={{categoryCardItem.id}} routerLink="home/${{categoryCardItem.id}}" (click)="getCategoryId()">
         <div class="categoryCard">
             <div class="img-holder">
                 <img class="categoryCardIcon" [src]="categoryCardItem.icon" alt="img-description" width="72" height="72">

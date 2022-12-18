@@ -6,7 +6,7 @@
                         
                           <ul class="slider">
                             
-                         <app-category-filter-card *ngFor="let caterogryCard of categoryList" [categoryCardItem]="caterogryCard" (categoryCardItemIdEmitter)="getCategoryCardItemId($event)"></app-category-filter-card> 
+                         <app-category-filter-card  *ngFor="let caterogryCard of categoryList" [categoryCardItem]="caterogryCard" (categoryCardItemIdEmitter)="getCategoryCardItemId($event)"></app-category-filter-card> 
                               
                         
                           </ul>
@@ -161,7 +161,7 @@
 
                   <div class="modal-footer">
                  
-                      <button [routerLink]="['/']" [queryParams]="{ PriceFrom : priceFrom, PriceTo: priceTo, typeOfPlace: typeOfPlace, RoomsCount:rooms, BedsPerRoomCount:beds, BathRoomsCount:bathrooms, PropertyType:propertyType  }" (click)="showresults()"> Show results</button>
+                      <button [routerLink]="['/filtered']" [queryParams]="{ PriceFrom : priceFrom, PriceTo: priceTo, typeOfPlace: typeOfPlace, RoomsCount:rooms, BedsPerRoomCount:beds, BathRoomsCount:bathrooms, PropertyType:propertyType  }" (click)="close()"> Show results</button>
                       
                
                           
