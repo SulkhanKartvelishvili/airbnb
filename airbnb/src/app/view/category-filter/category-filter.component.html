@@ -6,7 +6,7 @@
                         
                           <ul class="slider">
                             
-                         <app-category-filter-card  *ngFor="let caterogryCard of categoryList" [categoryCardItem]="caterogryCard" (categoryCardItemIdEmitter)="getCategoryCardItemId($event)"></app-category-filter-card> 
+                         <app-category-filter-card  *ngFor="let categoryCard of categoryList" [categoryCardItem]="categoryCard" (categoryCardItemIdEmitter)="getCategoryCardItemId($event)"></app-category-filter-card> 
                               
                         
                           </ul>

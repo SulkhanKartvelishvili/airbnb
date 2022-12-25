@@ -23,8 +23,8 @@ export class CategoryFilterComponent implements OnInit {
    categoryCardItemIdEmitter:EventEmitter<any>=new EventEmitter();
    @Output()
    showAllHotelCardEventEmitter:EventEmitter<any>=new EventEmitter();
-   priceFrom:number = 0;
-   priceTo:number =0;
+   priceFrom!:number;
+   priceTo!:number;
    typeOfPlace!:string;
    rooms!:number;
    beds!:number;

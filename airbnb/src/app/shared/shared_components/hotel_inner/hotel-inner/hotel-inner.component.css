@@ -1,0 +1,110 @@
+
+.hotelShortDescription{
+    display: flex;
+    grid-column: 2;
+}
+.hotelShortDescription ul{
+    display: flex;
+    list-style:none;
+    padding-left: 10px;
+}
+
+.hotelInnerDetails ul{
+    display: flex;
+    list-style:none;
+    padding-left: 0px;
+}
+.hotelInnerDetails li:nth-child(1) {
+    padding-left: 0px!important;
+  }
+  .hotelInnerDetails li:nth-child(2) {
+    padding-left: 10px;
+  }
+  .hotelInnerDetails li:nth-child(3) {
+    padding-left: 10px;
+  }
+  
+.hotelShortDescription ul li a{
+    color:black;
+    
+}
+.hotelShortDescription a {
+    padding-left: 3px;
+}
+.hotelShortDescription .streetAdd{
+    padding-left: 10px;
+}
+.hotelInnerDetails{
+    display: flex;
+}
+.col-md-10{
+    margin: auto;
+}
+.picsum-img-wrapper{
+    height: 600px;
+}
+.picsum-img-wrapper imgz{
+    width: 100%;
+    height: 100%;
+}
+.hotelInnerDescriptionColumn{
+    display: flex;
+}
+.price h1{
+    font-size: 23px;
+    font-weight: 500;
+}
+.price h1 span{
+  font-size:18px;
+  font-weight:400;
+}
+.continue{
+    background: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
+    color: white;
+    width: 90%;
+    margin: auto;
+    border: none;
+    background-size: 200% 200% !important;
+    height: 40px;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+.bookingSectionHeading{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.bookingSection{
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
+.bookingSectionHeading .hotelShortDescription{
+    padding-top: 7px;
+    justify-self: end;
+}
+.calendar{
+    text-align: center;
+}
+mat-form-field{
+    width: 90%;
+}
+.bookingSectionDateRange{
+    text-align: center;
+}
+.bookingSectionContent div:nth-child(2) {
+text-align: center;
+}
+.remove{
+    display:none;
+}
+.show{
+    display: block;
+}
+#days, #price{
+    text-decoration: underline;
+}
+
+.bookingSectionContent div:nth-child(3) span:nth-child(2){
+    float:right;
+}

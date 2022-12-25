@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
-import { CategoryFilterCardComponent } from 'src/app/shared/shared_components/category_filter_card/category-filter-card/category-filter-card.component';
+import { CategoryFilterCardComponent } from 'src/app/view/category_filter_card/category-filter-card/category-filter-card.component';
 
 @Component({
   selector: 'app-home',

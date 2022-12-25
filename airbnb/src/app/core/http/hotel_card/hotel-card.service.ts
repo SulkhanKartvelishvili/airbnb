@@ -10,6 +10,7 @@ export class HotelCardService {
 
   private getAllHotelCardApi:string = "http://airbnb-dev.us-east-1.elasticbeanstalk.com/api/Hotel";
   private getAllFilterCardApi:string = "http://airbnb-dev.us-east-1.elasticbeanstalk.com/api/Hotel/filter-by-category";
+  private getHotelCardById:string = "http://airbnb-dev.us-east-1.elasticbeanstalk.com/api/Hotel";
 
   constructor(private httpClient:HttpClient) { 
   }
@@ -23,7 +24,10 @@ export class HotelCardService {
     readAllfilteredHotelCard(queryParams:any):Observable<any>{
       return this.httpClient.get(this.getAllFilterCardApi, { params: queryParams });
     }
-    
+    readHotelCardById(hotelId:any):Observable<any>{
+      
+      return this.httpClient.get(`${this.getHotelCardById}/${hotelId}`);
+    }
     
 
 

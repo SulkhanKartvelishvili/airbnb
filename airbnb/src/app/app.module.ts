@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './shared/shared_components/navbar/navbar/navbar.component';
 import { HotelCardComponent } from './shared/shared_components/hotel_card/hotel-card/hotel-card.component';
 import { HotelInnerComponent } from './shared/shared_components/hotel_inner/hotel-inner/hotel-inner.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -30,15 +30,17 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { UserInfoComponent } from './view/user-info/user-info.component';
 import { CategoryFilterComponent } from './view/category-filter/category-filter.component';
-import { CategoryFilterCardComponent } from './shared/shared_components/category_filter_card/category-filter-card/category-filter-card.component';
+import { CategoryFilterCardComponent } from './view/category_filter_card/category-filter-card/category-filter-card.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 
 import {RouterModule} from '@angular/router';
 import { FilteredHotelCardComponent } from './view/filtered_hotel_card/filtered-hotel-card/filtered-hotel-card.component';
+import { CategoryFilterHotelCardComponent } from './view/category_filter_hotel_card/category-filter-hotel-card/category-filter-hotel-card.component';
 // import { FilteredHotelCardComponent } from './shared/shared_components/filtered_hotel_card/filtered-hotel-card/filtered-hotel-card.component';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { FilteredHotelCardComponent } from './view/filtered_hotel_card/filtered-
     CategoryFilterComponent,
     CategoryFilterCardComponent,
     FilteredHotelCardComponent,
+    CategoryFilterHotelCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,12 @@ import { FilteredHotelCardComponent } from './view/filtered_hotel_card/filtered-
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatNativeDateModule
+    
+   
     
     
 

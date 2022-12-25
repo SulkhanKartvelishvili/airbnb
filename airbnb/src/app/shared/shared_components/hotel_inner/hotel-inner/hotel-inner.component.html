@@ -1,20 +1,24 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
         <div class="hotelHeading">
             <h1>Zion Kolob Canyon-Farm Stay-cows, goats, alpaca</h1>
         </div>
         <div class="hotelShortDescription">
+           
             <fa-icon [icon]="faStar" class="faStar"></fa-icon>
-            <h4>5.0</h4>
-          
-            <h4 class="reviewsNum">13 reviews</h4>
-            <h4 class="streetAdd">Cedar City, Utah, United States</h4>
+           
+            <a>5.0</a>
+            <ul>
+           <li> <a class="reviewsNum">13 reviews</a></li>
+          <li>  <a class="streetAdd">Cedar City, Utah, United States</a></li>
+        </ul>
         </div>
     </div>
     </div>
     <br>
     <div class="row">
+        <div class="col-md-10">
         <ngb-carousel >
             <ng-template ngbSlide>
                 <div class="picsum-img-wrapper">
@@ -36,25 +40,100 @@
             </ng-template>
         </ngb-carousel>
     </div>
+</div>
     <br>
     
     <div class="row">
+        <div class="col-md-10 hotelInnerDescriptionColumn">
+            <div class="col-md-7">
         <div class="hotelInnerDescription">
             <div class="hotelInnerShortDescription">
-           <ul>
-            <li>2 guests</li>
-           </ul>
-           <ul>
-            <li>1 bed</li>
-           </ul>
-           <ul>
-            <li>1 bath</li>
-           </ul>
+                <div class="hotelInnerOverviewText">
+                    <h1>Entire home hosted by Irakli</h1>
+                    
+                </div>
+                <div class="hotelInnerDetails">
+                <ul>
+                    <li>2 guests</li>
+                   
+                    <li><span>1 bed</span></li>
+                   
+                 
+                    <li><span>1 bath</span></li>
+                   </ul>
+                </div>
         </div>
         <hr>
         <div class="hotelInnerTextDescription">
        <p>Perched high on an ocean hillside, built on 30 ft tall steel legs, the cozy quarters above are akin to an old ship’s cabin. With 360 views at 30ft up you can chart the sun and stars across the sky, set your rhythm to the ebb & flow of the tide and scout the surf from above. Greet the evenings with a cozy woodstove, sunset with drinks on the deck, moonrise with a dip in the hottub & mornings with fresh espresso. Permit yourself to depart land for a while and come stand watch at The Tower.</p>
         </div>
+    </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-4 bookingSection">
+            <div class="bookingSectionHeading">
+            <div class="price">
+                <h1>145$ <span>night</span></h1>
+            </div>
+            <div class="hotelShortDescription">
+           
+                <fa-icon [icon]="faStar" class="faStar"></fa-icon>
+               
+                <a>5.0</a>
+                <ul>
+               <li> <a class="reviewsNum">13 reviews</a></li>
+            </ul>
+            </div>
+        </div>
+        <div class="bookingSectionContent">
+            <div class="calendar">
+            <mat-form-field appearance="legacy">
+              <mat-label>Choose Date Range</mat-label>
+              <mat-date-range-input [rangePicker]="rangePicker" [formGroup]="dateRange">
+                <input matStartDate formControlName="start" placeholder="Start Date">
+                <input matEndDate formControlName="end" placeholder="End Date">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #rangePicker>
+                <mat-date-range-picker-actions>
+                    <button mat-button matDateRangePickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDateRangePickerApply (click)="Calculate()">Apply</button>
+                  </mat-date-range-picker-actions>
+              </mat-date-range-picker>
+           
+            </mat-form-field>
+        </div>
+        
+       
+<div *ngIf="valid ==1">
+            <button class="continue" >Continue</button>
+            <hr>
+            </div>
+
+<div>
+    <span><a id="price"></a><a id="days"></a></span>
+    <span id="daysPriceSum"></span>
+</div>
+
+</div>
         </div>
     </div>
-</div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 ameneties">
+              <div class="amenetiesHeading">
+                <h1>What this place offers</h1>    
+            </div>
+            <div class="amenetiesContent">
+                <div class="amenetieCategorySection">
+                    <h2 class="amenetieCategorySectionHeading"><fa-icon class="faSink"  [icon]="faSink"></fa-icon>Bathroom</h2>
+                    <div><fa-icon class="faCheck" [icon]="faCheck"></fa-icon>Bathtub</div>
+                    <div><fa-icon class="faCheck" [icon]="faCheck"></fa-icon>Hair dryer</div>
+                    <div><fa-icon class="faCheck" [icon]="faCheck"></fa-icon>Cleaning products</div>
+                    <div><fa-icon class="faCheck" [icon]="faCheck"></fa-icon>Shampoo</div>
+                </div>
+
+        </div>
+    </div>
