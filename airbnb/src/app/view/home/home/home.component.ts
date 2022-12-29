@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
 import { CategoryFilterCardComponent } from 'src/app/view/category_filter_card/category-filter-card/category-filter-card.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,13 +13,14 @@ export class HomeComponent implements OnInit {
 hotelCardList: string[]=[];
 categoryFilteredHotelCardList: string[]=[];
 showAllHotelCard:boolean = true;
-  constructor(private hotelCardServ:HotelCardService) { }
+params!:string;
+  constructor(private hotelCardServ:HotelCardService,  private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllHotelCard();
 
   }
-
+ 
 
   getAllHotelCard(){
     this.hotelCardServ.readAllHotelCard().subscribe(response => {

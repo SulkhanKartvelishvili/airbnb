@@ -22,7 +22,7 @@ export class HotelInnerComponent implements OnInit {
   dayCountSumPrice!:number;
   valid:number =0;
  hotelId!:any;
- hotel:any;
+ hotel!:any;
  chosenRoom:any;
  faStar=faStar;
  lat!:number;
@@ -43,7 +43,7 @@ export class HotelInnerComponent implements OnInit {
         this.hotel=response;
         this.lat = this.hotel.latitude;
         this.lng = this.hotel.longitude;
-        console.log(this.hotel);
+        
       })
     })
   }

@@ -42,6 +42,8 @@ import { CategoryFilterHotelCardComponent } from './view/category_filter_hotel_c
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AgmCoreModule } from '@agm/core';
+import { UserFrService } from './shared/shared_services/user-fr.service';
+import { AuthGuard } from './core/guards/auth/auth.guard';
 
 
 @NgModule({
@@ -93,7 +95,7 @@ import { AgmCoreModule } from '@agm/core';
 
     
   ],
-  providers: [],
+  providers: [AuthGuard,UserFrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
