@@ -1,16 +1,15 @@
-<!-- <app-category-filter  (categoryCardItemIdEmitter)="getCategoryCardItemId($event)" (showAllHotelCardEventEmitter)="isSpoiled($event)"></app-category-filter> -->
-<app-category-filter   (showAllHotelCardEventEmitter)="isSpoiled($event)"></app-category-filter> 
+<app-category-filter></app-category-filter> 
 
 <br>
 <br>   
 <div class="col-md-12">
-<div *ngIf="showAllHotelCard == true">
+
     
 <div class="row row-cols-1 row-cols-md-6 g-4 cardsArea">
    
         <app-hotel-card *ngFor="let hotelCard of  categoryFilteredHotelCardList" [hotelCardItem]="hotelCard" ></app-hotel-card>
     </div>
-    </div>
+   
  
 
 
