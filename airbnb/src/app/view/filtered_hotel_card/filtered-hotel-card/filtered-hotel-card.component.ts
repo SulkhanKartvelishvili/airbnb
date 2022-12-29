@@ -1,26 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
-import { CategoryFilterCardComponent } from 'src/app/view/category_filter_card/category-filter-card/category-filter-card.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-filtered-hotel-card',
+  templateUrl: './filtered-hotel-card.component.html',
+  styleUrls: ['./filtered-hotel-card.component.css']
 })
-export class HomeComponent implements OnInit {
+export class FilteredHotelCardComponent implements OnInit  {
+  
 
-hotelCardList: string[]=[];
-categoryFilteredHotelCardList: string[]=[];
-showAllHotelCard:boolean = true;
-params!:string;
-  constructor(private hotelCardServ:HotelCardService,  private activatedRoute:ActivatedRoute) { }
+  hotelCardList: string[]=[];
+  categoryFilteredHotelCardList: string[]=[];
+  showAllHotelCard:boolean = true;
 
-  ngOnInit(): void {
-    this.getAllHotelCard();
+  constructor( private activatedRoute:ActivatedRoute, private hotelCardServ:HotelCardService){}
 
-  }
  
+  ngOnInit(): void {
+ 
+    this.activatedRoute.queryParams.subscribe(queryParams => {
+      this.hotelCardServ.readAllfilteredHotelCard(queryParams).subscribe(response => {
+        console.log(response);
+        this.hotelCardList = response;
+      })
+    })
+  }
+
 
   getAllHotelCard(){
     this.hotelCardServ.readAllHotelCard().subscribe(response => {
@@ -64,7 +70,7 @@ params!:string;
      this.showAllHotelCard=showAllHotelCard;
      
     }
-   
+
 }
- 
+
 

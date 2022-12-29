@@ -3,6 +3,11 @@ import { HttpClient} from '@angular/common/http';
 import { CategoryFilterService } from 'src/app/core/http/category/category-filter.service';
 import {faSliders} from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
 
 
 @Component({
@@ -18,10 +23,20 @@ export class CategoryFilterComponent implements OnInit {
    categoryCardItemIdEmitter:EventEmitter<any>=new EventEmitter();
    @Output()
    showAllHotelCardEventEmitter:EventEmitter<any>=new EventEmitter();
-   price:number = 0;
-   pricetwo:number =0;
+   priceFrom!:number;
+   priceTo!:number;
+   typeOfPlace!:string;
+   rooms!:number;
+   beds!:number;
+   bathrooms!:number;
+   propertyType:string ='';
+  
+  //  entirePlace:string = '';
+  //  privateRoom:string = '';
+  //  sharedRoom:string = '';
 
-  constructor(private httpClient:HttpClient, private categoryFilterService:CategoryFilterService, private modalService: NgbModal) { }
+   roomsCounter:number[] =[];
+  constructor(private httpClient:HttpClient, private categoryFilterService:CategoryFilterService, private modalService: NgbModal, private activatedRoute:ActivatedRoute, private hotelCardServ:HotelCardService) { }
 
   ngOnInit(): void {
 
@@ -60,5 +75,25 @@ filterPopUp() {
  
 }
 
+AddFilterRooms(){
+ this.roomsCounter.push(1);
 
 }
+onHomePropertyTypeClick(){
+  this.propertyType = 'home'
+}
+onVillaProperyTypeClick(){
+  this.propertyType = 'villa';
+}
+
+  // console.log(this.queryParams);
+  // this.close();
+ 
+ 
+  // this.close();
+  // this.activatedRoute.queryParams.subscribe(queryParams => {
+     
+      
+  
+}
+

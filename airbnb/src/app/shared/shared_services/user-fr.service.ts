@@ -11,6 +11,7 @@ export class UserFrService {
 
    userDataEmitter:EventEmitter<any>=new EventEmitter();
   userData: any;
+  private authUser:any=null;
 
   constructor( public afs: AngularFirestore,
   public auth: AngularFireAuth, private router:Router) { 
@@ -41,6 +42,7 @@ signUp(user: User, password: string) {
       localStorage.setItem('user', JSON.stringify(user));
       this.userData =  JSON.parse(localStorage.getItem("user") || "null");
       this.userDataEmitter.emit(this.userData);
+      this.loginUser(this.userData);
       this.router.navigate(['dashboard']);
     })
     .catch((error) => {
@@ -78,6 +80,7 @@ signIn(email: string, password: string) {
           localStorage.setItem('user', JSON.stringify(user));
           this.userData =  JSON.parse(localStorage.getItem("user") || "null");
           this.userDataEmitter.emit(this.userData);
+          this.loginUser(this.userData);
           this.router.navigate(['dashboard']);
         }
       });
@@ -96,8 +99,14 @@ getUserDoc(id: string): any {
 }
 
 
+// googleAuth() {
+//   return this.authLogin(new firebase.GoogleAuthProvider());
+// }
+
 googleAuth() {
-  return this.authLogin(new firebase.GoogleAuthProvider());
+  return this.authLogin(new firebase.GoogleAuthProvider()).then((res: any) => {
+    this.router.navigate(['dashboard']);
+  });
 }
 
 authLogin(provider: any) {
@@ -106,7 +115,7 @@ authLogin(provider: any) {
     .then((result) => {
       localStorage.setItem('user', JSON.stringify(result.user));
       this.userData =  JSON.parse(localStorage.getItem("user") || "null");
-      this.userDataEmitter.emit(result.user);
+      this.loginUser(this.userData);
       this.router.navigate(['dashboard']);
       return this.getUserDoc(result.user?.uid ?? "");
     })
@@ -124,6 +133,14 @@ forgotPassword(passwordResetEmail: string) {
     .catch((error) => {
       window.alert(error);
     });
+}
+
+public loginUser(user:any):void{
+  this.authUser = user;
+}
+
+public isUserLoggedIn():boolean{
+return this.authUser !=null;
 }
 
 

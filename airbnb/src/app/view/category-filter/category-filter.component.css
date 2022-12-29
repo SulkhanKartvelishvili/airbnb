@@ -95,7 +95,7 @@
   .type{
    display: flex;
   }
-  .type .typeOneText {
+  .type .entirePlaceText, .type .privateRoomText, .type .sharedRoomText {
     margin-left: 20px;
   }
 
@@ -114,6 +114,9 @@
     display: grid;
     grid-template-columns:50% 50%;
   }
-  .typeOne{
+  .entirePlace{
     grid-column: 1;
+  }
+  .bedrooms button:checked{
+   background-color: black;
   }

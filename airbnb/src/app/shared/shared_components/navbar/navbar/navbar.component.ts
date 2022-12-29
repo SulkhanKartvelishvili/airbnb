@@ -70,7 +70,7 @@ export class NavbarComponent implements OnInit {
     // })
     // this.userData = JSON.parse(localStorage.getItem('user')!);
     this.userServ.userDataEmitter.subscribe(response => {
-      this.userData = response;
+      this.userData =  JSON.parse(localStorage.getItem("user") || "null");
       // this.router.navigate(['dashboard']);
       this.close();
     })
@@ -88,13 +88,13 @@ export class NavbarComponent implements OnInit {
 
   onSignInWithGoogleBtnClick(){
     this.userServ.googleAuth().then(response => {
-      response.subscribe((user:any) => {
-        this.userServ.userDataEmitter.subscribe(response => {
-          this.userData = response;
+     
+       
+          this.userData =  JSON.parse(localStorage.getItem("user") || "null");
           this.close();
           
-        })
-      })
+       
+     
     })
   }
   // loginInWithGoogle(){s
