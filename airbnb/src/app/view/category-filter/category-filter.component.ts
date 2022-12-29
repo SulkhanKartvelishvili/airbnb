@@ -18,11 +18,7 @@ import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.servic
 export class CategoryFilterComponent implements OnInit {
 
    categoryList:[]=[];  
-   showAllHotelCard:boolean = false;
-   @Output()
-   categoryCardItemIdEmitter:EventEmitter<any>=new EventEmitter();
-   @Output()
-   showAllHotelCardEventEmitter:EventEmitter<any>=new EventEmitter();
+  
    priceFrom!:number;
    priceTo!:number;
    typeOfPlace!:string;
@@ -56,15 +52,7 @@ getAllCategory(){
      
   })
 }
-getCategoryCardItemId(id:any){
 
-  this.categoryCardItemIdEmitter.emit(id);
-}
-
-showBackAllHotelCard(){
-  this.showAllHotelCard=true;
-  this.showAllHotelCardEventEmitter.emit(this.showAllHotelCard);
-}
 
 close() {
   this.displayStyle = "none";
