@@ -1,7 +1,4 @@
-.cardsArea{
-    width: 90%;
-    margin: auto;
-    }
+
     .image{
         width: -webkit-fill-available;
         min-height: 250px;
@@ -13,10 +10,10 @@
     .card{
         border: none;
     }
-    .card-title, .card-price{
+    .card-name, .card-price{
         font-weight: 500;
     }
-    .card-addDate, .card-date{
+    .card-addDate, .card-city{
         font-weight: 100;
     }
     h4, h5{

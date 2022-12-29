@@ -1,13 +1,22 @@
 
 <div class="col-md-10 navbar">
   <div class="logo">
-<<<<<<< Updated upstream
+
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" routerLink="">
-=======
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" routerLink="home">
->>>>>>> Stashed changes
+
   </div>
-  
+  <div class="userEmail">
+    <ul>
+      <li *ngIf="userData != null"> Welcome, {{userData.email}}
+      </li>
+    </ul>
+  </div>
+  <div class="logout">
+    <ul>
+      <button *ngIf="userData != null"  (click)="logout()"> logout
+      </button>
+    </ul>
+  </div>
   <div class="languageChange">
       <li><fa-icon [icon]="faGlobe"></fa-icon></li>
   </div>
@@ -22,9 +31,11 @@
                   <ul>
                    <li> <fa-icon [icon]="faUser"></fa-icon></li>
                   </ul>
+                
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <button ngbDropdownItem  (click)="continuePoPup()">Continue</button>
+                      <button ngbDropdownItem  (click)="continuePoPup()" *ngIf="userData == null ">Continue</button>
+                      <button ngbDropdownItem  routerLink="dashboard"  *ngIf="userData != null ">Dashboard</button>
                       <!-- <button ngbDropdownItem (click)="LoginInPopup()">Login in</button> -->
                       <hr>
                       <button ngbDropdownItem >Airbnb your home</button>
@@ -67,11 +78,17 @@
               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
               ngModel
               name="email"
+              #email="ngModel"
               type="email"
               placeholder="Enter here"
               class="form-control"
+              [ngStyle]="{
+                'border-color':
+                  !email.valid && email.dirty ? 'red' : '#ced4da'
+              }"
             />
           </div>
+        
           </div>
         
           
@@ -83,8 +100,16 @@
               ngModel
               name="password"
               type="password"
+              #password="ngModel"
               placeholder="Enter here"
               class="form-control"
+              minlength="6"
+              maxlength="40"
+              [ngStyle]="{
+                'border-color':
+                  !password.valid && password.touched ? 'red' : '#ced4da'
+              }"
+            
             />
           </div>
   
@@ -92,14 +117,16 @@
   <div class="modal-footer">
           <div class="form-group">
             <button
-              
+           
+            
+            [disabled]="!signUpForm.valid"
               type="submit"
               class="btn btn-dark col-md-12 d-block continue"
             >
+           
               Continue
             </button>
-            <!-- <button type="button" class="googleAuth Auth"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
-            <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button> -->
+           
           </div>
           </div>
         </form>
@@ -123,13 +150,18 @@
               <label for="">Enter your email</label>
               <div class="input-group mb-3">
               <input
-                required
-                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
-                ngModel
-                name="email"
-                type="email"
-                placeholder="Enter here"
-                class="form-control"
+              required
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
+              ngModel
+              name="email"
+              #email="ngModel"
+              type="email"
+              placeholder="Enter here"
+              class="form-control"
+              [ngStyle]="{
+                'border-color':
+                  !email.valid && email.dirty ? 'red' : '#ced4da'
+              }"
               />
             </div>
             </div>
@@ -139,12 +171,19 @@
               <label for="">Enter your password</label>
               <div class="input-group mb-3">
               <input
-                required
-                ngModel
-                name="password"
-                type="password"
-                placeholder="Enter here"
-                class="form-control"
+              required
+              ngModel
+              name="password"
+              type="password"
+              #password="ngModel"
+              placeholder="Enter here"
+              class="form-control"
+              minlength="6"
+              maxlength="40"
+              [ngStyle]="{
+                'border-color':
+                  !password.valid && password.touched ? 'red' : '#ced4da'
+              }"
               />
             </div>
     
@@ -152,14 +191,16 @@
     <div class="modal-footer">
             <div class="form-group">
               <button
-                
-                type="submit"
-                class="btn btn-dark col-md-12 d-block continue"
-              >
-                Continue
+            
+              [disabled]="!loginInForm.valid"
+              type="submit"
+              class="btn btn-dark col-md-12 d-block continue"
+              
+            >
+              Continue
               </button>
-              <!-- <button type="button" class="googleAuth Auth"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button>
-              <button type="button" class="FacebookAuth Auth"><fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google   </button> -->
+               <!-- <button type="button" class="googleAuth Auth" (click)="loginInWithGoogle()"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button> -->
+               <button type="button" class="FacebookAuth Auth" (click)="onSignInWithGoogleBtnClick()"><fa-icon class="faGoogle"  [icon]="faGoogle"></fa-icon>Continue with Google   </button>
             </div>
             </div>
           </form>
@@ -167,9 +208,10 @@
        
           
         
-          </div>
+          </div> 
         <br>
       </div>
     </div>
   </div> 
+  
   

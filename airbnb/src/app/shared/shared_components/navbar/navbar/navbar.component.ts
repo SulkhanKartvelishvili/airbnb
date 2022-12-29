@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserFrService } from 'src/app/shared/shared_services/user-fr.service';
 import { User } from 'src/app/shared/shared_models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -16,10 +17,15 @@ import { User } from 'src/app/shared/shared_models/user.model';
 })
 export class NavbarComponent implements OnInit {
 
+  // userEmail!:null;
 
-  constructor(private modalService: NgbModal, private signUpServ : UserFrService) {}
+  userData!:any;
+ 
+
+  constructor(private modalService: NgbModal, private userServ : UserFrService, private router:Router) {}
 
   ngOnInit(): void {
+    this.userData = JSON.parse(localStorage.getItem('user')!);
   }
   faGlobe = faGlobe;
   faUser = faUser;
@@ -35,15 +41,21 @@ export class NavbarComponent implements OnInit {
   close() {
     this.displayStyle = "none";
   }
-  onclick(){
-    
-}
+
+  
   onSignUpFormSubmit(signUpForm:NgForm){
-     console.log(signUpForm.value.password);
+    var tmpUser = Object.assign(new User(),signUpForm.value);
+   
     // var tmpUser = Object.assign(new User(),signUpForm.value);
     // this.signUpServ.SignUp(signUpForm.value.email, signUpForm.value.password);
-    this.signUpServ.register(signUpForm.value.email, signUpForm.value.password);
-
+    this.userServ.signUp(tmpUser, signUpForm.value.password);
+    this.userServ.userDataEmitter.subscribe(response => {
+      this.userData = response;
+     this.close();
+    })
+ 
+    // this.userData = JSON.parse(localStorage.getItem('user')!);
+   
     signUpForm.reset();
     // UserFrService.signUp(signUpForm.value.email, signUpForm.value.password);
     // this.signUpServ.signUp(tmpUser,signUpForm.value.password ).then(response => {
@@ -51,12 +63,43 @@ export class NavbarComponent implements OnInit {
     // });
   }
   onloginInFormSubmit(loginInForm:NgForm){
-    this.signUpServ.login(loginInForm.value.email, loginInForm.value.password);
+    this.userServ.signIn(loginInForm.value.email, loginInForm.value.password);
+    // this.userServ.emailEmitter.subscribe(response => {
+
+    //   this.userEmail = response;
+    // })
+    // this.userData = JSON.parse(localStorage.getItem('user')!);
+    this.userServ.userDataEmitter.subscribe(response => {
+      this.userData =  JSON.parse(localStorage.getItem("user") || "null");
+      // this.router.navigate(['dashboard']);
+      this.close();
+    })
+  
     loginInForm.reset();
   }
 
+  logout(){
+      
+
+    this.userData = localStorage.setItem('user', 'null');
+     this.router.navigate(['']);
+  } 
 
 
+  onSignInWithGoogleBtnClick(){
+    this.userServ.googleAuth().then(response => {
+     
+       
+          this.userData =  JSON.parse(localStorage.getItem("user") || "null");
+          this.close();
+          
+       
+     
+    })
+  }
+  // loginInWithGoogle(){s
+  //   this.userServ.googleAuth();
+  // }
 
 
 

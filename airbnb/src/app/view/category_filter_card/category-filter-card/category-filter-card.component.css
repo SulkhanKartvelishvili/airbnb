@@ -1,0 +1,26 @@
+li {
+    display: inline-table;
+    position: relative;
+    text-align: center;
+    width: 150px;
+}
+a {
+    text-decoration: none;
+    color: #333!important;
+}
+.categoryCard {
+    width: 100%;
+}
+ .img-holder {
+    /* margin: 0 0 -12px; */
+}
+.categoryCardIcon {
+    display: block;
+    margin: 2px auto;
+    width: 25px;
+    height: 25px;
+
+}
+.categoryCardName {
+    display: block;
+}
