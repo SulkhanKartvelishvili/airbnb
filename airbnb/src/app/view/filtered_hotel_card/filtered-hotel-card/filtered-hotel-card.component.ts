@@ -65,11 +65,7 @@ export class FilteredHotelCardComponent implements OnInit  {
     };
 
     
-    isSpoiled(showAllHotelCard:boolean){
      
-     this.showAllHotelCard=showAllHotelCard;
-     
-    }
 
 }
 

@@ -9,12 +9,7 @@ import { Component, EventEmitter, Input,Output } from '@angular/core';
 export class CategoryFilterCardComponent {
   @Input()
   categoryCardItem:any;
-  // @Output()
-  // categoryCardItemIdEmitter:EventEmitter<any>=new EventEmitter();
-
-  // getCategoryId(){
-  //   this.categoryCardItemIdEmitter.emit(this.categoryCardItem.id);
-  // }
+ 
 
 
 }

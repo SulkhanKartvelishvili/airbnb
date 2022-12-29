@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
 hotelCardList: string[]=[];
 categoryFilteredHotelCardList: string[]=[];
-showAllHotelCard:boolean = true;
+
 params!:string;
   constructor(private hotelCardServ:HotelCardService,  private activatedRoute:ActivatedRoute) { }
 
@@ -34,7 +34,6 @@ params!:string;
   getCategoryCardItemId(id:any){
     
    
-    this.showAllHotelCard=false;
 
     
 
@@ -59,11 +58,7 @@ params!:string;
     };
 
     
-    isSpoiled(showAllHotelCard:boolean){
-     
-     this.showAllHotelCard=showAllHotelCard;
-     
-    }
+  
    
 }
  

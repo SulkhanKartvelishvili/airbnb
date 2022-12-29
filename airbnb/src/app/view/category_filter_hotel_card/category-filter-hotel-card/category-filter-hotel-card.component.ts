@@ -12,7 +12,6 @@ export class CategoryFilterHotelCardComponent implements OnInit{
   
   hotelCardList: string[]=[];
   categoryFilteredHotelCardList: string[]=[];
-  showAllHotelCard:boolean = true;
   params!:string;
 
   constructor( private activatedRoute:ActivatedRoute, private hotelCardServ:HotelCardService){}
@@ -58,25 +57,10 @@ export class CategoryFilterHotelCardComponent implements OnInit{
 
   }
 
-  // getCategoryCardItemId(){
-    
-   
-  //   this.showAllHotelCard=false;
 
     
 
     
     
-
-
- 
-  //   };
-
-    
-    isSpoiled(showAllHotelCard:boolean){
-     
-     this.showAllHotelCard=showAllHotelCard;
-     
-    }
 
 }
