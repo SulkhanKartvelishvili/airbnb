@@ -41,6 +41,7 @@ import { CategoryFilterHotelCardComponent } from './view/category_filter_hotel_c
 // import { FilteredHotelCardComponent } from './shared/shared_components/filtered_hotel_card/filtered-hotel-card/filtered-hotel-card.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -80,7 +81,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     RouterModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    })
     
    
     
