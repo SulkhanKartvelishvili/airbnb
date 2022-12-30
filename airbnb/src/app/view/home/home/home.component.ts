@@ -19,6 +19,8 @@ params!:string;
   ngOnInit(): void {
     this.getAllHotelCard();
 
+    
+
   }
  
 
