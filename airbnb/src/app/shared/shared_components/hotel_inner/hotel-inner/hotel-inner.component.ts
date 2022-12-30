@@ -27,7 +27,7 @@ export class HotelInnerComponent implements OnInit {
  faStar=faStar;
  lat!:number;
  lng!:number;
-  bookedHotelData: { hotelId: number; roomName: string, priceSum: number, dates:string }[]=[];
+  bookedHotelData: { hotelId: number; roomName: string, pricePerNight:number, priceSum: number, dayCount:string, checkInDate:string, checkOutDate:string, guestsCount:number }[]=[];
   
   dateRange = new FormGroup({
     start: new FormControl(),
@@ -40,7 +40,7 @@ export class HotelInnerComponent implements OnInit {
     this.activatedRoute.params.subscribe(response =>{
       
       this.hotelId = response["id"];
-     
+       
       this.hotelCardServ.readHotelCardById(this.hotelId).subscribe((response:any) =>{
         this.hotel=response;
         this.lat = this.hotel.latitude;
@@ -55,7 +55,6 @@ export class HotelInnerComponent implements OnInit {
     this.hotel.rooms.forEach((room:any) => {
      if(room.name == roomName){
       this.chosenRoom=room;
-      
       let pricePerNight = document.getElementById('pricePerNight') as HTMLInputElement;
       let price = document.getElementById('price') as HTMLInputElement;
       let roomName = document.getElementById('roomName') as HTMLInputElement;
@@ -97,7 +96,7 @@ export class HotelInnerComponent implements OnInit {
 
   
   continueToBookTheRoom(){
-  this.bookedHotelData.push({ hotelId: this.hotelId, roomName: this.chosenRoom.name, priceSum:this.dayCountSumPrice, dates:this.dayCount });
+  this.bookedHotelData.push({ hotelId: this.hotelId, roomName: this.chosenRoom.name, pricePerNight:this.chosenRoom.price, priceSum:this.dayCountSumPrice, dayCount:this.dayCount, checkInDate:this.dateRange.value.start, checkOutDate:this.dateRange.value.end, guestsCount:this.chosenRoom.personsCount});
   localStorage.setItem("bookedHotelData", JSON.stringify(this.bookedHotelData));
 
 }

@@ -15,10 +15,12 @@ const routes: Routes = [
 
   {path:"", component:HomeComponent},
   {path:"innerHotel/:id", component:HotelInnerComponent},
+  {path:"category-filtered/:id/innerHotel/:id", component:HotelInnerComponent},
+  {path:"filtered/innerHotel/:id", component:HotelInnerComponent},
   {path:"dashboard", component:DashboardComponent, canActivate:[AuthGuard]},
   {path:'dashboard/userInfo', component:UserInfoComponent},
   {path:'filtered', component:FilteredHotelCardComponent},
-  {path:'category-filtered/:name', component:CategoryFilterHotelCardComponent},
+  {path:'category-filtered/:id', component:CategoryFilterHotelCardComponent},
   {path:'innerHotel/:id/booking', component:BookingComponent, canActivate:[AuthGuard]}
 ];
 

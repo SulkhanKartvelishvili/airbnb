@@ -1,7 +1,53 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>{{bookedHotelData.dates}}</h1>
+        <div class="col-md-10 m-auto d-flex">
+            <div class="col-md-6 confirmation">
+                <div class="confirmationHeading">
+                    <h1>Confirm and pay</h1>
+                </div>
+                <div class="confirmationContent">
+                    <div class="confirmationContentHeading">
+                        <h2>Your trip</h2>
+                    </div>
+                    <div class="confirmationContentDates">
+                        <h3>Dates</h3>
+                        <h3>{{bookedHotelData[0].checkInDate | date}} - {{bookedHotelData[0].checkOutDate | date}}</h3>
+                    </div>
+                    <div class="confirmationContentGuests">
+                        <h3>Guests</h3>
+                        <h3>{{bookedHotelData[0].guestsCount}} guest </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="aboutHotel">
+              <div class="aboutHotelHeading d-flex">
+                <div class="aboutHotelHeadingImage">
+                    <img [src]="fetchedHotelData.mainImages[0]">
+                </div>
+                <div class="aboutHotelHeadingContent">
+                    <h3>{{fetchedHotelData.name}}</h3>
+                    <h4>{{bookedHotelData[0].roomName}}</h4>
+                    <br>
+                    <fa-icon [icon]="faStar" class="faStar"></fa-icon>
+                   
+                    <a>5.0</a>
+
+                </div>
+              </div>
+              <br>
+              <div class="aboutHotelContent">
+                <div class="aboutHotelContentHeading">
+                    <h2>Price details
+                    </h2>
+                </div>
+                <div class="aboutHotelContentPricing">
+                <span><a id="price">{{bookedHotelData[0].pricePerNight}} x</a><a id="days">{{bookedHotelData[0].pricePerNight}}</a></span>
+        <span id="daysPriceSum">{{bookedHotelData[0].priceSum}}</span>
+    </div>
+              </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
