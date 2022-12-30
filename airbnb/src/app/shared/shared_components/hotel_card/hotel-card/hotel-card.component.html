@@ -1,37 +1,29 @@
+<div class="col">
+  <div class="card h-100">
+    <ngb-carousel [interval]="100000000">
+      <ng-template ngbSlide *ngFor="let imageUrl of hotelCardItem.mainImages">
+        <div class="picsum-img-wrapper">
+          <img
+            [src]="imageUrl"
+            class="image"
+            alt="Random first slide"
+            routerLink="innerHotel/{{ hotelCardItem.id }}"
+          />
+        </div>
+      </ng-template>
+    </ngb-carousel>
 
+    <div class="card-body">
+      <h4 class="card-title">
+        {{ hotelCardItem.name }}, {{ hotelCardItem.city }}
+      </h4>
+      <h4 class="card-name">{{ hotelCardItem.rooms.length }} rooms</h4>
 
+      <h4 class="card-city"></h4>
 
-        <div class="col" >
-
-            <div class="card h-100 "  >
-              <ngb-carousel [interval]="100000000"
-              >
-                  <ng-template ngbSlide *ngFor="let imageUrl of hotelCardItem.mainImages">
-                      <div class="picsum-img-wrapper">
-                          <img [src]="imageUrl" class="image" alt="Random first slide" routerLink="innerHotel/{{hotelCardItem.id}}"/>
-                      </div>
-       
-                  </ng-template>
-  
-              </ngb-carousel>
-              
-       
-              <div class="card-body">
-                <h4 class="card-title">{{hotelCardItem.name}}, {{hotelCardItem.city}}</h4>
-                <h4 class="card-name">{{hotelCardItem.rooms.length}} rooms</h4>
-                
-                <h4 class="card-city" ></h4>
-            
-                <!-- <h4 class="card-price">
+      <!-- <h4 class="card-price">
                  $700 night
                 </h4> -->
-              </div>
-            </div>
-      
-        </div> 
-
-
-        
-
-   
-    
+    </div>
+  </div>
+</div>

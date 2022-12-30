@@ -1,63 +1,65 @@
+<section class="category col-md-10">
+  <button class="btn" routerLink="">Show All</button>
+  <div class="holder">
+    <ul class="slider">
+      <app-category-filter-card
+        *ngFor="let categoryCard of categoryList"
+        [categoryCardItem]="categoryCard"
+      ></app-category-filter-card>
+    </ul>
+  </div>
 
-  
-  <section class="category col-md-10">
-    <button class="btn" routerLink="">Show All</button>
-                      <div class="holder">
-                        
-                          <ul class="slider">
-                            
-                         <app-category-filter-card  *ngFor="let categoryCard of categoryList" [categoryCardItem]="categoryCard" ></app-category-filter-card> 
-                              
-                        
-                          </ul>
-                      </div>
+  <div class="filter">
+    <button class="btn" (click)="filterPopUp()">
+      <li><fa-icon [icon]="faSliders"></fa-icon></li>
+      filter
+    </button>
+  </div>
+</section>
 
-                      <div class="filter">
-         
-                   
-                      <button class="btn" (click)="filterPopUp()" > <li><fa-icon [icon]="faSliders"></fa-icon></li>filter</button>
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="btn-close" (click)="close()"></button>
 
-                    </div>
-                   
-                  </section>
+      <div class="modal-header"></div>
 
+      <div class="modal-body">
+        <div class="priceRangeSection">
+          <label for="customRange3" class="form-label">Example range</label>
+          <input
+            type="range"
+            class="form-range"
+            min="10"
+            max="500"
+            step="5"
+            id="customRange3"
+            [(ngModel)]="priceFrom"
+          />
+          <input
+            type="range"
+            class="form-range"
+            min="{{ priceFrom }}"
+            max="500"
+            step="5"
+            id="customRange4"
+            [(ngModel)]="priceTo"
+          />
 
-                  <div
-                  class="modal"
-                  tabindex="-1"
-                  role="dialog"
-                  [ngStyle]="{'display':displayStyle}">
-                  <div class="modal-dialog " role="document">
-                    <div class="modal-content">
-                        <button type="button" class="btn-close" 
-                        (click)="close()">
-                 
-                </button>
+          <span>{{ priceFrom }}</span>
+          <br />
+          <span>{{ priceTo }}</span>
+        </div>
 
-             <div class="modal-header">
-                      
-                      
-                      </div>
+        <div class="typeOfPlaceSection">
+          <h2>Type of place</h2>
 
-
-                      <div class="modal-body">
-                       
-                        <div class="priceRangeSection">
-                        <label for="customRange3" class="form-label">Example range</label>
-                        <input type="range" class="form-range" min="10" max="500" step="5" id="customRange3" [(ngModel)]="priceFrom">
-                        <input type="range" class="form-range" min="{{priceFrom}}" max="500" step="5" id="customRange4" [(ngModel)]="priceTo"  >
-                        
-                        <span>{{priceFrom}}</span>
-                        <br>
-                        <span>{{priceTo}}</span>
-                     
-                        
-                      </div>
-
-                      <div class="typeOfPlaceSection">
-                        <h2>Type of place</h2>
-                      
-                       <!-- <div class="entirePlace type">
+          <!-- <div class="entirePlace type">
                         <div >
                           <input ngModel name="entirePlace" class="form-check-input" type="checkbox" id="checkboxNoLabel" value="1" aria-label="...">
                         </div>
@@ -84,92 +86,78 @@
                           <h4>A sleeping space and common areas that may be shared with others</h4>
                         </div>
                        </div> -->
-                       
-                      
-                        <select matNativeControl required [(ngModel)]="typeOfPlace">
-                 
-                          <option value="entire place">Entire place</option>
-                          <option value="private room">Private room</option>
-                          <option value="shared room">Shared room</option>
 
-                        </select>
-                    
+          <select matNativeControl required [(ngModel)]="typeOfPlace">
+            <option value="entire place">Entire place</option>
+            <option value="private room">Private room</option>
+            <option value="shared room">Shared room</option>
+          </select>
+        </div>
 
-               
-                      
-                    
-
-                     
-                       
-                      
-                      </div>
-                   
-                      <div class="roomsBedsBaths">
-                        <!-- <button (click)="AddFilterRooms()">add rooms</button>
+        <div class="roomsBedsBaths">
+          <!-- <button (click)="AddFilterRooms()">add rooms</button>
                         <div  *ngFor="let item of roomsCounter">
 
                         </div> -->
 
-                        <div class="rooms"  >
-                          <label>Rooms</label>
-                          <select matNativeControl required [(ngModel)]="rooms">
-                           
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-  
-                          </select>
-                      
-                        </div>
-                        <div class="beds">
-                          <label>Beds</label>
-                          <select matNativeControl required [(ngModel)]="beds">
-                           
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-  
-                          </select>
-                        </div>
-                        <div class="baths">
-                          <label>Bathrooms</label>
-                          <select matNativeControl required [(ngModel)]="bathrooms">
-                           
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-  
-                          </select>
-                        </div>
-                      </div>
+          <div class="rooms">
+            <label>Rooms</label>
+            <select matNativeControl required [(ngModel)]="rooms">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div class="beds">
+            <label>Beds</label>
+            <select matNativeControl required [(ngModel)]="beds">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div class="baths">
+            <label>Bathrooms</label>
+            <select matNativeControl required [(ngModel)]="bathrooms">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+        </div>
 
-                      <div class="propertyType">
-                        <button  (click)="onHomePropertyTypeClick()">Home</button>
-                        <button (click)="onVillaProperyTypeClick()">Villa</button>
-                      </div>
+        <div class="propertyType">
+          <button (click)="onHomePropertyTypeClick()">Home</button>
+          <button (click)="onVillaProperyTypeClick()">Villa</button>
+        </div>
 
-                  
-
-                  <div class="modal-footer">
-                 
-                      <button [routerLink]="['/filtered']" [queryParams]="{ PriceFrom : priceFrom, PriceTo: priceTo, typeOfPlace: typeOfPlace, RoomsCount:rooms, BedsPerRoomCount:beds, BathRoomsCount:bathrooms, PropertyType:propertyType  }" (click)="close()"> Show results</button>
-                      
-               
-                          
-
-                        </div>
-                     
-                        </div> 
-
-
-                      </div>
-                    </div>
+        <div class="modal-footer">
+          <button
+            [routerLink]="['/filtered']"
+            [queryParams]="{
+              PriceFrom: priceFrom,
+              PriceTo: priceTo,
+              typeOfPlace: typeOfPlace,
+              RoomsCount: rooms,
+              BedsPerRoomCount: beds,
+              BathRoomsCount: bathrooms,
+              PropertyType: propertyType
+            }"
+            (click)="close()"
+          >
+            Show results
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
