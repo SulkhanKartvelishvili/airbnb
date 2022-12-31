@@ -24,15 +24,8 @@ export class BookingComponent implements OnInit {
       this.fetchedHotelData = response;
       console.log(this.fetchedHotelData);
     })
-    let price = document.getElementById('price') as HTMLInputElement;
-    let days = document.getElementById('days') as HTMLInputElement;
-    let daysPriceSum = document.getElementById('daysPriceSum') as HTMLInputElement;
     
 
-
-    price.innerText = `${this.bookedHotelData[0].pricePerNight} x `;
-    days.innerText = ` ${this.bookedHotelData[0].dayCount} night`;
-    daysPriceSum.innerText =`${this.bookedHotelData[0].priceSum}$`;
 
   }
 
