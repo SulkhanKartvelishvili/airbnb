@@ -18,7 +18,6 @@ export class HotelCardComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.hotelCardItem);
   }
 
   ngOnInit(): void {}

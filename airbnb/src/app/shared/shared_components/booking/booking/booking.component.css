@@ -1,0 +1,67 @@
+#days, #price{
+    text-decoration: underline;
+}
+.aboutHotelContentPricing span:nth-child(2) {
+    float:right;
+}
+.aboutHotelHeadingImage{
+    width: 150px !important;
+    height: 135px!important;
+    
+}
+.aboutHotelHeadingImage img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.aboutHotel{
+    width: 80%;
+}
+.aboutHotelHeadingImage {
+    margin-right: 10px;
+}
+.confirmationHeading{
+    margin-bottom: 50px;
+}
+.confirmationHeading h1{
+    font-size: 32px !important;
+    font-weight: 500 !important;
+}
+.confirmationContentHeading h1{
+    font-weight: 500 !important;
+
+}
+.confirmationContentDates h3, .confirmationContentGuests h3{
+    font-weight: 500 !important;
+    margin-bottom: 0px;
+
+}
+.confirmationContentDates h4, .confirmationContentGuests h4{
+    font-weight: 200 !important;
+
+}
+.aboutHotelHeadingContent{
+    position: relative;
+}
+.aboutHotelHeadingContent fa-icon{
+    position: absolute;
+    bottom: 0;
+}
+.aboutHotelHeadingContent a{
+    position: absolute;
+    bottom: 0;
+    left:20px;
+}
+.aboutHotelHeadingContent h3{
+    margin-bottom: 0px;
+}
+.aboutHotelHeadingContent h4{
+    font-weight: 200;
+}
+.aboutHotelContentPricing span{
+    font-size:17px;
+}
+.aboutHotelContentHeading{
+    display: grid;
+    grid-template-columns: 90% 10%;
+}

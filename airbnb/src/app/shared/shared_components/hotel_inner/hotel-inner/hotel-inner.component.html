@@ -136,7 +136,7 @@
             
            
     <div *ngIf="valid ==1">
-                <button class="continue" >Continue</button>
+                <button class="continue" routerLink='/innerHotel/{{hotel.id}}/booking' (click)="continueToBookTheRoom()" >Continue</button>
                 <hr>
                 </div>
     
