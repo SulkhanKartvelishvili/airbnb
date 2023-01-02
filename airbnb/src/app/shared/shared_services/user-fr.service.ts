@@ -42,7 +42,7 @@ signUp(user: User, password: string) {
       localStorage.setItem('user', JSON.stringify(user));
       this.userData =  JSON.parse(localStorage.getItem("user") || "null");
       this.userDataEmitter.emit(this.userData);
-      this.loginUser(this.userData);
+      // this.loginUser(this.userData);
       this.router.navigate(['dashboard']);
     })
     .catch((error) => {
@@ -80,7 +80,7 @@ signIn(email: string, password: string) {
           localStorage.setItem('user', JSON.stringify(user));
           this.userData =  JSON.parse(localStorage.getItem("user") || "null");
           this.userDataEmitter.emit(this.userData);
-          this.loginUser(this.userData);
+          // this.loginUser(this.userData);
           this.router.navigate(['dashboard']);
         }
       });
@@ -115,7 +115,7 @@ authLogin(provider: any) {
     .then((result) => {
       localStorage.setItem('user', JSON.stringify(result.user));
       this.userData =  JSON.parse(localStorage.getItem("user") || "null");
-      this.loginUser(this.userData);
+      // this.loginUser(this.userData);
       this.router.navigate(['dashboard']);
       return this.getUserDoc(result.user?.uid ?? "");
     })
@@ -135,13 +135,13 @@ forgotPassword(passwordResetEmail: string) {
     });
 }
 
-public loginUser(user:any):void{
-  this.authUser = user;
-}
+// public loginUser(user:any):void{
+//   this.authUser = user;
+// }
 
-public isUserLoggedIn():boolean{
-return this.authUser !=null;
-}
+// public isUserLoggedIn():boolean{
+// return this.authUser !=null;
+// }
 
 
 

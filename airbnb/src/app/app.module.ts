@@ -44,6 +44,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AgmCoreModule } from '@agm/core';
 import { UserFrService } from './shared/shared_services/user-fr.service';
 import { AuthGuard } from './core/guards/auth/auth.guard';
+import { BookingComponent } from './shared/shared_components/booking/booking/booking.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { AuthGuard } from './core/guards/auth/auth.guard';
     CategoryFilterCardComponent,
     FilteredHotelCardComponent,
     CategoryFilterHotelCardComponent,
+    BookingComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ export class CategoryFilterHotelCardComponent implements OnInit{
   
   
   hotelCardList: string[]=[];
-  categoryFilteredHotelCardList: string[]=[];
+  categoryFilteredHotelCardList: any[]=[];
   params!:string;
 
   constructor( private activatedRoute:ActivatedRoute, private hotelCardServ:HotelCardService){}
@@ -20,11 +20,16 @@ export class CategoryFilterHotelCardComponent implements OnInit{
   ngOnInit(): void {
  
     
-   this.getCategoryFilteredHotelCard();
+  //  this.getCategoryFilteredHotelCard();
 
     this.activatedRoute.params.subscribe(response => {
-      this.params = response['name'];
-      
+      this.params = response['id'];
+
+      var filterData = { categoryId: this.params };
+      this.hotelCardServ.getFilteredHotelsBy(filterData).subscribe((response:any) => {
+        this.categoryFilteredHotelCardList = response;
+      });
+
       // this.hotelCardServ.readAllfilteredHotelCard(params).subscribe(response => {
         
       //   this.hotelCardList = response;
@@ -33,29 +38,29 @@ export class CategoryFilterHotelCardComponent implements OnInit{
   }
 
 
-  getCategoryFilteredHotelCard(){
-    this.hotelCardServ.readAllHotelCard().subscribe(response => {
+  // getCategoryFilteredHotelCard(){
+  //   this.hotelCardServ.readAllHotelCard().subscribe(response => {
     
-       this.hotelCardList = response;
+  //      this.hotelCardList = response;
 
-       this.categoryFilteredHotelCardList = [];
+  //      this.categoryFilteredHotelCardList = [];
 
   
-    this.hotelCardList.forEach((obj:any) => {
+  //   this.hotelCardList.forEach((obj:any) => {
      
-      obj.categories.forEach((categoryId:any) =>{
-        // console.log(this.params);
-        if('$' + categoryId.name == this.params){
+  //     obj.categories.forEach((categoryId:any) =>{
+  //       // console.log(this.params);
+  //       if('$' + categoryId.name == this.params){
           
-           this.categoryFilteredHotelCardList.push(obj);
-        }
-      } )
+  //          this.categoryFilteredHotelCardList.push(obj);
+  //       }
+  //     } )
      
-     })
+  //    })
        
-    });
+  //   });
 
-  }
+  // }
 
 
     

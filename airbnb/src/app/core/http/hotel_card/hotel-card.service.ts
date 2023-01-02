@@ -29,7 +29,10 @@ export class HotelCardService {
       return this.httpClient.get(`${this.getHotelCardById}/${hotelId}`);
     }
     
-
+    getFilteredHotelsBy(filterData:any):Observable<any> {
+      var fullApi = `${this.getAllFilterCardApi}?Id=${filterData.categoryId}`;
+      return this.httpClient.get(fullApi);
+    }
 
  
 }
