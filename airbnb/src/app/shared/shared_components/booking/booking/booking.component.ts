@@ -84,7 +84,7 @@ export class BookingComponent implements OnInit {
   }
 
   bookhotel(){
-    const bankCard: {
+    const bookedHotel: {
       userId: string;
       hotelId:string;
       bedroomName: number;
@@ -104,7 +104,7 @@ export class BookingComponent implements OnInit {
     imageUrl:this.bookedHotelData[0].imageUrl
 
   }
-  this.hotelBooking.bookHotel(bankCard);
+  this.hotelBooking.bookHotel(bookedHotel);
 
 }
 }

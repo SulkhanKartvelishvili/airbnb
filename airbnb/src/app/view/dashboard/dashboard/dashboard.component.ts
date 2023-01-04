@@ -11,42 +11,47 @@ import { HotelBookingService } from 'src/app/shared/shared_services/hotelBooking
 export class DashboardComponent implements OnInit{
    
 
- bookedHotelsList:any=[];
- usersBookedHotelList:any[]=[];
- bookedHotelImages:any=[];
+ bookedHotelsList:any=[]=[];
+ usersBookedHotelList:bookedHotel[]=[];
+ bookedHotelImages:any=[]=[];
  userData!:any;
+ isFinished!:boolean;
 
   constructor(private hotelBooking: HotelBookingService, private hotelCardServ:HotelCardService){}
 
-  ngOnInit(): void {
-
-    this.hotelBooking.getBookedHotelList().subscribe((res) => {
+  async ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user') || 'null');
+     this.hotelBooking.getBookedHotelList().subscribe((res) => {
       this.bookedHotelsList = res.map((e) => {
 
-        return {
+        this.isFinished = true;
+        return {  
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as bookedHotel),
         };
        
       });
+      console.log(this.bookedHotelsList);
      
-      this.userData = JSON.parse(localStorage.getItem('user') || 'null');
+     
+        this.bookedHotelsList.forEach((item:any) => {
+       
 
-      this.bookedHotelsList.forEach((item:any) => {
-        console.log(item);
-        if(item.userId== this.userData.uid){
-           this.usersBookedHotelList.push(item);
-           this.hotelCardServ.readHotelCardById(item.hotelId).subscribe((resp:any)=>{
-            this.bookedHotelImages.push(resp.mainImages);
-           })
-        }
-      })
-     
-     
-    }); 
-    // console.log(this.usersBookedHotelList);
-  }
+        
+          if(item.userId== this.userData.uid){
+            this.usersBookedHotelList.push(item);
+            
   
+          }
+          
+        })
+   
+      
+  
+    
+    }); 
+  }
+
 
 
 
