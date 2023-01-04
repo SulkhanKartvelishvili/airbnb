@@ -2,3 +2,46 @@
 
     <a routerLink="userInfo">My information</a>
 </div>
+
+<tbody>
+    <!-- <tr *ngFor="let bookedHotel of bookedHotelsList">
+       <td>{{ bookedHotel.payload.doc.data().hotelId }}</td>
+     
+    </tr> -->
+    </tbody>
+
+    <div class="container">
+        <div class="row">
+            <div class="row row-cols-1 row-cols-md-6 g-4 cardsArea">
+   
+                <!-- <app-hotel-card *ngFor="let hotelCard of  hotelCardList" [hotelCardItem]="hotelCard" ></app-hotel-card> -->
+                <div class="col" *ngFor="let hotelCard of usersBookedHotelList">
+                    <div class="card h-100">
+                      <ngb-carousel [interval]="100000000">
+                        <ng-template ngbSlide *ngFor="let imageUrl of bookedHotelImages.imageUrl">
+                          <div class="picsum-img-wrapper">
+                            <img
+                              [src]="imageUrl"
+                              class="image"
+                              alt="Random first slide"
+                            
+                            />
+                          </div>
+                        </ng-template>
+                      </ngb-carousel>
+                  
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          {{ hotelCard.name }}, {{ hotelCard.city }}
+                        </h4>
+                        <h4 class="card-name">{{ hotelCard.rooms.length }} rooms</h4>
+                  
+                        <h4 class="card-city"></h4>
+                 
+                      </div>
+                    </div>
+                  </div>
+                  
+            </div>
+        </div>
+    </div>

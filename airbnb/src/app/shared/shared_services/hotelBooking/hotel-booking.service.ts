@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+  AngularFireObject,
+} from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -7,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class HotelBookingService {
 
-  constructor(private angularFirestore: AngularFirestore,  public router: Router,) { }
+  constructor(private angularFirestore: AngularFirestore,  public router: Router,private db: AngularFireDatabase) { }
 
-   
+  bookedHotelsList!: AngularFireList<any>;
 
   bookHotel(hotelData: any) {
     return new Promise<any>((resolve, reject) => {
@@ -24,6 +29,16 @@ export class HotelBookingService {
           (error) => reject(error)
         );
     });
+  }
+
+  
+  getBookedHotelList() {
+    // return this.angularFirestore
+    //   .collection('bookedHotels')
+    //   .snapshotChanges();
+
+    return this.angularFirestore.collection("bookedHotels").snapshotChanges();
+
   }
 
 }

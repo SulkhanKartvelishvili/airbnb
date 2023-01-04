@@ -72,9 +72,9 @@ export class BookingComponent implements OnInit {
     } = {
       userId: this.user.uid,
       holder: addBankCard.value.holder,
-      number: addBankCard.value.number.replace(/\s/g, ""),
+      number: addBankCard.value.number,
       expirationDate: `${addBankCard.value.start}-${addBankCard.value.end}`,
-      cvv: addBankCard.value.cvv.replace(/\s/g, ""),
+      cvv: addBankCard.value.cvv,
     };
     this.bankCardServ.createBankCard(bankCard);
 
@@ -92,6 +92,7 @@ export class BookingComponent implements OnInit {
       checkOutDate: Date;
       nights:number;
       price:number;
+      imageUrl:string
   } = {
     userId: this.user.uid,
     hotelId:this.bookedHotelData[0].hotelId,
@@ -99,7 +100,8 @@ export class BookingComponent implements OnInit {
     checkInDate:this.bookedHotelData[0].checkInDate,
     checkOutDate:this.bookedHotelData[0].checkOutDate,
     nights:this.bookedHotelData[0].dayCount,
-    price:this.bookedHotelData[0].priceSum
+    price:this.bookedHotelData[0].priceSum,
+    imageUrl:this.bookedHotelData[0].imageUrl
 
   }
   this.hotelBooking.bookHotel(bankCard);
