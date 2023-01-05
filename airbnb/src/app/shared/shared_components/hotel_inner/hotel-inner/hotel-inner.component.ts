@@ -27,7 +27,7 @@ export class HotelInnerComponent implements OnInit {
  faStar=faStar;
  lat!:number;
  lng!:number;
-  bookedHotelData: { hotelId: number; hotelName:string, roomName: string, pricePerNight:number, priceSum: number, dayCount:string, checkInDate:string, checkOutDate:string, guestsCount:number, imageUrl:string }[]=[];
+  bookedHotelData: { hotelId: number; hotelName:string, roomName: string, pricePerNight:number, priceSum: number, dayCount:string, checkInDate:string, checkOutDate:string, guestsCount:number, imageUrl:string, expiry:Date }[]=[];
   
   dateRange = new FormGroup({
     start: new FormControl(),
@@ -97,7 +97,7 @@ export class HotelInnerComponent implements OnInit {
 
   
   continueToBookTheRoom(){
-  this.bookedHotelData.push({ hotelId: this.hotelId, hotelName:this.hotel.name, roomName: this.chosenRoom.name, pricePerNight:this.chosenRoom.price, priceSum:this.dayCountSumPrice, dayCount:this.dayCount, checkInDate:this.dateRange.value.start, checkOutDate:this.dateRange.value.end, guestsCount:this.chosenRoom.personsCount, imageUrl:this.hotel.mainImages[0]});
+  this.bookedHotelData.push({ hotelId: this.hotelId, hotelName:this.hotel.name, roomName: this.chosenRoom.name, pricePerNight:this.chosenRoom.price, priceSum:this.dayCountSumPrice, dayCount:this.dayCount, checkInDate:this.dateRange.value.start, checkOutDate:this.dateRange.value.end, guestsCount:this.chosenRoom.personsCount, imageUrl:this.hotel.mainImages[0], expiry: new Date()});
   localStorage.setItem("bookedHotelData", JSON.stringify(this.bookedHotelData));
 }
 

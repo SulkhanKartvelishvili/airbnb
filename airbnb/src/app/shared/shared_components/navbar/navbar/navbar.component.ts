@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -33,8 +31,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('user')!);
   }
-  faGlobe = faGlobe;
-  faUser = faUser;
   faBars = faBars;
   faFacebook = faFacebook;
   faGoogle = faGoogle;

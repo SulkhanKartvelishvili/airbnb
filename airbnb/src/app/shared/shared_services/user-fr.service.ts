@@ -58,7 +58,7 @@ setUserDataForSignUp(fireUser: any, user: User) {
   const userData: User = {
     id: fireUser.uid,
     email: fireUser.email,
-    password: fireUser.displayName,
+
     
   } as User;
   return userRef.set(userData, {
@@ -107,6 +107,7 @@ googleAuth() {
   return this.authLogin(new firebase.GoogleAuthProvider()).then((res: any) => {
     this.router.navigate(['dashboard']);
   });
+ 
 }
 
 authLogin(provider: any) {

@@ -14,43 +14,41 @@ export class DashboardComponent implements OnInit{
  bookedHotelsList:any=[]=[];
  usersBookedHotelList:bookedHotel[]=[];
  bookedHotelImages:any=[]=[];
+ backToBookingHotel!:any;
  userData!:any;
- isFinished!:boolean;
 
-  constructor(private hotelBooking: HotelBookingService, private hotelCardServ:HotelCardService){}
+  constructor(private hotelBookingServ: HotelBookingService, private hotelCardServ:HotelCardService){}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('user') || 'null');
-     this.hotelBooking.getBookedHotelList().subscribe((res) => {
-      this.bookedHotelsList = res.map((e) => {
 
-        this.isFinished = true;
+     this.hotelBookingServ.getBookedHotelList().subscribe((res) => {
+
+      this.bookedHotelsList = res.map((e) => {
         return {  
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as bookedHotel),
         };
-       
       });
-      console.log(this.bookedHotelsList);
      
-     
-        this.bookedHotelsList.forEach((item:any) => {
-       
 
-        
+
+        this.bookedHotelsList.forEach((item:any) => {
           if(item.userId== this.userData.uid){
             this.usersBookedHotelList.push(item);
-            
-  
           }
-          
         })
    
-      
-  
-    
     }); 
+     
+
+
+    this.backToBookingHotel = JSON.parse(localStorage.getItem('bookedHotelData') || 'null');
+    console.log(this.backToBookingHotel);
+
   }
+
+
 
 
 

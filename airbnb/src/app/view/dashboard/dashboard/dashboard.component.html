@@ -3,36 +3,52 @@
     <a routerLink="userInfo">My information</a>
 </div>
 
-<tbody>
-    <!-- <tr *ngFor="let bookedHotel of bookedHotelsList">
+<!-- <tbody>
+    <tr *ngFor="let bookedHotel of bookedHotelsList">
        <td>{{ bookedHotel.payload.doc.data().hotelId }}</td>
      
-    </tr> -->
-    </tbody>
+    </tr>
+    </tbody> -->
 
-    <div class="container">
+    <div class="container" >
         <div class="row">
-            <div class="row row-cols-1 row-cols-md-6 g-4 cardsArea">
-   
-                <!-- <app-hotel-card *ngFor="let hotelCard of  hotelCardList" [hotelCardItem]="hotelCard" ></app-hotel-card> -->
-                <div class="col" *ngFor="let hotelCard of usersBookedHotelList">
-                    <div class="card h-100">
-                  <img [src]="hotelCard.imageUrl">
-                  
-                      <div class="card-body">
-                        <h4 class="card-title">
-                          {{ hotelCard.bedroomName }}, {{ hotelCard.nights }}
-                        </h4>
-                        <!-- <h4 class="card-name">{{ hotelCard.rooms }} rooms</h4> -->
-                  
-                        <h4 class="card-city"></h4>
-                 
+          <div class="col-md-6"  *ngIf="bookedHotelsList.userId == userData.uid">
+            <div class="card" style="width: 18rem;" *ngFor="let bookedHotel of bookedHotelsList">
+              
+              <div >
+      
+                      <div class="cardImage">
+                          <img [src]="bookedHotel.payload.doc.data().imageUrl" class="image" alt="Random first slide"/>
                       </div>
-                    </div>
-                  </div>
                   
+             
+  
+            
+              <div class="card-body">
+                  <h3 class="card-title">{{bookedHotel.payload.doc.data().bedroomName}}</h3>
+                  <div class="hotelInnerDetails">
+                      <!-- <ul>
+                          <li>{{room.bathRoomsCount}} bathrooms</li>
+                         
+                          <li><span>{{room.bedsCount}} beds</span></li>
+                         
+                       
+                          <li><span>{{room.personsCount}} persons</span></li>
+                         </ul> -->
+                      </div>
+             
+                
+                <button class="btn" routerLink="hotel_inner/${{bookedHotel.payload.doc.data().hotelId}}/booking">Continue</button>
+              </div>
             </div>
+          </div>
+        </div>
+                
+                <!-- <div class="col" *ngFor="let bookedHotel of bookedHotelsList" >
+                  <div >
+                  -->
+                  
+            
         </div>
     </div>
 
-    <!-- <button (click)="onclick()">click me!</button> -->

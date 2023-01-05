@@ -78,8 +78,7 @@ export class BookingComponent implements OnInit {
     };
     this.bankCardServ.createBankCard(bankCard);
 
-    console.log(this.userBankCard);
-
+ 
     (document.getElementById("book") as HTMLInputElement).disabled = false;
   }
 
@@ -105,6 +104,7 @@ export class BookingComponent implements OnInit {
 
   }
   this.hotelBooking.bookHotel(bookedHotel);
+  localStorage.removeItem("bookedHotelData");
 
 }
 }
