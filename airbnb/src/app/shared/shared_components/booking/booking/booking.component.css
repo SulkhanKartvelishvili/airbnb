@@ -65,3 +65,84 @@
     display: grid;
     grid-template-columns: 90% 10%;
 }
+.confirmation{
+    width: 90%;
+}
+.mb-3 span{
+    font-size:22px;
+    padding:7px;
+}
+
+.mb-3 input{
+    border-color: black;
+    border-radius: 0px;
+}
+.addBankCard{
+    width: 80%;
+    margin: auto;
+}
+.expDate{
+    width: 80%;
+}
+.aboutHotelHeading {
+    padding-bottom: 20px;
+}
+.confirmationContent{
+    height: 190px;
+}
+.bankCardHeading h1{
+    font-size: 32px !important;
+    font-weight: 500 !important;
+}
+.bankCardHeading{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.exp-wrapper {
+    position: relative;
+    border: 1px solid  black ;
+ 
+    display: flex;
+    
+    justify-content: space-around;
+    color:black;
+    line-height: 36px;
+    font-size: 24px;
+  }
+  
+  .exp-wrapper:after {
+    content: '/';
+    position: absolute;
+    left: 50%;
+    margin-left: -4px;
+    color: #aaa;
+  }
+  
+  input.exp {
+    float: left;
+    font-family: monospace;
+    border: 0;
+    width: 18px;
+    outline: none;
+    appearance: none;
+    font-size: 14px;
+  }
+  .bankCardContent h2, h4{
+    margin-bottom: 0px;
+  }
+ .bankCardContent h4{
+    font-weight: 500;
+    color: #b2b5b9;
+ }
+ .bankCardContent{
+    border:1px solid black;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 95% 5%;
+ }
+ .faCreditCard{
+    font-size:20px;
+ }
+ .aboutHotelContent{
+    padding-bottom: 25px;
+ }

@@ -21,7 +21,8 @@ const routes: Routes = [
   {path:'dashboard/userInfo', component:UserInfoComponent},
   {path:'filtered', component:FilteredHotelCardComponent},
   {path:'category-filtered/:id', component:CategoryFilterHotelCardComponent},
-  {path:'innerHotel/:id/booking', component:BookingComponent, canActivate:[AuthGuard]}
+  {path:'innerHotel/:id/booking', component:BookingComponent, canActivate:[AuthGuard]},
+  {path:'dashboard/hotel_inner/:id/booking', component:BookingComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({

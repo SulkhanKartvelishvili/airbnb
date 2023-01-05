@@ -7,19 +7,15 @@
   </div>
   <div class="userEmail">
     <ul>
-      <li *ngIf="userData != null"> Welcome, {{userData.email}}
+      <li *ngIf="userData != null"> {{userData.email}}
       </li>
     </ul>
   </div>
   <div class="logout">
-    <ul>
-      <button *ngIf="userData != null"  (click)="logout()"> logout
+      <button *ngIf="userData != null"  (click)="logout()" class="btn btn-dark"> logout
       </button>
-    </ul>
   </div>
-  <div class="languageChange">
-      <li><fa-icon [icon]="faGlobe"></fa-icon></li>
-  </div>
+
   <div class="userNavigator">
       <div class="row">
           <div class="col">
@@ -28,9 +24,7 @@
                       <ul class="bars">
                       <li><fa-icon [icon]="faBars" ></fa-icon></li>
                   </ul>
-                  <ul>
-                   <li> <fa-icon [icon]="faUser"></fa-icon></li>
-                  </ul>
+     
                 
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -126,7 +120,8 @@
            
               Continue
             </button>
-           
+            <button type="button" class="Auth" (click)="onSignInWithGoogleBtnClick()"><fa-icon class="faGoogle"  [icon]="faGoogle"></fa-icon>Continue with Google   </button>
+
           </div>
           </div>
         </form>
@@ -200,7 +195,7 @@
               Continue
               </button>
                <!-- <button type="button" class="googleAuth Auth" (click)="loginInWithGoogle()"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button> -->
-               <button type="button" class="FacebookAuth Auth" (click)="onSignInWithGoogleBtnClick()"><fa-icon class="faGoogle"  [icon]="faGoogle"></fa-icon>Continue with Google   </button>
+               <button type="button" class="Auth" (click)="onSignInWithGoogleBtnClick()"><fa-icon class="faGoogle"  [icon]="faGoogle"></fa-icon>Continue with Google   </button>
             </div>
             </div>
           </form>

@@ -120,3 +120,6 @@
   .bedrooms button:checked{
    background-color: black;
   }
+  .category{
+    margin-bottom: 30px;
+  }
