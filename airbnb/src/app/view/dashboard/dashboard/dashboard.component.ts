@@ -44,7 +44,6 @@ export class DashboardComponent implements OnInit{
 
 
     this.backToBookingHotel = JSON.parse(localStorage.getItem('bookedHotelData') || 'null');
-    console.log(this.backToBookingHotel);
 
   }
 

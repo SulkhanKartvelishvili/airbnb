@@ -4,6 +4,7 @@ import { UserFrService } from 'src/app/shared/shared_services/user-fr.service';
 import { bankCard } from "src/app/shared/shared_models/bankCard.model";
 import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { NgForm } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-info',
@@ -16,9 +17,18 @@ export class UserInfoComponent implements OnInit{
   bankCards: any = [];
   userBankCard: any = null;
   faCreditCard = faCreditCard;
-  @ViewChild('addBankCard') form!: NgForm;
+  bankCard!:FormGroup;
+  lastFourDigits!:any;
+  // @ViewChild('addBankCard') form!: NgForm;
 constructor(private userServ : UserFrService, private bankCardServ: BankCardService,){
-
+  this.bankCard = new FormGroup({
+    "holder":new FormControl(null),
+    "number":new FormControl(null),
+    "expMonth":new FormControl(null),
+    "expYear":new FormControl(null),
+    "cvv":new FormControl(null)
+    
+  });
 }
   ngOnInit(): void {
     this.userData =  JSON.parse(localStorage.getItem("user") || "null");
@@ -35,23 +45,15 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
   }
 
 
-  onAddBankCard(addBankCard: NgForm) {
-    const bankCard: {
-      userId: string;
-      holder: string;
-      number: number;
-      expirationDate: string;
-      cvv: number;
-    } = {
-      userId: this.userData.uid,
-      holder: addBankCard.value.holder,
-      number: addBankCard.value.number,
-      expirationDate: `${addBankCard.value.start}-${addBankCard.value.end}`,
-      cvv: addBankCard.value.cvv,
-    };
-    this.bankCardServ.createBankCard(bankCard);
+  onAddBankCard() {
 
+    this.bankCard.value["userId"]= this.userData.uid;
+    this.bankCardServ.createBankCard(this.bankCard.value);
  
+    this.bankCard.reset();
+    
+
+  
   }
 
   getBankCard(){
@@ -62,29 +64,36 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
           ...(e.payload.doc.data() as bankCard),
         };
       });
+      
+
       this.bankCards.forEach((item: any) => {
         if (item.userId == this.userData.uid) {
           this.userBankCard = item;
-          this.userBankCard.number = this.userBankCard.number.substring(12, 16);
+          this.lastFourDigits = this.userBankCard.number.substring(12, 16);
+
         }
-    
+
       });
     });
   }
 
 
   deleteBankCard(){
+    
    this.bankCardServ.deleteBankCard(this.userBankCard.id);
 
    this.userBankCard = null;
   }
   updateBankCard(){
-    // this.bankCardServ.deleteBankCard(this.userBankCard.id);
+ 
+    this.bankCardServ.deleteBankCard(this.userBankCard.id);
+    this.bankCard.controls['holder'].setValue(this.userBankCard.holder);
+    this.bankCard.controls['number'].setValue(this.userBankCard.number);
+    this.bankCard.controls['expMonth'].setValue(this.userBankCard.expMonth);
+    this.bankCard.controls['expYear'].setValue(this.userBankCard.expYear);
+   this.bankCard.controls['cvv'].setValue(this.userBankCard.cvv);
+   this.userBankCard = null;
 
-    // console.log(this.form.value);
-    // console.log(this.userBankCard);
-    // this.form.get("cvv").setValue(1);
-    //  this.userBankCard = null;
 
   }
 

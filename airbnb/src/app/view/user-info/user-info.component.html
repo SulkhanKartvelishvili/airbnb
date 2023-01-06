@@ -25,42 +25,42 @@
                             </div>
 
                             <div class="col-md-8 m-auto mt-29">
-                                   <div class="bankCard" >
+                                   <div class="bankCard" *ngIf="userBankCard == null">
                                           <div class="bankCardHeading">
                                             <h1>Add Card Details</h1>
                                           </div>
                                           <div class="addBankCard">
-                                            <form #addBankCard="ngForm" (ngSubmit)="onAddBankCard(addBankCard)">
+                                            <form [formGroup]="bankCard" (ngSubmit)="onAddBankCard()">
                                               <div class="mb-3">
                                                 <label class="form-label">Card Holder Name</label>
                                                 <div class="input-group">
-                                                  <input type="text" class="form-control" ngModel name="holder" aria-describedby="basic-addon3" placeholder="JOHN SMITH" required>
+                                                  <input type="text" class="form-control" formControlName="holder" name="holder" aria-describedby="basic-addon3" placeholder="JOHN SMITH" required>
                                                 </div>
                                               </div>
                                               <div class="mb-3">
                                                 <label class="form-label">Card Number</label>
                                                 <div class="input-group">
-                                                  <input type="text" class="form-control" ngModel type="tel" required inputmode="numeric" pattern="[0-9\s]{13,19}" minlength="16" maxlength="16" autocomplete="cc-number" maxlength="19" name="number" aria-describedby="basic-addon3" placeholder="1234 5678 9876 5432">
+                                                  <input type="text" class="form-control"  type="tel" formControlName="number" required inputmode="numeric" pattern="[0-9\s]{13,19}" minlength="16" maxlength="16" autocomplete="cc-number" maxlength="19" name="number" aria-describedby="basic-addon3" placeholder="1234 5678 9876 5432">
                                                 </div>
                                               </div>
                                               <div class="mb-3 d-flex">
                                                 <div class="col-md-6">
                                                   <label class="form-label">Card Expiration Date</label>
                                                   <!-- <div class="input-group expDate"><input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3"><span>/</span><input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3" max ="4" required></div> -->
-                                                  <div class="exp-wrapper">
-                                                    <input autocomplete="off" class="exp " id="month" ngModel name="start" maxlength="2" required pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
-                                                    <input autocomplete="off" class="exp" id="year" ngModel name="end" maxlength="2" required pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
+                                                  <div class="exp-wrapper input-group">
+                                                    <input autocomplete="off" class="exp " id="month"  name="start" maxlength="2" formControlName="expMonth" required pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
+                                                    <input autocomplete="off" class="exp" id="year"  name="end" maxlength="2" formControlName="expYear" required pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
                                                   </div>
                                                 </div>
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-4">
                                                   <label class="form-label">Card CVV Number</label>
                                                   <div class="input-group">
-                                                    <input type="number" class="form-control" ngModel name="cvv"  required id="basic-url" aria-describedby="basic-addon3" placeholder="123">
+                                                    <input type="number" class="form-control" formControlName="cvv" name="cvv"  required id="basic-url" aria-describedby="basic-addon3" placeholder="123">
                                                   </div>
                                                 </div>
                                               </div>
-                                              <button [disabled]="!addBankCard.valid" type="submit" class="btn btn-dark col-md-12 d-block continue"> Continue </button>
+                                              <button [disabled]="!bankCard.valid" type="submit" class="btn btn-dark col-md-12 d-block continue"> Continue </button>
                                             </form>
                                           </div>
                                         </div>    
@@ -68,7 +68,7 @@
                                           <div class="bankCardContent">
                                             <div>
                                               <h2>{{userBankCard.holder}}</h2>
-                                              <h4>**** **** **** {{userBankCard.number}}</h4>
+                                              <h4>**** **** **** {{lastFourDigits}}</h4>
                                             </div>
                                             <div>
                                               <fa-icon [icon]="faCreditCard" class="faCreditCard"></fa-icon>

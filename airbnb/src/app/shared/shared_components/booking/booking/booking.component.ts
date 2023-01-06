@@ -105,6 +105,6 @@ export class BookingComponent implements OnInit {
   }
   this.hotelBooking.bookHotel(bookedHotel);
   localStorage.removeItem("bookedHotelData");
-
+  
 }
 }
