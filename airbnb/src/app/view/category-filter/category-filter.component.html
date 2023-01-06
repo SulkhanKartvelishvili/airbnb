@@ -1,5 +1,5 @@
 <section class="category col-md-10">
-  <button class="btn" routerLink="">Show All</button>
+  <button class="btn-white" routerLink="">Show All</button>
   <div class="holder">
     <ul class="slider">
       <app-category-filter-card
@@ -10,7 +10,7 @@
   </div>
 
   <div class="filter">
-    <button class="btn" (click)="filterPopUp()">
+    <button class="btn-white" (click)="filterPopUp()">
       <li><fa-icon [icon]="faSliders"></fa-icon></li>
       filter
     </button>
@@ -31,8 +31,13 @@
 
       <div class="modal-body">
         <div class="priceRangeSection">
-          <label for="customRange3" class="form-label">Example range</label>
-          <input
+          <div class="priceRangeSectionHeading">
+            <h2>Price range</h2>
+          </div>
+         
+          <span>From </span> <input type="number"  [(ngModel)]="priceFrom"> 
+          <span>To </span><input type="number"  [(ngModel)]="priceTo">
+          <!-- <input
             type="range"
             class="form-range"
             min="10"
@@ -53,12 +58,14 @@
 
           <span>{{ priceFrom }}</span>
           <br />
-          <span>{{ priceTo }}</span>
+          <span>{{ priceTo }}</span> -->
+
         </div>
 
         <div class="typeOfPlaceSection">
+          <div class="tpyeOfPlaceSectionHeading">
           <h2>Type of place</h2>
-
+        </div>
           <!-- <div class="entirePlace type">
                         <div >
                           <input ngModel name="entirePlace" class="form-check-input" type="checkbox" id="checkboxNoLabel" value="1" aria-label="...">
@@ -94,11 +101,14 @@
           </select>
         </div>
 
-        <div class="roomsBedsBaths">
+        <div class="roomsCountSection">
+          <div class="roomsCountSectionHeading">
+            <h2>Amount of rooms</h2>
+          </div>
           <!-- <button (click)="AddFilterRooms()">add rooms</button>
                         <div  *ngFor="let item of roomsCounter">
                         </div> -->
-
+<div class="roomsCountSectionContent">
           <div class="rooms">
             <label>Rooms</label>
             <select matNativeControl required [(ngModel)]="rooms">
@@ -133,11 +143,58 @@
             </select>
           </div>
         </div>
-
+      </div>
         <div class="propertyType">
-          <button (click)="onHomePropertyTypeClick()">Home</button>
-          <button (click)="onVillaProperyTypeClick()">Villa</button>
+          <div class="propertyTypeHeading">
+            <h2>Property type</h2>
+          </div>
+          <button (click)="onHomePropertyTypeClick()"  type="button" class="btn btn-dark">Home</button>
+          <button (click)="onVillaProperyTypeClick()"  type="button" class="btn btn-dark">Villa</button>
         </div>
+
+        <div class="ameneties">
+          <div class="amenetiesHeading">
+            <h1>What this place offers</h1>    
+        </div>
+        <div class="amenetiesContent">
+            <div class="amenetieCategorySection" >
+              <form [formGroup]="amenetiesForm">
+                 <div><mat-checkbox class="example-margin" formControlName="bathtub"></mat-checkbox>{{amenetiesList[0]}}</div>
+                <div><mat-checkbox class="example-margin" formControlName="hairDryer"></mat-checkbox>{{amenetiesList[1]}}</div> 
+                
+               <div><mat-checkbox class="example-margin" ></mat-checkbox>{{amenetiesList[2]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[3]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[4]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[5]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[6]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[8]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[17]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[20]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[21]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[22]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[26]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[30]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[40]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[42]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[43]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[44]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[45]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[46]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[51]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[52]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[57]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[58]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[59]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[60]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[61]}}</div>
+                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[62]}}</div>  
+              </form>
+            </div>
+          
+    </div>
+    <h4>You chose:</h4>
+    {{amenetiesForm.value | json}}
+</div>
 
         <div class="modal-footer">
           <button
@@ -150,6 +207,7 @@
               BedsPerRoomCount: beds,
               BathRoomsCount: bathrooms,
               PropertyType: propertyType
+             
             }"
             (click)="close()"
           >

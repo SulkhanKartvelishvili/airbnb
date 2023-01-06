@@ -45,6 +45,7 @@ import { AgmCoreModule } from '@agm/core';
 import { UserFrService } from './shared/shared_services/user-fr.service';
 import { AuthGuard } from './core/guards/auth/auth.guard';
 import { BookingComponent } from './shared/shared_components/booking/booking/booking.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { BookingComponent } from './shared/shared_components/booking/booking/boo
     MatNativeDateModule,
     AgmCoreModule.forRoot({
       apiKey: ''
-    })
+    }),
+    MatCheckboxModule
     
    
     

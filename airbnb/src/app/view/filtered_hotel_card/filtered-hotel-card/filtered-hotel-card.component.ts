@@ -28,41 +28,6 @@ export class FilteredHotelCardComponent implements OnInit  {
   }
 
 
-  getAllHotelCard(){
-    this.hotelCardServ.readAllHotelCard().subscribe(response => {
-    
-       this.hotelCardList = response;
-      
-    });
-
-  }
-
-  getCategoryCardItemId(id:any){
-    
-   
-    this.showAllHotelCard=false;
-
-    
-
-    this.categoryFilteredHotelCardList = [];
-
-  
-    this.hotelCardList.forEach((obj:any) => {
-    
-      obj.categories.forEach((categoryId:any) =>{
-
-        if(categoryId.id == id){
-          
-           this.categoryFilteredHotelCardList.push(obj);
-        }
-      } )
-     
-     })
-    
-
-
- 
-    };
 
     
      

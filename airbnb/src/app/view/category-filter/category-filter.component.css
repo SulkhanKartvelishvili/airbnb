@@ -69,7 +69,7 @@
     height: 2px;
   }
 
-  .btn{
+  .btn-white{
     border-width: thin;
     background: white;
     margin-top: 20px!important;
@@ -110,18 +110,46 @@
     width: 700px!important;
     max-width: inherit;
   }
-  .typeOfPlaceSection{
+  /* .typeOfPlaceSection{
     display: grid;
     grid-template-columns:50% 50%;
-  }
+  } */
   .entirePlace{
     grid-column: 1;
   }
-  .bedrooms button:checked{
+  .bedrooms button:checked{ 
    background-color: black;
   }
   .category{
     margin-bottom: 30px;
+  }
+  .priceRangeSection, .typeOfPlaceSection{
+    margin-bottom:10px;
+  }
+  .roomsCountSectionContent{
+    display: flex;
+  }
+  .roomsCountSectionContent div:nth-child(2),  .roomsCountSectionContent div:nth-child(3)  {
+    padding-left:20px;
+  }
+  .roomsCountSectionContent div label{
+    padding-right: 5px;
+  }
+  .typeOfPlaceSection select{
+    width: 40%;
+    height: 25px;
+  }
+  .priceRangeSection span:nth-child(4){
+    padding-left:5px;
+  }
+  .modal-body h2{
+    margin-bottom:5px;
+  }
+  .propertyType button{
+    font-size: 15px;
+  }
+  .propertyType button:nth-child(3){
+ margin-left:10px;
   }
   @media only screen and  (max-width: 764px) {
     .category{
