@@ -123,3 +123,10 @@
   .category{
     margin-bottom: 30px;
   }
+  @media only screen and  (max-width: 764px) {
+    .category{
+       grid-template-columns: 20% 60% 20%!important;
+    }
+       
+     }
+   

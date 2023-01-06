@@ -42,7 +42,7 @@ export class BookingComponent implements OnInit {
         console.log(this.fetchedHotelData);
       });
 
-    this.bankCardServ.getUserList().subscribe((res) => {
+    this.bankCardServ.getBankCardList().subscribe((res) => {
       this.bankCards = res.map((e) => {
         return {
           id: e.payload.doc.id,
@@ -105,6 +105,6 @@ export class BookingComponent implements OnInit {
   }
   this.hotelBooking.bookHotel(bookedHotel);
   localStorage.removeItem("bookedHotelData");
-
+  
 }
 }

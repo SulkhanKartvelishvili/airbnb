@@ -1,11 +1,88 @@
 <div class="container">
        <div class="row">
-              <div class="col-md-10">
-                     <button 
-                     (click)="onForgotPasswordBtnClick()"
-                     type="button" mat-raised-button color="primary">Forgot Password</button> 
+              <div class="col-md-6">
+                     <div class="userInfo col-md-12">
+                            <div class="userInfoHeading">
+                              <h1>User Information</h1>       
+                            </div>
+                            <div class="userInfoContent">
+                               <div class="username">
+                                   <label>Email</label>
+                                   <h3>{{userData.email}}</h3>
+                               </div>   
+                               <div class="forgotPassword">
+                                   <label>Did you forget your password?</label> 
+                                   <br>
+                                   <button 
+                                   (click)="onForgotPasswordBtnClick()"
+                                   type="button" mat-raised-button> Forgot Password</button> 
+                               </div>
+                            
+
+                                  
+                               
+                            </div>
+                            </div>
+
+                            <div class="col-md-8 m-auto mt-29">
+                                   <div class="bankCard" *ngIf="userBankCard == null">
+                                          <div class="bankCardHeading">
+                                            <h1>Add Card Details</h1>
+                                          </div>
+                                          <div class="addBankCard">
+                                            <form [formGroup]="bankCard" (ngSubmit)="onAddBankCard()">
+                                              <div class="mb-3">
+                                                <label class="form-label">Card Holder Name</label>
+                                                <div class="input-group">
+                                                  <input type="text" class="form-control" formControlName="holder" name="holder" aria-describedby="basic-addon3" placeholder="JOHN SMITH" required>
+                                                </div>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label class="form-label">Card Number</label>
+                                                <div class="input-group">
+                                                  <input type="text" class="form-control"  type="tel" formControlName="number" required inputmode="numeric" pattern="[0-9\s]{13,19}" minlength="16" maxlength="16" autocomplete="cc-number" maxlength="19" name="number" aria-describedby="basic-addon3" placeholder="1234 5678 9876 5432">
+                                                </div>
+                                              </div>
+                                              <div class="mb-3 d-flex">
+                                                <div class="col-md-6">
+                                                  <label class="form-label">Card Expiration Date</label>
+                                                  <!-- <div class="input-group expDate"><input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3"><span>/</span><input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3" max ="4" required></div> -->
+                                                  <div class="exp-wrapper input-group">
+                                                    <input autocomplete="off" class="exp " id="month"  name="start" maxlength="2" formControlName="expMonth" required pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
+                                                    <input autocomplete="off" class="exp" id="year"  name="end" maxlength="2" formControlName="expYear" required pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-4">
+                                                  <label class="form-label">Card CVV Number</label>
+                                                  <div class="input-group">
+                                                    <input type="number" class="form-control" formControlName="cvv" name="cvv"  required id="basic-url" aria-describedby="basic-addon3" placeholder="123">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <button [disabled]="!bankCard.valid" type="submit" class="btn btn-dark col-md-12 d-block continue"> Continue </button>
+                                            </form>
+                                          </div>
+                                        </div>    
+                                        <div class="bankCard" *ngIf="userBankCard !=null">
+                                          <div class="bankCardContent">
+                                            <div>
+                                              <h2>{{userBankCard.holder}}</h2>
+                                              <h4>**** **** **** {{lastFourDigits}}</h4>
+                                            </div>
+                                            <div>
+                                              <fa-icon [icon]="faCreditCard" class="faCreditCard"></fa-icon>
+                                            </div>
+                                            <div>
+                                                 <button (click)="deleteBankCard()">Delete</button>
+                                                 <button (click)="updateBankCard()">Update</button>
+                                          </div>
+                                          </div>
+
+                                        </div>   
+                            </div>
+                     </div>
+                     
              
        </div>
 </div>
-
-        

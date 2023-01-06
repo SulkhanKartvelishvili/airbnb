@@ -1,24 +1,26 @@
 
-<div class="col-md-10 navbar">
-  <div class="logo">
 
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" routerLink="">
-
+<div class="col-md-12 navbar">
+  <div class="container-fluid logo">
+    <a class="navbar-brand" routerLink="">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" alt="Logo" class="d-inline-block align-text-top">
+      
+    </a>
   </div>
-  <div class="userEmail">
+  <!-- <div class="userEmail">
     <ul>
       <li *ngIf="userData != null"> {{userData.email}}
       </li>
     </ul>
-  </div>
-  <div class="logout">
-      <button *ngIf="userData != null"  (click)="logout()" class="btn btn-dark"> logout
+  </div> -->
+  <!-- <div class="logout">
+      <button *ngIf="userData != null"   class="btn btn-dark"> logout
       </button>
-  </div>
+  </div> -->
 
   <div class="userNavigator">
-      <div class="row">
-          <div class="col">
+      <!-- <div class="row">
+          <div class="col"> -->
               <div ngbDropdown class="d-inline-block dropdown">
                   <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
                       <ul class="bars">
@@ -30,19 +32,19 @@
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                       <button ngbDropdownItem  (click)="continuePoPup()" *ngIf="userData == null ">Continue</button>
                       <button ngbDropdownItem  routerLink="dashboard"  *ngIf="userData != null ">Dashboard</button>
-                      <!-- <button ngbDropdownItem (click)="LoginInPopup()">Login in</button> -->
+                    
                       <hr>
-                      <button ngbDropdownItem >Airbnb your home</button>
-                      <button ngbDropdownItem>Host your experience</button>
-                      <button ngbDropdownItem>Help</button>
+                      <button ngbDropdownItem (click)="logout()" >Log out</button>
+               
                   </div>
               </div>
           </div>
   </div>
   
-  
+
+<!-- 
   </div>
-  </div>
+</div> -->
   
   
   <div

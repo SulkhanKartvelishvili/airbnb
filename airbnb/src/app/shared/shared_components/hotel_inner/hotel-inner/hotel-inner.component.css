@@ -130,7 +130,7 @@ text-align: center;
     grid-template-columns: 70% 30%;
     /* grid-template-rows: 5% 95%; */
 }
-.roomsSection .col-md-6{
+.roomsSection .col-lg-6{
     display: grid;
     grid-template-columns: 50% 50%;
     width: 100%;
@@ -172,3 +172,49 @@ text-align: center;
   agm-map {
     height: 300px;
   }
+
+  @media only screen and (max-width: 600px) {
+    .roomsSection{
+        display: block;
+    }
+    .roomsSection .col-lg-6{
+        display: block;
+        
+    }
+    .roomsSection .col-lg-6 .card{
+        margin:auto
+    }
+
+  }
+
+  @media only screen and (min-width: 600px) and (max-width: 900px) {
+    .roomsSection{
+        display: block;
+    }
+    .card.ng-star-inserted {
+        width: 15rem!important;
+    }
+    
+  }
+  @media only screen and (min-width: 900px) and (max-width: 1024px) {
+    .roomsSection{
+        display: block;
+    }
+    .card.ng-star-inserted {
+        width: 17rem!important;
+    }
+ 
+    
+  }
+  @media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    /* .roomsSection{
+        display: block;
+    } */
+    .card.ng-star-inserted {
+        width: 15rem!important;
+    }
+ 
+    
+  }
+
+
