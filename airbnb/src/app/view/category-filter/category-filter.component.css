@@ -151,6 +151,13 @@
   .propertyType button:nth-child(3){
  margin-left:10px;
   }
+  .amenetiesForm{
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .amenetiesForm mat-checkbox{
+    padding-right: 5px;
+  }
   @media only screen and  (max-width: 764px) {
     .category{
        grid-template-columns: 20% 60% 20%!important;

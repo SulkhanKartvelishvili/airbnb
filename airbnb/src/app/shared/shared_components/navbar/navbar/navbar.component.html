@@ -32,9 +32,10 @@
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                       <button ngbDropdownItem  (click)="continuePoPup()" *ngIf="userData == null ">Continue</button>
                       <button ngbDropdownItem  routerLink="dashboard"  *ngIf="userData != null ">Dashboard</button>
-                    
-                      <hr>
-                      <button ngbDropdownItem (click)="logout()" >Log out</button>
+                      <button ngbDropdownItem  routerLink="dashboard/userInfo"  *ngIf="userData != null ">Settings</button>
+
+                      <hr  *ngIf="userData != null ">
+                      <button ngbDropdownItem (click)="logout()"  *ngIf="userData != null ">Log out</button>
                
                   </div>
               </div>

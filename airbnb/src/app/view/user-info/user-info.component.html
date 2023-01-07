@@ -46,10 +46,9 @@
                                               <div class="mb-3 d-flex">
                                                 <div class="col-md-6">
                                                   <label class="form-label">Card Expiration Date</label>
-                                                  <!-- <div class="input-group expDate"><input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3"><span>/</span><input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3" max ="4" required></div> -->
                                                   <div class="exp-wrapper input-group">
-                                                    <input autocomplete="off" class="exp " id="month"  name="start" maxlength="2" formControlName="expMonth" required pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
-                                                    <input autocomplete="off" class="exp" id="year"  name="end" maxlength="2" formControlName="expYear" required pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
+                                                    <input autocomplete="off" class="exp " id="ExpMonth"  name="start" maxlength="2" formControlName="expMonth" required pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
+                                                    <input autocomplete="off" class="exp" id="ExpYear"  name="end" maxlength="2" formControlName="expYear" required pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
                                                   </div>
                                                 </div>
                                                 <div class="col-md-2"></div>
@@ -74,8 +73,8 @@
                                               <fa-icon [icon]="faCreditCard" class="faCreditCard"></fa-icon>
                                             </div>
                                             <div>
-                                                 <button (click)="deleteBankCard()">Delete</button>
-                                                 <button (click)="updateBankCard()">Update</button>
+                                                 <button (click)="deleteBankCard()" mat-raised-button color="warn">Delete</button>
+                                                 <button (click)="openModal()" mat-raised-button>Update</button>
                                           </div>
                                           </div>
 
@@ -86,3 +85,82 @@
              
        </div>
 </div>
+
+
+<div
+class="modal"
+tabindex="-1"
+role="dialog"
+[ngStyle]="{'display':displayStyle}">
+
+
+
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+      <button type="button" class="btn-close" 
+      (click)="close()">
+
+</button>
+    <div class="modal-header">
+    
+      <h4 class="modal-title">Update bank card
+      </h4>
+    </div>
+    <div class="modal-body">
+      <div class="bankCard" >
+        <div class="bankCardHeading">
+          <h1>Add Card Details</h1>
+        </div>
+        <div class="addBankCard">
+          <form [formGroup]="updateBankCard" (ngSubmit)="OnUpdateBankCard()">
+            <div class="mb-3">
+              <label class="form-label">Card Holder Name</label>
+              <div class="input-group">
+                <input type="text" class="form-control" formControlName="updatedHolder" name="updatedHolder" aria-describedby="basic-addon3" placeholder="JOHN SMITH" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Card Number</label>
+              <div class="input-group">
+                <input type="text" class="form-control"  type="tel" formControlName="updatedNumber" required inputmode="numeric" pattern="[0-9\s]{13,19}" minlength="16" maxlength="16" autocomplete="cc-number" maxlength="19" name="updatedNumber" aria-describedby="basic-addon3" placeholder="1234 5678 9876 5432">
+              </div>
+            </div>
+            <div class="mb-3 d-flex">
+              <div class="col-md-6">
+                <label class="form-label">Card Expiration Date</label>
+                <div class="exp-wrapper input-group">
+                  <input autocomplete="off" class="exp " id="month"  name="updatedExpMonth" maxlength="2" formControlName="updatedExpMonth" required pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
+                  <input autocomplete="off" class="exp" id="year"  name="updatedExpYear" maxlength="2" formControlName="updatedExpYear" required pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <label class="form-label">Card CVV Number</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" formControlName="updatedCvv" name="updatedCvv"  required id="basic-url" aria-describedby="basic-addon3" placeholder="123">
+                </div>
+              </div>
+            </div>
+            <button  type="submit" class="btn btn-dark col-md-12 d-block continue" > Update </button>
+          </form>
+        </div>
+      </div>    
+     
+      </div>
+    
+<div class="modal-footer">
+ 
+      </div>
+    
+ 
+    
+  
+    </div>
+ 
+  
+    
+
+</div>
+</div> 
+
+

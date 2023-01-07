@@ -9,8 +9,10 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 export class FooterComponent implements OnInit {
 
   constructor() { }
-
+ userData!:any;
   ngOnInit(): void {
+    this.userData = JSON.parse(localStorage.getItem('user') || 'null');
+
   }
   faGlobe = faGlobe;
 

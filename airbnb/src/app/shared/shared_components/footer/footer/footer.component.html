@@ -1,3 +1,4 @@
+
 <div class="col-md-12" >
     <div class="col-md-4">
     <ul>
@@ -9,16 +10,23 @@
     <ul>
         <li>Terms</li>
     </ul>    
-    <ul>
-        <li>Sitemap</li>
+    <ul *ngIf="userData == null">
+        <li >Sitemap</li>
     </ul> 
-    <ul>
+    <ul *ngIf="userData != null">
+        <li ><a routerLink="dashboard">Dashboard</a></li>
+
+    </ul>
+    <ul *ngIf="userData == null">
         <li>Destinations</li>
-    </ul>       
+    </ul>     
+    <ul *ngIf="userData != null">
+        <li ><a routerLink="dashboard/userInfo">Settings</a></li>
+    </ul>  
     </div>
     <div class="col-md-5"></div>
     <div class="col-md-3"> 
-         <ul>
+          <ul>
           
     
             <li><fa-icon [icon]="faGlobe"></fa-icon></li>

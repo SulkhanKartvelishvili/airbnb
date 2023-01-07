@@ -12,7 +12,20 @@
     border:1px solid black;
     padding: 5px;
     display: grid;
-    grid-template-columns: 95% 5%;
+    grid-template-columns: 50% 50%;
+ }
+ .bankCardContent div:nth-child(2) fa-icon{
+   float:right;
+ }
+ .bankCardContent div:nth-child(3){
+   /* margin-bottom: 10px; */
+   grid-column: 2;
+ }
+ .bankCardContent div:nth-child(3) button{
+   float:right;
+ }
+ .bankCardContent div:nth-child(3) button:nth-child(2){
+   margin-right: 10px;
  }
  .faCreditCard{
     font-size:20px;

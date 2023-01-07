@@ -18,7 +18,10 @@ export class UserInfoComponent implements OnInit{
   userBankCard: any = null;
   faCreditCard = faCreditCard;
   bankCard!:FormGroup;
+  updateBankCard!:FormGroup;
   lastFourDigits!:any;
+  displayStyle = 'none';
+
   // @ViewChild('addBankCard') form!: NgForm;
 constructor(private userServ : UserFrService, private bankCardServ: BankCardService,){
   this.bankCard = new FormGroup({
@@ -27,6 +30,14 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
     "expMonth":new FormControl(null),
     "expYear":new FormControl(null),
     "cvv":new FormControl(null)
+    
+  });
+  this.updateBankCard = new FormGroup({
+    "updatedHolder":new FormControl(null),
+    "updatedNumber":new FormControl(null),
+    "updatedExpMonth":new FormControl(null),
+    "updatedExpYear":new FormControl(null),
+    "updatedCvv":new FormControl(null)
     
   });
 }
@@ -48,8 +59,7 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
   onAddBankCard() {
 
     this.bankCard.value["userId"]= this.userData.uid;
-    this.bankCardServ.createBankCard(this.bankCard.value);
- 
+     this.bankCardServ.createBankCard(this.bankCard.value);
     this.bankCard.reset();
     
 
@@ -75,6 +85,7 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
 
       });
     });
+
   }
 
 
@@ -84,17 +95,34 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
 
    this.userBankCard = null;
   }
-  updateBankCard(){
+  openModal(){
+
+  this.updateBankCard.controls['updatedHolder'].setValue(this.userBankCard.holder);
+  this.updateBankCard.controls['updatedNumber'].setValue(this.userBankCard.number);
+  this.updateBankCard.controls['updatedExpMonth'].setValue(this.userBankCard.expMonth);
+  this.updateBankCard.controls['updatedExpYear'].setValue(this.userBankCard.expYear);
+ this.updateBankCard.controls['updatedCvv'].setValue(this.userBankCard.cvv);
+
+  this.displayStyle = 'block';
+  }
+
+
+  OnUpdateBankCard(){
+   
+    this.updateBankCard.value["userId"]= this.userData.uid;
+
+  this.bankCardServ.updateBankCard(this.updateBankCard.value, this.userBankCard.id);
+
+    this.close();
+
+this.getBankCard();
+
+
+
+  }
  
-    this.bankCardServ.deleteBankCard(this.userBankCard.id);
-    this.bankCard.controls['holder'].setValue(this.userBankCard.holder);
-    this.bankCard.controls['number'].setValue(this.userBankCard.number);
-    this.bankCard.controls['expMonth'].setValue(this.userBankCard.expMonth);
-    this.bankCard.controls['expYear'].setValue(this.userBankCard.expYear);
-   this.bankCard.controls['cvv'].setValue(this.userBankCard.cvv);
-   this.userBankCard = null;
-
-
+  close() {
+    this.displayStyle = 'none';
   }
 
 
