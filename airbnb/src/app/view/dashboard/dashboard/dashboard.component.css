@@ -3,3 +3,10 @@
     /* background-color: black; */
     height: 100vh;
 }
+img{
+    width: 200px;
+}
+.bookedCards{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}

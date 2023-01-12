@@ -28,18 +28,18 @@ export class BookingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if(this.bookedHotelData != null){
     (document.getElementById("book") as HTMLInputElement).disabled = true;
+  }
     this.bookedHotelData = JSON.parse(
       localStorage.getItem("bookedHotelData") || "null"
     );
     this.user = JSON.parse(localStorage.getItem("user") || "null");
 
-    // console.log(this.bookedHotelData[0].hotelId);
     this.hotelServ
       .readHotelCardById(this.bookedHotelData[0].hotelId)
       .subscribe((response) => {
         this.fetchedHotelData = response;
-        console.log(this.fetchedHotelData);
       });
 
     this.bankCardServ.getBankCardList().subscribe((res) => {

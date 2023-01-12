@@ -46,6 +46,7 @@ import { UserFrService } from './shared/shared_services/user-fr.service';
 import { AuthGuard } from './core/guards/auth/auth.guard';
 import { BookingComponent } from './shared/shared_components/booking/booking/booking.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { TripsComponent } from './view/trips/trips/trips.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FilteredHotelCardComponent,
     CategoryFilterHotelCardComponent,
     BookingComponent,
+    TripsComponent,
   ],
   imports: [
     BrowserModule,

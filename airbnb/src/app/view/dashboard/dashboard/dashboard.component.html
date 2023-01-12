@@ -10,22 +10,26 @@
     </tr>
     </tbody> -->
 
-    <div class="container" >
+    <div class="container" *ngIf="usersBookedHotelList != null">
         <div class="row">
-          <div class="col-md-6"  *ngIf="bookedHotelsList.userId == userData.uid">
-            <div class="card" style="width: 18rem;" *ngFor="let bookedHotel of bookedHotelsList">
+          <div class="col-md-12 " >
+            <div class="bookedCardsHeading">
+              <h1>Your Bookings</h1>
+            </div>
+            <div class="bookedCards">
+            <div class="card" style="width: 18rem;" *ngFor="let bookedHotel of usersBookedHotelList" >
               
-              <div >
-      
-                      <div class="cardImage">
-                          <img [src]="bookedHotel.payload.doc.data().imageUrl" class="image" alt="Random first slide"/>
-                      </div>
-                  
+              <!-- <div *ngIf="bookedHotel.payload.doc.data().userId == userData.uid"> -->
+        
+                        <!-- <div class="cardImage">
+                            <img [src]="bookedHotel.imageUrl" class="image" alt="Random first slide"/>
+                        </div> -->
+                   
              
-  
+        
             
               <div class="card-body">
-                  <h3 class="card-title">{{bookedHotel.payload.doc.data().bedroomName}}</h3>
+                  <h3 class="card-title">{{bookedHotel.address}}</h3>
                   <div class="hotelInnerDetails">
                       <!-- <ul>
                           <li>{{room.bathRoomsCount}} bathrooms</li>
@@ -35,14 +39,15 @@
                        
                           <li><span>{{room.personsCount}} persons</span></li>
                          </ul> -->
-                      </div>
+                       </div>
              
                 
-                <button class="btn" routerLink="hotel_inner/${{bookedHotel.payload.doc.data().hotelId}}/booking">Continue</button>
+                <!-- <button class="btn" routerLink="hotel_inner/${{bookedHotel.payload.doc.data().hotelId}}/booking">Continue</button> -->
               </div>
             </div>
           </div>
         </div>
+        </div> 
                 
                 <!-- <div class="col" *ngFor="let bookedHotel of bookedHotelsList" >
                   <div >
@@ -50,5 +55,6 @@
                   
             
         </div>
-    </div>
+    <!-- </div> -->
 
+<!-- <button (click)="showbookings()">show</button> -->

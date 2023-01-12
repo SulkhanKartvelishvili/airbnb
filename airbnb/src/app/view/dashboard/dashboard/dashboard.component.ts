@@ -11,15 +11,16 @@ import { HotelBookingService } from 'src/app/shared/shared_services/hotelBooking
 export class DashboardComponent implements OnInit{
    
 
- bookedHotelsList:any=[]=[];
- usersBookedHotelList:bookedHotel[]=[];
+ bookedHotelsList:any=[];
+ usersBookedHotelList:any=[];
  bookedHotelImages:any=[]=[];
  backToBookingHotel!:any;
  userData!:any;
 
-  constructor(private hotelBookingServ: HotelBookingService, private hotelCardServ:HotelCardService){}
+  constructor(private hotelBookingServ: HotelBookingService, private hotelCardServ:HotelCardService, private hotelCardserv:HotelCardService){}
 
   ngOnInit() {
+    this.bookedHotelsList = [];
     this.userData = JSON.parse(localStorage.getItem('user') || 'null');
 
      this.hotelBookingServ.getBookedHotelList().subscribe((res) => {
@@ -30,14 +31,23 @@ export class DashboardComponent implements OnInit{
           ...(e.payload.doc.data() as bookedHotel),
         };
       });
+     this.usersBookedHotelList= [];
+     this.hotelCardserv.readAllHotelCard().subscribe((res) => {
+
+      this.bookedHotelsList.forEach((item:any) => {
+        res.forEach((itemTwo:any) => {
+ if(item.hotelId== itemTwo.id){
+          this.usersBookedHotelList.push(itemTwo);
+        
+        }
+        })
+        console.log(this.usersBookedHotelList);
+      })
      
 
 
-        this.bookedHotelsList.forEach((item:any) => {
-          if(item.userId== this.userData.uid){
-            this.usersBookedHotelList.push(item);
-          }
-        })
+     })
+    
    
     }); 
      
