@@ -159,12 +159,12 @@
         <div class="amenetiesContent">
             <div class="amenetieCategorySection" >
               <form [formGroup]="amenetiesForm" class="amenetiesForm">
-                 <div><mat-checkbox class="example-margin" formControlName="bathtub"></mat-checkbox>{{amenetiesList[0]}}</div>
-                <div><mat-checkbox class="example-margin" formControlName="hairDryer"></mat-checkbox>{{amenetiesList[1]}}</div> 
+                 <div><mat-checkbox class="example-margin" formControlName="bathtub"  (click)="saveAmeneties(amenetiesList[0])"></mat-checkbox>{{amenetiesList[0]}}</div>
+                <div><mat-checkbox class="example-margin" formControlName="hairDryer"  (click)="saveAmeneties(amenetiesList[1])"></mat-checkbox>{{amenetiesList[1]}}</div> 
                 
-               <div><mat-checkbox class="example-margin" ></mat-checkbox>{{amenetiesList[2]}}</div>
-                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[3]}}</div>
-                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[4]}}</div>
+               <div><mat-checkbox class="example-margin" (click)="saveAmeneties(amenetiesList[2])"></mat-checkbox>{{amenetiesList[2]}}</div>
+                <div><mat-checkbox class="example-margin" (click)="saveAmeneties(amenetiesList[3])"></mat-checkbox>{{amenetiesList[3]}}</div>
+                <div><mat-checkbox class="example-margin" ></mat-checkbox>{{amenetiesList[4]}}</div>
                 <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[5]}}</div>
                 <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[6]}}</div>
                 <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[8]}}</div>
@@ -185,9 +185,9 @@
                 <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[57]}}</div>
                 <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[58]}}</div>
                 <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[59]}}</div>
-                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[60]}}</div>
-                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[61]}}</div>
-                <div><mat-checkbox class="example-margin"></mat-checkbox>{{amenetiesList[62]}}</div>  
+                <div><mat-checkbox class="example-margin"(click)="saveAmeneties(amenetiesList[60])"></mat-checkbox>{{amenetiesList[60]}}</div>
+                <div><mat-checkbox class="example-margin"(click)="saveAmeneties(amenetiesList[61])"></mat-checkbox>{{amenetiesList[61]}}</div>
+                <div><mat-checkbox class="example-margin" (click)="saveAmeneties(amenetiesList[62])"></mat-checkbox>{{amenetiesList[62]}}</div>  
               </form>
             </div>
           
@@ -198,19 +198,14 @@
 
         <div class="modal-footer">
           <button
+          (click)="close()"
+
           mat-raised-button
             [routerLink]="['/filtered']"
             [queryParams]="{
-              PriceFrom: priceFrom,
-              PriceTo: priceTo,
-              typeOfPlace: typeOfPlace,
-              RoomsCount: rooms,
-              BedsPerRoomCount: beds,
-              BathRoomsCount: bathrooms,
-              PropertyType: propertyType
-             
+              Amenities:chosenAmenetiesUrl
+            
             }"
-            (click)="close()"
           >
           
             Show results
@@ -220,3 +215,11 @@
     </div>
   </div>
 </div>
+<!-- 
+PriceFrom: priceFrom,
+PriceTo: priceTo,
+typeOfPlace: typeOfPlace,
+RoomsCount: rooms,
+BedsPerRoomCount: beds,
+BathRoomsCount: bathrooms,
+PropertyType: propertyType -->

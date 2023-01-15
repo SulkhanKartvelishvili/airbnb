@@ -3,10 +3,69 @@
     /* background-color: black; */
     height: 100vh;
 }
-img{
+/* img{
     width: 200px;
 }
 .bookedCards{
     display: grid;
     grid-template-columns: 33% 33% 33%;
 }
+.card{
+    margin-bottom: 30px;
+    border: none;
+} */
+
+.cardImage img{
+    
+  
+        width: -webkit-fill-available;
+        min-height: 200px;
+        height: 200px;
+        border-radius: 20px;
+        object-fit: cover;
+        vertical-align: bottom;
+  
+} 
+
+/* .cardsArea{
+    width: 90%;
+    margin: auto;
+    } */
+
+    .card{
+        border: none;
+        width:16rem!important;
+    }
+    .cardName, .cardTitle{
+        
+        font-weight: 500;
+    }
+    .cardTitle{
+        margin-bottom: 5px;
+    }
+    .cardBody{
+     padding-top:10px;
+    }
+    h4, h5{
+        margin-bottom: 0px;
+    }
+
+ 
+  ul{
+    display: flex;
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 8px;
+ }
+.hotelInnerDetails ul li:nth-child(2){
+padding-left:5px;
+}
+
+ .hotelInnerDetails ul li:nth-child(3) span{
+   float:right;
+ }
+
+ .hotelBookingDates ul li:nth-child(2),  .hotelBookingDates ul li:nth-child(3){
+    padding-left: 5px;
+ }

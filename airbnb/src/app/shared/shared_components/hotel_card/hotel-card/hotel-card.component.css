@@ -10,29 +10,11 @@
     .card{
         border: none;
     }
-    .card-name, .card-price{
+    .cardName, .cardTitle{
+        padding-top:10px;
         font-weight: 500;
     }
-    .card-addDate, .card-city{
-        font-weight: 100;
-    }
+
     h4, h5{
         margin-bottom: 0px;
-    }
-
-    /* hotel_inner */
-
-    .faStar{
-        font-size: 13px;
-        position: relative;
-        top: 1px;
-    }
-    .hotelShortDescription{
-        display: flex;
-    }
-    .hotelShortDescription h4{
-        padding-left: 10px;
-    }
-    .hotelShortDescription .reviewsNum, .streetAdd{
-        font-weight: 500;
     }

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CategoryFilterService } from 'src/app/core/http/category/category-filter.service';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -28,7 +28,9 @@ export class CategoryFilterComponent implements OnInit {
    chosenAmeneties:string[] = [
 
    ];
+   counter = 0;
    amenetiesForm!:FormGroup;
+   chosenAmenetiesUrl!:string;
 
   //  entirePlace:string = '';
   //  privateRoom:string = '';
@@ -50,7 +52,7 @@ export class CategoryFilterComponent implements OnInit {
     this.amenetiesForm  = this._formBuilder.group({
       bathtub:  this.amenetiesList[0],
       hairDryer: this.amenetiesList[1],
-     
+      shampoo:this.amenetiesList[3]
     });
   
     
@@ -58,9 +60,11 @@ export class CategoryFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.getAllCategory();
     this.getAllAmeneties();
-   
+    this.counter = 0;
+    this.chosenAmeneties = [];
   }
   displayStyle = 'none';
   faSliders = faSliders;
@@ -76,21 +80,49 @@ export class CategoryFilterComponent implements OnInit {
      
     })
   }
-  
 
+
+  
+  saveAmeneties(amenetie:any){
+    
+    // Object.keys(this.amenetiesForm.controls).forEach((key:string) => {
+      
+     
+    //   const abstractControl = this.amenetiesForm.get(key);
+    //   if(abstractControl instanceof FormGroup){
+    //    return;
+    //  }else{
+    //   if(abstractControl!.value == true){
+    //     // this.chosenAmenetiesUrl += `&${key}`;
+    //           this.chosenAmeneties.push(key);
+    //   }
+    //  }
+    //  })
+        // this.chosenAmenetiesUrl = `${key}`;
+    //  console.log(this.chosenAmenetiesUrl);
+     this.chosenAmeneties.push(amenetie);
+     for(var i =0; i<this.chosenAmeneties.length; i++){
+      this.chosenAmenetiesUrl += `&${this.chosenAmeneties[i]}`;
+      console.log(this.chosenAmeneties[i]);
+    }
+  }
   close() {
     this.displayStyle = 'none';
-  
 
-    Object.keys(this.amenetiesForm.controls).forEach(key => {
-      if(key !="false"){
-              this.chosenAmeneties.push(key);
-      }
-      
-    });
    
-    console.log(this.amenetiesForm.value);
-    
+
+
+  //  console.log(this.chosenAmeneties);
+  //   console.log(this.chosenAmenetiesUrl);
+
+
+// console.log(this.chosenAmenetiesUrl);
+  }
+
+  logKeyValuePairs(group:FormGroup):void{
+    // this.chosenAmenetiesUrl = "";
+
+
   }
 
   filterPopUp() {
@@ -107,6 +139,7 @@ export class CategoryFilterComponent implements OnInit {
     this.propertyType = 'villa';
   }
 
+  
   // console.log(this.queryParams);
   // this.close();
 

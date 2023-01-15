@@ -32,21 +32,21 @@ export class DashboardComponent implements OnInit{
         };
       });
      this.usersBookedHotelList= [];
-     this.hotelCardserv.readAllHotelCard().subscribe((res) => {
+     
 
       this.bookedHotelsList.forEach((item:any) => {
-        res.forEach((itemTwo:any) => {
- if(item.hotelId== itemTwo.id){
-          this.usersBookedHotelList.push(itemTwo);
+       
+ if(item.userId== this.userData.uid){
+          this.usersBookedHotelList.push(item);
         
         }
-        })
-        console.log(this.usersBookedHotelList);
+    
+        // console.log(this.usersBookedHotelList);
       })
      
 
 
-     })
+   
     
    
     }); 

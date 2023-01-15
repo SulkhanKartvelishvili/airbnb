@@ -36,11 +36,11 @@ export class BookingComponent implements OnInit {
     );
     this.user = JSON.parse(localStorage.getItem("user") || "null");
 
-    this.hotelServ
-      .readHotelCardById(this.bookedHotelData[0].hotelId)
-      .subscribe((response) => {
-        this.fetchedHotelData = response;
-      });
+    // this.hotelServ
+    //   .readHotelCardById(this.bookedHotelData[0].hotelId)
+    //   .subscribe((response) => {
+    //     this.fetchedHotelData = response;
+    //   });
 
     this.bankCardServ.getBankCardList().subscribe((res) => {
       this.bankCards = res.map((e) => {
@@ -86,19 +86,23 @@ export class BookingComponent implements OnInit {
     const bookedHotel: {
       userId: string;
       hotelId:string;
+      hotelName:string;
       bedroomName: number;
       checkInDate: Date;
       checkOutDate: Date;
       nights:number;
+      guestsCount:number;
       price:number;
       imageUrl:string
   } = {
     userId: this.user.uid,
     hotelId:this.bookedHotelData[0].hotelId,
+    hotelName:this.bookedHotelData[0].hotelName,
     bedroomName:this.bookedHotelData[0].roomName,
     checkInDate:this.bookedHotelData[0].checkInDate,
     checkOutDate:this.bookedHotelData[0].checkOutDate,
     nights:this.bookedHotelData[0].dayCount,
+    guestsCount:this.bookedHotelData[0].guestsCount,
     price:this.bookedHotelData[0].priceSum,
     imageUrl:this.bookedHotelData[0].imageUrl
 

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="bookedHotelData != null && fetchedHotelData != null">
+<div class="container" *ngIf="bookedHotelData != null">
   <div class="row">
     <div class="col-md-10 m-auto d-flex">
       <div class="confirmationHeading">
@@ -80,10 +80,10 @@
         <div class="aboutHotel">
           <div class="aboutHotelHeading d-flex">
             <div class="aboutHotelHeadingImage">
-              <img [src]="fetchedHotelData.mainImages[0]">
+              <img [src]="bookedHotelData[0].imageUrl">
             </div>
             <div class="aboutHotelHeadingContent">
-              <h3>{{fetchedHotelData.name}}</h3>
+              <h3>{{bookedHotelData[0].hotelName}}</h3>
               <h4>{{bookedHotelData[0].roomName}}</h4>
               <fa-icon [icon]="faStar" class="faStar"></fa-icon>
               <a>5.0</a>

@@ -20,8 +20,9 @@ export class FilteredHotelCardComponent implements OnInit  {
   ngOnInit(): void {
  
     this.activatedRoute.queryParams.subscribe(queryParams => {
+      console.log(queryParams);
+
       this.hotelCardServ.readAllfilteredHotelCard(queryParams).subscribe(response => {
-        console.log(response);
         this.hotelCardList = response;
       })
     })
