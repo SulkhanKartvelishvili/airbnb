@@ -16,10 +16,15 @@ export class DashboardComponent implements OnInit{
  bookedHotelImages:any=[]=[];
  backToBookingHotel!:any;
  userData!:any;
+ currentDate = new Date();
+ backToBookingHotelExpiryDate!:any;
+ expirationDayCount!:number;
 
   constructor(private hotelBookingServ: HotelBookingService, private hotelCardServ:HotelCardService, private hotelCardserv:HotelCardService){}
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user') || 'null');
+
     this.bookedHotelsList = [];
     this.userData = JSON.parse(localStorage.getItem('user') || 'null');
 
@@ -50,14 +55,20 @@ export class DashboardComponent implements OnInit{
     
    
     }); 
-     
 
-
+    let oneDay=1000*60*60*24;
     this.backToBookingHotel = JSON.parse(localStorage.getItem('bookedHotelData') || 'null');
+    if(this.backToBookingHotel !=null){
+    if(this.backToBookingHotel[0].userId == this.userData.uid){
+    this.backToBookingHotelExpiryDate  = new Date(this.backToBookingHotel[0].expiry)
+   this.expirationDayCount= (this.currentDate.getTime() - this.backToBookingHotelExpiryDate.getTime())/oneDay;
+   if(this.expirationDayCount >1){
+    localStorage.removeItem("bookedHotelData");
 
+   }
   }
-
-
+}
+}
 
 
 

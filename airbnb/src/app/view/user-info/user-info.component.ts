@@ -96,7 +96,7 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
    this.userBankCard = null;
   }
   openModal(){
-
+console.log(this.userBankCard);
   this.updateBankCard.controls['updatedHolder'].setValue(this.userBankCard.holder);
   this.updateBankCard.controls['updatedNumber'].setValue(this.userBankCard.number);
   this.updateBankCard.controls['updatedExpMonth'].setValue(this.userBankCard.expMonth);

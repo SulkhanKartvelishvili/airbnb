@@ -96,7 +96,7 @@
               </div>
             </div>
             <div class="col-md-4 ">
-                <div class="bookingSection">
+                <div class="bookingSection none" id="bookingSection">
                 <div class="bookingSectionHeading">
                     <div>
                     <h2>{{hotel.name}}</h2>
@@ -137,7 +137,7 @@
             </div>
             
            
-    <div *ngIf="valid ==1">
+    <div *ngIf="valid == 1" >
                 <button class="continue" routerLink='/innerHotel/{{hotel.id}}/booking' (click)="continueToBookTheRoom()" >Continue</button>
                 <hr>
                 </div>

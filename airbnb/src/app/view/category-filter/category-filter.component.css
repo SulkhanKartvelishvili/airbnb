@@ -123,26 +123,33 @@
   .category{
     margin-bottom: 30px;
   }
-  .priceRangeSection, .typeOfPlaceSection{
+  .priceRangeSection, .typeOfPlaceSection, .roomsCountSection, .propertyType, .ameneties, .languages{
     margin-bottom:10px;
   }
   .roomsCountSectionContent{
     display: flex;
   }
   .roomsCountSectionContent div:nth-child(2),  .roomsCountSectionContent div:nth-child(3)  {
-    padding-left:20px;
+    margin-left: 20px;
   }
   .roomsCountSectionContent div label{
     padding-right: 5px;
   }
-  .typeOfPlaceSection select{
-    width: 40%;
-    height: 25px;
+  select{
+    width: 60%;
+    height: 35px;
+
+  }
+  .form-control{
+    height: 35px;
+  }
+  .twoDiv .typeOfPlaceSection, .twoDiv .languages {
+    width: 60%;
   }
   .priceRangeSection span:nth-child(4){
     padding-left:5px;
   }
-  .modal-body h2{
+  .modal-body h1{
     margin-bottom:5px;
   }
   .propertyType button{
@@ -158,9 +165,31 @@
   .amenetiesForm mat-checkbox{
     padding-right: 5px;
   }
+  .priceRangeSectionContent{
+    display: flex;
+  }
+  .priceRangeSectionContent input{
+   width: 40%;
+  }
+  .priceRangeSectionContent span{
+    font-size: 18px;
+    padding: 7px;
+  }
+  .btn-close{
+    margin: 5px;
+}
+.roomsCountSectionContent .rooms, .roomsCountSectionContent .beds, .roomsCountSectionContent .baths{
+  width: 13%;
+}
+.roomsCountSectionContent .rooms select, .roomsCountSectionContent .beds select, .roomsCountSectionContent .baths select{
+  width: 100%;
+}
   @media only screen and  (max-width: 764px) {
     .category{
        grid-template-columns: 20% 60% 20%!important;
+    }
+    .modal-dialog{
+      width: auto!important;
     }
        
      }

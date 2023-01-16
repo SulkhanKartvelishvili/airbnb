@@ -21,6 +21,7 @@ export class BookingComponent implements OnInit {
   // userId!:any;
   bankCards: any = [];
   userBankCard: any = null;
+  bookingBtn!:any;
   constructor(
     private hotelServ: HotelCardService,
     private bankCardServ: BankCardService,
@@ -28,9 +29,9 @@ export class BookingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if(this.bookedHotelData != null){
-    (document.getElementById("book") as HTMLInputElement).disabled = true;
-  }
+  //   if(this.userBankCard == null){
+  //   (document.getElementById("book") as HTMLInputElement).disabled = true;
+  // }
     this.bookedHotelData = JSON.parse(
       localStorage.getItem("bookedHotelData") || "null"
     );
@@ -41,7 +42,7 @@ export class BookingComponent implements OnInit {
     //   .subscribe((response) => {
     //     this.fetchedHotelData = response;
     //   });
-
+     this.bookingBtn = document.getElementById("book");
     this.bankCardServ.getBankCardList().subscribe((res) => {
       this.bankCards = res.map((e) => {
         return {
@@ -54,8 +55,9 @@ export class BookingComponent implements OnInit {
           this.userBankCard = item;
           this.userBankCard.number = this.userBankCard.number.substring(12, 16);
         }
-        if (this.userBankCard != null) {
-          (document.getElementById("book") as HTMLInputElement).disabled =
+        
+        if (this.bookingBtn != null && this.userBankCard != null) {
+          (this.bookingBtn as HTMLInputElement).disabled =
             false;
         }
       });
@@ -78,8 +80,11 @@ export class BookingComponent implements OnInit {
     };
     this.bankCardServ.createBankCard(bankCard);
 
- 
-    (document.getElementById("book") as HTMLInputElement).disabled = false;
+    
+    if (this.bookingBtn != null && this.userBankCard != null) {
+      (this.bookingBtn as HTMLInputElement).disabled =
+        false;
+    }
   }
 
   bookhotel(){

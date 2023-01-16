@@ -39,7 +39,7 @@
                 <div class="mb-3">
                   <label class="form-label">Card Number</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" ngModel type="tel" required inputmode="numeric" pattern="[0-9\s]{13,19}" minlength="16" maxlength="16" autocomplete="cc-number" maxlength="19" name="number" aria-describedby="basic-addon3" placeholder="1234 5678 9876 5432">
+                    <input type="text" class="form-control" ngModel type="number" required inputmode="numeric" pattern="[0-9\s]{13,19}" minlength="16" maxlength="16" autocomplete="cc-number" maxlength="19" name="number" aria-describedby="basic-addon3" placeholder="1234 5678 9876 5432">
                   </div>
                 </div>
                 <div class="mb-3 d-flex">
@@ -103,7 +103,7 @@
               <span id="daysPriceSum">{{bookedHotelData[0].priceSum}}$</span>
             </div>
           </div>
-          <div class="bookingSection">
+          <div class="bookingSection" *ngIf="userBankCard !=null">
             <button id="book" type="submit" class="btn btn-dark col-md-12 d-block continue" (click)="bookhotel()"> Continue </button>
           </div>
         </div>
