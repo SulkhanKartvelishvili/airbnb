@@ -92,4 +92,9 @@ export class NavbarComponent implements OnInit {
   // loginInWithGoogle(){s
   //   this.userServ.googleAuth();
   // }
+
+
+  public open(modal: any): void {
+    this.modalService.open(modal);
+  }
 }

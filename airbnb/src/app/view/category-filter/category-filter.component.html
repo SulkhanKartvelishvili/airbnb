@@ -10,24 +10,22 @@
   </div>
 
   <div class="filter">
-    <button class="btn-white" (click)="filterPopUp()">
+    <button class="btn-white" (click)="open(content)">
       <li><fa-icon [icon]="faSliders"></fa-icon></li>
       filter
     </button>
   </div>
 </section>
 
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{ display: displayStyle }"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <button type="button" class="btn-close" (click)="close()"></button>
+<ng-template #content let-modal>
 
-      <div class="modal-header"></div>
+
+
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-basic-title">Filters</h2>
+      </div>
 
       <div class="modal-body">
         <div class="priceRangeSection">
@@ -62,17 +60,48 @@
           <span>{{ priceTo }}</span> -->
 
         </div>
-<div class="d-flex twoDiv">
+       
+
   <div class="typeOfPlaceSection">
     <div class="tpyeOfPlaceSectionHeading">
     <h1>Type of place</h1>
   </div>
 
-    <select class="form-select" aria-label="Default select example" required [(ngModel)]="typeOfPlace">
+    <!-- <select class="form-select" aria-label="Default select example" required [(ngModel)]="typeOfPlace">
       <option value="entire place">Entire place</option>
       <option value="private room">Private room</option>
       <option value="shared room">Shared room</option>
-    </select>
+    </select> -->
+    <form [formGroup]="typeOfPlaceForm" class="typeOfPlaceForm">
+
+    <div class="entirePlace type">
+
+      <div><mat-checkbox class="example-margin" [formControlName]="'entire place'"></mat-checkbox></div>
+
+      <div class="entirePlaceText">
+        <h3>Entire Place</h3>
+        <h4>A place all to yourself</h4>
+      </div>
+     </div>
+     <div class="privateRoom type">
+
+      <div><mat-checkbox class="example-margin" [formControlName]="'private room'"></mat-checkbox></div>
+
+      <div class="privateRoomText">
+        <h3>Private room</h3>
+        <h4>Your own room in a home or a hotel, plus some shared common spaces</h4>
+      </div>
+     </div>
+     <div class="sharedRoom type">
+
+      <div><mat-checkbox class="example-margin" [formControlName]="'shared room'"></mat-checkbox></div>
+
+      <div class="sharedRoomText">
+        <h3>Shared room</h3>
+        <h4>A sleeping space and common areas that may be shared with others</h4>
+      </div>
+     </div> 
+     </form>
   </div>
   <div class="languages">
     <div class="languagesHeading">
@@ -87,7 +116,7 @@
   
   </select>
   </div>
-</div>
+
       
 
         <div class="roomsCountSection">
@@ -135,8 +164,8 @@
           <div class="propertyTypeHeading">
             <h1>Property type</h1>
           </div>
-          <button (click)="onHomePropertyTypeClick()"  type="button" class="btn btn-light" id="home">Home</button>
-          <button (click)="onVillaProperyTypeClick()"  type="button" class="btn btn-light" id="villa">Villa</button>
+          <!-- <button (click)="onHomePropertyTypeClick()"  type="button" class="btn btn-light" id="home">Home</button>
+          <button (click)="onVillaProperyTypeClick()"  type="button" class="btn btn-light" id="villa">Villa</button> -->
         </div>
 
         <div class="ameneties">
@@ -150,6 +179,8 @@
                 <div><mat-checkbox class="example-margin" [formControlName]="'Hair dryer'" ></mat-checkbox>{{amenetiesList[1]}}</div> 
                 
                 <div><mat-checkbox class="example-margin" [formControlName]="'Cleaning products'"></mat-checkbox>{{amenetiesList[2]}}</div>
+               
+
                 <div><mat-checkbox class="example-margin" [formControlName]="'Shampoo'"></mat-checkbox>{{amenetiesList[3]}}</div>
                 <div><mat-checkbox class="example-margin" [formControlName]="'Conditioner'"></mat-checkbox>{{amenetiesList[4]}}</div>
                 <div><mat-checkbox class="example-margin" [formControlName]="'Body soap'"></mat-checkbox>{{amenetiesList[5]}}</div>
@@ -185,8 +216,8 @@
 
         <div class="modal-footer">
           <button
-          (click)="saveAmeneties()"
-
+          (click)="onFilterClick()"
+          (click)="modal.close('Save click')"
           mat-raised-button
           [routerLink]="['/filtered']"
 
@@ -196,9 +227,8 @@
           </button>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+  
+</ng-template>
 <!-- 
   [queryParams]="{
 

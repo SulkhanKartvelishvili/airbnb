@@ -96,7 +96,7 @@
    display: flex;
   }
   .type .entirePlaceText, .type .privateRoomText, .type .sharedRoomText {
-    margin-left: 20px;
+    margin-left: 15px;
   }
 
   .type div input{
@@ -184,6 +184,40 @@
 .roomsCountSectionContent .rooms select, .roomsCountSectionContent .beds select, .roomsCountSectionContent .baths select{
   width: 100%;
 }
+span.mat-checkbox-frame {
+  border-width: thin;
+  border: 1px solid rgba(0,0,0,.25);
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+}
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: black !important;
+}
+
+::ng-deep .mat-checkbox-frame { 
+  border-width: thin!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+}
+.typeOfPlaceSection .mat-checkbox{
+  margin-top:10px;
+}
+.typeOfPlaceSection ::ng-deep .mat-checkbox-inner-container{
+ 
+  width: 20px;
+  height: 20px;
+}
+.typeOfPlaceForm {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+/* ::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+} */
   @media only screen and  (max-width: 764px) {
     .category{
        grid-template-columns: 20% 60% 20%!important;

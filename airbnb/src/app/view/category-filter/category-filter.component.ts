@@ -26,21 +26,18 @@ export class CategoryFilterComponent implements OnInit {
   rooms!: number;
   beds!: number;
   bathrooms!: number;
-  propertyType:string[] =[];
-   chosenAmeneties:string[] = [
-
-   ];
-   counter = 0;
+  chosenTypeOfPlaces:string[] =[];
+   chosenAmeneties:string[] = [];
    amenetiesForm!:FormGroup;
-   chosenAmenetiesUrl!:string;
+   typeOfPlaceForm!:FormGroup;
+
    language!:any;
 
-  //  entirePlace:string = '';
-  //  privateRoom:string = '';
-  //  sharedRoom:string = '';
-
-  roomsCounter: number[] = [];
+ 
   amenetiesList:any[]=[];
+
+  entirePlace = '';
+
   constructor(
     private httpClient: HttpClient,
     private categoryFilterService: CategoryFilterService,
@@ -54,35 +51,41 @@ export class CategoryFilterComponent implements OnInit {
 
 
     this.amenetiesForm  = this._formBuilder.group({
-      "Bathtub":  this.amenetiesList[0], 
-      "Hair dryer": this.amenetiesList[1],
-      "Cleaning products":this.amenetiesList[2],
-      "Shampoo":this.amenetiesList[3],
-      "Conditioner":this.amenetiesList[4],
-      "Body soap":this.amenetiesList[5],
-      "Bidet":this.amenetiesList[6],
-      "Shower gel":this.amenetiesList[8],
-      "Heating":this.amenetiesList[17],
-      "Refrigerator":this.amenetiesList[20],
-      "Mini fridge":this.amenetiesList[21],
-      "Coffee maker":this.amenetiesList[22],
-      "Fire pit":this.amenetiesList[26],
-      "Free street parking":this.amenetiesList[30],
-      "Dishwasher":this.amenetiesList[40],
-      "Satellite television":this.amenetiesList[42],
-      "Smart television":this.amenetiesList[43],
-      "Integrated sound system":this.amenetiesList[44],
-      "Wi-Fi":this.amenetiesList[45],
-      "Air conditioning":this.amenetiesList[46],
-      "Extra pillows and blankets":this.amenetiesList[51],
-      "TV":this.amenetiesList[52],
-      "Smoke alarm":this.amenetiesList[57],
-      "Fire extinguisher":this.amenetiesList[58],
-      "First aid kit":this.amenetiesList[59],
-      "Kitchen":this.amenetiesList[60],
-      "Cooking basics":this.amenetiesList[61],
-      "Dishes and silverware":this.amenetiesList[62]
+      "Bathtub":  '', 
+      "Hair dryer": '',
+      "Cleaning products":'',
+      "Shampoo":'',
+      "Conditioner":'',
+      "Body soap":'',
+      "Bidet":'',
+      "Shower gel":'',
+      "Heating":'',
+      "Refrigerator":'',
+      "Mini fridge":'',
+      "Coffee maker":'',
+      "Fire pit":'',
+      "Free street parking":'',
+      "Dishwasher":'',
+      "Satellite television":'',
+      "Smart television":'',
+      "Integrated sound system":'',
+      "Wi-Fi":'',
+      "Air conditioning":'',
+      "Extra pillows and blankets":'',
+      "TV":'',
+      "Smoke alarm":'',
+      "Fire extinguisher":'',
+      "First aid kit":'',
+      "Kitchen":'',
+      "Cooking basics":'',
+      "Dishes and silverware":''
     });
+
+    this.typeOfPlaceForm = this._formBuilder.group({
+      'entire place':'',
+      "private room":'',
+      "shared room":''
+    })
   
 
 
@@ -92,7 +95,6 @@ export class CategoryFilterComponent implements OnInit {
     
     this.getAllCategory();
     this.getAllAmeneties();
-    this.counter = 0;
     this.chosenAmeneties = [];
   }
   displayStyle = 'none';
@@ -112,18 +114,36 @@ export class CategoryFilterComponent implements OnInit {
 
 
   
-  saveAmeneties(){
-    this.displayStyle = 'none';
+  onFilterClick(){
+    // this.displayStyle = 'none';
     this.chosenAmeneties = [];
-    Object.keys(this.amenetiesForm.controls).forEach((key:string) => {
+    this.chosenTypeOfPlaces = [];
+
+    Object.keys(this.typeOfPlaceForm.controls).forEach((key:string) => {
       
+     
+      const abstractControl = this.typeOfPlaceForm.get(key);
+      if(abstractControl instanceof FormGroup){
+       return;
+     }else{
+      if(abstractControl!.value == true){
+    
+              this.chosenTypeOfPlaces.push(key);
+      }
+     }
+     })
+    
+
+    Object.keys(this.amenetiesForm.controls).forEach((key:string) => {
+     
      
       const abstractControl = this.amenetiesForm.get(key);
       if(abstractControl instanceof FormGroup){
        return;
      }else{
+     
       if(abstractControl!.value == true){
-        this.chosenAmenetiesUrl += `${key}`;
+
               this.chosenAmeneties.push(key);
       }
      }
@@ -135,10 +155,10 @@ export class CategoryFilterComponent implements OnInit {
           Amenities: this.chosenAmeneties,
           PriceFrom:this.priceFrom,
           PriceTo: this.priceTo,
-          typeOfPlace:this.typeOfPlace,
+          typeOfPlace:this.chosenTypeOfPlaces,
           RoomsCount:this.rooms,
           BedsPerRoomCount:this.bathrooms,
-           propertyType:this.propertyType,
+          //  propertyType:this.chosenTypeOfPlaces,
            HostLanguages: this.language
         },
         }
@@ -154,11 +174,7 @@ export class CategoryFilterComponent implements OnInit {
 // BathRoomsCount: bathrooms,
 // PropertyType: propertyType 
 
-  //  console.log(this.chosenAmeneties);
-  //   console.log(this.chosenAmenetiesUrl);
 
-
-// console.log(this.chosenAmenetiesUrl);
 
 
   }
@@ -169,25 +185,27 @@ export class CategoryFilterComponent implements OnInit {
   }
 
 
-  onHomePropertyTypeClick() {
-    // this.propertyType.push("home");
-    this.propertyType[0]="home";
-    var x = document.getElementById("home");
-    if(x!=null){
-    x.classList.remove("btn-light");
-    x.classList.add("btn-dark");
+  // onHomePropertyTypeClick() {
+   
+  //   this.propertyType[0]="home";
+  //   var x = document.getElementById("home");
+  //   if(x!=null){
+  //   x.classList.remove("btn-light");
+  //   x.classList.add("btn-dark");
+  // }
+  // }
+  // onVillaProperyTypeClick() {
+    
+  //   this.propertyType[1]="villa";
+  //   var x = document.getElementById("villa");
+  //   if(x!=null){
+  //   x.classList.remove("btn-light");
+  //   x.classList.add("btn-dark");
+  // }
+  // }
+  public open(modal: any): void {
+    this.modalService.open(modal, { size: 'lg',  scrollable: true  });
   }
-  }
-  onVillaProperyTypeClick() {
-    // this.propertyType.push("villa");
-    this.propertyType[1]="villa";
-    var x = document.getElementById("villa");
-    if(x!=null){
-    x.classList.remove("btn-light");
-    x.classList.add("btn-dark");
-  }
-  }
-
   // console.log(this.queryParams);
   // this.close();
 
