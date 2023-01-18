@@ -69,7 +69,7 @@
     height: 2px;
   }
 
-  .btn-white{
+ .category .btn-white{
     border-width: thin;
     background: white;
     margin-top: 20px!important;
@@ -151,17 +151,17 @@
   .propertyType button{
     font-size: 15px;
   }
-  .propertyType button:nth-child(3){
+  .propertyType button:nth-child(4){
  margin-left:10px;
   }
-  .amenetiesForm{
+  /* .amenetiesForm{
     display: grid;
     grid-template-columns: 50% 50%;
+  } */
+  .amenetiesForm mat-checkbox, .languageForm .mat-checkbox{
+    padding-right: 10px;
   }
-  .amenetiesForm mat-checkbox{
-    padding-right: 5px;
-  }
-  .priceRangeSectionContent{
+  .priceRangeSectionContent form{
     display: flex;
   }
   .priceRangeSectionContent input{
@@ -179,6 +179,9 @@
     border-radius: 30px !important;
     min-width: 59px !important;
     margin-left: 15px;
+}
+.roomsButtonGroup #anyRoom, .bedsButtonGroup #anyBed, .bathsButtonGroup #anyBath{
+  margin-left: 0px;
 }
 span.mat-checkbox-frame {
   border-width: thin;
@@ -201,19 +204,103 @@ span.mat-checkbox-frame {
 .typeOfPlaceSection .mat-checkbox{
   margin-top:10px;
 }
-.typeOfPlaceSection ::ng-deep .mat-checkbox-inner-container{
+.typeOfPlaceSection ::ng-deep .mat-checkbox-inner-container, .amenetiesForm ::ng-deep .mat-checkbox-inner-container, .languageForm ::ng-deep .mat-checkbox-inner-container{
  
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
-.typeOfPlaceForm {
+.typeOfPlaceForm, .languageForm {
   display: grid;
   grid-template-columns: 50% 50%;
 }
 .active{
   background-color: black;
 }
+.propertyType li{
+  list-style: none;
+  padding-bottom: 25px;
+}
+.propertyType img{
 
+  width: 32px;
+  height: 32px;
+}
+.propertyType button{
+  text-align: inherit;
+  width: 163px;
+  height: 122px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.defaultPropertyTypeBtn{
+  background-color: rgb(255, 255, 255) !important;
+  border-color: rgba(128, 128, 128, 0.452);
+}
+.activePropertyTypeBtn{
+  background-color: rgb(255, 255, 255) !important;
+  border-color: black;
+  border-width: 2px;
+}
+.amenetieCategorySection h3{
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.amenetiesHeading h1{
+  font-weight: 500;
+}
+.essentials, .features, .safety{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.essentials div, .features div, .safety div, .languageForm div{
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.modal-body h1{
+  font-weight: 500;
+}
+.priceRangeSection, .typeOfPlaceSection, .roomsCountSection, .propertyType, .ameneties{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.bedsHeading, .bathsHeading{
+  margin-top:20px;
+}
+.btn-light{
+  background:white!important;
+  border-color: rgba(128, 128, 128, 0.452);
+
+}
+.modal-footer{
+  justify-content: space-between;
+}
+.modal-footer a{
+  text-decoration: underline!important;
+  font-weight: 500!important;
+  font-size: 16px;
+}
+.modal-footer .btn-white{
+  border-width: thin;
+    background: white;
+    border-color: #abb0b540;
+    display: flex;
+    height: auto;
+    padding-top: 12px;
+    font-size: 15px;
+    padding-bottom: 12px;
+    border-radius: 10px;
+}
+.priceRangeSectionContent span:nth-child(1){
+  padding-left: 0px;
+}
+.modal-header{
+  display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+.modalHeading{
+  text-align: center;
+  padding-top: 15px;
+}
 /* ::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
   background-color: black !important;
 } */

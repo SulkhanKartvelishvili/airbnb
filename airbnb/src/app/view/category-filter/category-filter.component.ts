@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { CategoryFilterService } from 'src/app/core/http/category/category-filter.service';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute,Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
@@ -18,25 +18,26 @@ import { FilterService } from 'src/app/core/http/filter/filter.service';
   styleUrls: ['./category-filter.component.css'],
 })
 export class CategoryFilterComponent implements OnInit {
-  categoryList: [] = [];
+  public isCollapsed = true;
 
+  categoryList: [] = [];
   priceFrom!: number;
   priceTo!: number;
-  typeOfPlace!: string;
   rooms:string[]=[];
   beds:string[]=[];
   bathrooms:string[]=[];
   chosenTypeOfPlaces:string[] =[];
   chosenAmeneties:string[] = [];
+  chosenpropertyTypes:string[]=[];
+  chosenLanguages:string[]=[];
   amenetiesForm!:FormGroup;
   typeOfPlaceForm!:FormGroup;
+  languageForm!:FormGroup;
+  priceForm!:FormGroup;
 
-   language!:any;
-
- 
   amenetiesList:any[]=[];
 
-  entirePlace = '';
+
 
   constructor(
     private httpClient: HttpClient,
@@ -83,10 +84,21 @@ export class CategoryFilterComponent implements OnInit {
 
     this.typeOfPlaceForm = this._formBuilder.group({
       'entire place':'',
-      "private room":'',
-      "shared room":''
+      'private room':'',
+      'shared room':''
     })
-  
+
+    this.languageForm = this._formBuilder.group({
+      'English':'',
+      'Russian':'',
+      'French':'',
+
+    })
+
+   this.priceForm = new FormGroup({
+    'priceFrom':new FormControl(null),
+    'priceTo':new FormControl(null),
+   }) 
 
 
   }
@@ -96,7 +108,7 @@ export class CategoryFilterComponent implements OnInit {
 
     this.getAllCategory();
     this.getAllAmeneties();
-    this.chosenAmeneties = [];
+   
   }
   displayStyle = 'none';
   faSliders = faSliders;
@@ -112,15 +124,39 @@ export class CategoryFilterComponent implements OnInit {
      
     })
   }
-
+  clear(){
+  this.amenetiesForm.reset();
+  this.typeOfPlaceForm.reset();
+  this.languageForm.reset();
+  this.roomChose("null");
+  this.bedChose("null");
+  this.bathChose("null");
+  this.onPropertyTypeClick("null");
+  this.priceForm.reset();
+  }
 
   
   onFilterClick(){
     // this.displayStyle = 'none';
-    this.chosenAmeneties = [];
-    this.chosenTypeOfPlaces = [];
+   
+    console.log(this.priceForm.value);
 
-    Object.keys(this.typeOfPlaceForm.controls).forEach((key:string) => {
+    Object.keys(this.languageForm.controls).forEach((key:string) => {
+      
+     
+      const abstractControl = this.languageForm.get(key);
+      if(abstractControl instanceof FormGroup){
+       return;
+     }else{
+      if(abstractControl!.value == true){
+    
+              this.chosenLanguages.push(key);
+      }
+     }
+     }) 
+    
+
+   Object.keys(this.typeOfPlaceForm.controls).forEach((key:string) => {
       
      
       const abstractControl = this.typeOfPlaceForm.get(key);
@@ -132,7 +168,7 @@ export class CategoryFilterComponent implements OnInit {
               this.chosenTypeOfPlaces.push(key);
       }
      }
-     })
+     }) 
     
 
     Object.keys(this.amenetiesForm.controls).forEach((key:string) => {
@@ -149,37 +185,39 @@ export class CategoryFilterComponent implements OnInit {
       }
      }
      })
+
+   
+    
     this.route.navigate(
       ['/filtered'],
       {
         queryParams: { 
           Amenities: this.chosenAmeneties,
-          PriceFrom:this.priceFrom,
-          PriceTo: this.priceTo,
+          PriceFrom:this.priceForm.value.priceFrom,
+          PriceTo: this.priceForm.value.priceTo,
           typeOfPlace:this.chosenTypeOfPlaces,
           RoomsCount:this.rooms[0]?.substring(4,5),
           BedsPerRoomCount:this.beds[0]?.substring(3,4),
           BathRoomsCount:this.bathrooms[0]?.substring(4,5),
-          //  propertyType:this.chosenTypeOfPlaces,
-           HostLanguages: this.language
+          propertyType:this.chosenpropertyTypes,
+          HostLanguages: this.chosenLanguages
         },
         }
       );
+      this.chosenAmeneties = [];
+      this.chosenpropertyTypes = [];
+      this.rooms =[];
+      this.bathrooms = [];
+      this.beds = [];
+      this.chosenLanguages =[];
+      this.chosenTypeOfPlaces = [];
+      this.priceForm.reset();
+      this.amenetiesForm.reset();
+      this.typeOfPlaceForm.reset();
+      this.languageForm.reset();
+      
   }
-  close() {
-    this.displayStyle = 'none';
-//      PriceFrom: priceFrom,
-// PriceTo: priceTo,
-// typeOfPlace: typeOfPlace,
-// RoomsCount: rooms,
-// BedsPerRoomCount: beds,
-// BathRoomsCount: bathrooms,
-// PropertyType: propertyType 
-
-
-
-
-  }
+  
   roomChose(id:string){
 
 if(id == "anyRoom"){
@@ -191,6 +229,16 @@ if(id == "anyRoom"){
   var lastBtn = document.getElementById(lastBtnId);
   lastBtn?.classList.add("btn-light");
   lastBtn?.classList.remove("btn-dark");
+}
+else if(id == "null"){
+  var lastBtnId= this.rooms.pop()!?.toString();
+  var lastBtn = document.getElementById(lastBtnId);
+  lastBtn?.classList.add("btn-light");
+  lastBtn?.classList.remove("btn-dark");
+  this.rooms = [];
+  var anyRoomBtn = document.getElementById("anyRoom");
+  anyRoomBtn?.classList.add("btn-dark");
+  anyRoomBtn?.classList.remove("btn-light");
 }
 else if(id != "anyRoom"){
   var anyRoomBtn = document.getElementById("anyRoom");
@@ -222,6 +270,16 @@ bedChose(id:string){
     lastBtn?.classList.add("btn-light");
     lastBtn?.classList.remove("btn-dark");
   }
+  else if(id == "null"){
+    var lastBtnId= this.beds.pop()!?.toString();
+    var lastBtn = document.getElementById(lastBtnId);
+    lastBtn?.classList.add("btn-light");
+    lastBtn?.classList.remove("btn-dark");
+    this.beds = [];
+    var anyBedBtn = document.getElementById("anyBed");
+    anyBedBtn?.classList.add("btn-dark");
+    anyBedBtn?.classList.remove("btn-light");
+  }
   else if(id != "anyBed"){
     var anyBedBtn = document.getElementById("anyBed");
     anyBedBtn?.classList.remove("btn-dark");
@@ -251,6 +309,16 @@ bathChose(id:string){
     lastBtn?.classList.add("btn-light");
     lastBtn?.classList.remove("btn-dark");
   }
+  else if(id == "null"){
+    var lastBtnId= this.bathrooms.pop()!?.toString();
+    var lastBtn = document.getElementById(lastBtnId);
+    lastBtn?.classList.add("btn-light");
+    lastBtn?.classList.remove("btn-dark");
+    this.bathrooms = [];
+    var anyBathBtn = document.getElementById("anyBath");
+    anyBathBtn?.classList.add("btn-dark");
+    anyBathBtn?.classList.remove("btn-light");
+  }
   else if(id != "anyBath"){
     var anyBathBtn = document.getElementById("anyBath");
     anyBathBtn?.classList.remove("btn-dark");
@@ -269,6 +337,52 @@ bathChose(id:string){
   }
   
 }
+onPropertyTypeClick(propertyType:string){
+  if(propertyType != "null"){
+  if(!this.chosenpropertyTypes.includes(propertyType)){
+this.chosenpropertyTypes.push(propertyType);
+var btn = document.getElementById(propertyType);
+btn?.classList.remove("defaultPropertyTypeBtn");
+btn?.classList.add("activePropertyTypeBtn");
+}
+else if(this.chosenpropertyTypes.includes(propertyType)){
+  this.chosenpropertyTypes.splice(this.chosenpropertyTypes.indexOf(propertyType), 1);
+  var btn = document.getElementById(propertyType);
+  btn?.classList.add("defaultPropertyTypeBtn");
+  btn?.classList.remove("activePropertyTypeBtn");
+}
+}
+else{
+  var homeBtn = document.getElementById(this.chosenpropertyTypes[0]);
+  var villaBtn = document.getElementById(this.chosenpropertyTypes[1]);
+  if(homeBtn){
+    homeBtn?.classList.add("defaultPropertyTypeBtn");
+
+    homeBtn.classList.remove("activePropertyTypeBtn")
+  } 
+  if(villaBtn){
+    villaBtn?.classList.add("defaultPropertyTypeBtn");
+
+    villaBtn.classList.remove("activePropertyTypeBtn");
+  }
+  this.chosenpropertyTypes = [];
+}
+}
+seeMore(){
+  var seeMoreBtn = document.querySelector<HTMLElement>("#seeMore");
+  if(seeMoreBtn && seeMoreBtn.innerHTML != "Show less"){
+    seeMoreBtn.innerHTML = "Show less";
+  }
+  else   
+  if(seeMoreBtn && seeMoreBtn.innerHTML != "Show more"){
+
+    seeMoreBtn.innerHTML = "Show more";
+
+    
+
+  }
+}
+  
 
   // filterPopUp() {
   //   this.displayStyle = 'block';

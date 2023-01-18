@@ -21,10 +21,12 @@
 
 
 
-  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 
       <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+<div class="modalHeading">
         <h2 class="modal-title" id="modal-basic-title">Filters</h2>
+      </div>
       </div>
 
       <div class="modal-body">
@@ -32,9 +34,12 @@
           <div class="priceRangeSectionHeading">
             <h1>Price range</h1>
           </div>
+          <br>
          <div class="priceRangeSectionContent">
-          <span>From </span> <input type="number" class="form-control"  [(ngModel)]="priceFrom"> 
-          <span>To </span><input type="number" class="form-control"  [(ngModel)]="priceTo">
+          <form [formGroup]="priceForm">
+          <span>From </span> <input type="number" class="form-control"  formControlName="priceFrom"> 
+          <span>To </span><input type="number" class="form-control"  formControlName="priceTo">
+        </form>
         </div>
           <!-- <input
             type="range"
@@ -58,15 +63,15 @@
           <span>{{ priceFrom }}</span>
           <br />
           <span>{{ priceTo }}</span> -->
-
+          <!-- <mdb-range></mdb-range> -->
         </div>
-       
+       <hr>
 
   <div class="typeOfPlaceSection">
     <div class="tpyeOfPlaceSectionHeading">
     <h1>Type of place</h1>
   </div>
-
+  <br>
     <!-- <select class="form-select" aria-label="Default select example" required [(ngModel)]="typeOfPlace">
       <option value="entire place">Entire place</option>
       <option value="private room">Private room</option>
@@ -103,38 +108,20 @@
      </div> 
      </form>
   </div>
-  <div class="languages">
-    <div class="languagesHeading">
-      <h1>Host language</h1>    
-  </div>
-  <select class="form-select" aria-label="Default select example" required [(ngModel)]="language">
-    <option value="English">English</option>
-    <option value="Russian">Russian</option>
-    <option value="French">French</option>
-    <option value="German">German</option>
-    <option value="Japanese">Japanese</option>
-  
-  </select>
-  </div>
 
-      
+  <hr>
 
         <div class="roomsCountSection">
           <div class="roomsCountSectionHeading">
-            <h1>Amount of rooms</h1>
+            <h1>Rooms and beds</h1>
           </div>
-
+          <br>
 <div class="roomsCountSectionContent">
           <div class="rooms">
-            <label>Rooms</label>
-            <!-- <select class="form-select" aria-label="Default select example" required [(ngModel)]="rooms">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select> -->
+            <div class="roomsHeading">
+            <h3>Rooms</h3>
+          </div>
+          
      <div class="roomsButtonGroup">
       <button class="btn btn-dark" (click)="roomChose('anyRoom')" id="anyRoom">Any</button>
       <button (click)="roomChose('room1')" id="room1" class="btn btn-light">1</button>
@@ -148,7 +135,9 @@
 
           </div>
           <div class="beds">
-            <label>Beds</label>
+            <div class="bedsHeading">
+            <h3>Beds</h3>
+          </div>
             <div class="bedsButtonGroup">
               <button class="btn btn-dark" (click)="bedChose('anyBed')" id="anyBed">Any</button>
               <button (click)="bedChose('bed1')" id="bed1" class="btn btn-light">1</button>
@@ -161,7 +150,9 @@
              </div>
           </div>
           <div class="baths">
-            <label>Bathrooms</label>
+            <div class="bathsHeading">
+            <h3>Bathrooms</h3>
+          </div>
             <div class="bathsButtonGroup">
               <button class="btn btn-dark" (click)="bathChose('anyBath')" id="anyBath">Any</button>
               <button (click)="bathChose('bath1')" id="bath1" class="btn btn-light">1</button>
@@ -175,74 +166,146 @@
           </div>
         </div>
       </div>
+      <hr>
         <div class="propertyType">
           <div class="propertyTypeHeading">
             <h1>Property type</h1>
           </div>
+          <br>
           <!-- <button (click)="onHomePropertyTypeClick()"  type="button" class="btn btn-light" id="home">Home</button>
           <button (click)="onVillaProperyTypeClick()"  type="button" class="btn btn-light" id="villa">Villa</button> -->
-        </div>
+          <button type="button" value="home" (click)="onPropertyTypeClick('home')"  class="btn defaultPropertyTypeBtn" id="home"> <li><img src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg"></li>Home</button>
+          <button type="button" value="villa" (click)="onPropertyTypeClick('villa')"  class="btn defaultPropertyTypeBtn" id="villa"> <li><img src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg"></li>Villa</button>
 
+        </div>
+        <hr>
         <div class="ameneties">
           <div class="amenetiesHeading">
-            <h1>What this place offers</h1>    
+            <h1>Amenities</h1>    
         </div>
+        <br>
         <div class="amenetiesContent">
             <div class="amenetieCategorySection" >
               <form [formGroup]="amenetiesForm" class="amenetiesForm">
-                 <div><mat-checkbox class="example-margin" [formControlName]="'Bathtub'"  ></mat-checkbox>{{amenetiesList[0]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Hair dryer'" ></mat-checkbox>{{amenetiesList[1]}}</div> 
-                
-                <div><mat-checkbox class="example-margin" [formControlName]="'Cleaning products'"></mat-checkbox>{{amenetiesList[2]}}</div>
-               
+                <div  class="essentialsHeading">
+                  <h3>Essentials</h3>
+                </div>
+                <div class="essentials">
+                 
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Wi-Fi'"></mat-checkbox>{{amenetiesList[45]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Kitchen'"></mat-checkbox>{{amenetiesList[60]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Dishwasher'"></mat-checkbox>{{amenetiesList[40]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'TV'"></mat-checkbox>{{amenetiesList[52]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Hair dryer'" ></mat-checkbox>{{amenetiesList[1]}}</div> 
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Bathtub'"  ></mat-checkbox>{{amenetiesList[0]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Air conditioning'"></mat-checkbox>{{amenetiesList[46]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Conditioner'"></mat-checkbox>{{amenetiesList[4]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Heating'"></mat-checkbox>{{amenetiesList[17]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Refrigerator'"></mat-checkbox>{{amenetiesList[20]}}</div>
 
+                </div>
+                <br>
+                <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                  <div class="featuresHeading">
+                    <h3 >Features</h3>
+                <div class="features">
+                  
+<div><mat-checkbox class="example-margin" [formControlName]="'Fire pit'"></mat-checkbox>{{amenetiesList[26]}}</div>
+<div><mat-checkbox class="example-margin" [formControlName]="'Free street parking'"></mat-checkbox>{{amenetiesList[30]}}</div>
+<div><mat-checkbox class="example-margin" [formControlName]="'Satellite television'"></mat-checkbox>{{amenetiesList[42]}}</div>
+<div><mat-checkbox class="example-margin" [formControlName]="'Integrated sound system'"></mat-checkbox>{{amenetiesList[44]}}</div>
+<div><mat-checkbox class="example-margin" [formControlName]="'Extra pillows and blankets'"></mat-checkbox>{{amenetiesList[51]}}</div>
+<div><mat-checkbox class="example-margin" [formControlName]="'Cooking basics'"></mat-checkbox>{{amenetiesList[61]}}</div>
+<div><mat-checkbox class="example-margin" [formControlName]="'Dishes and silverware'" ></mat-checkbox>{{amenetiesList[62]}}</div> 
+</div>
+                </div>
+                <br>
+                <div class="safetyHeading">
+                  <h3>Safety</h3>  
+                  </div>
+                <div class="safety">
+                
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Smoke alarm'"></mat-checkbox>{{amenetiesList[57]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'Fire extinguisher'"></mat-checkbox>{{amenetiesList[58]}}</div>
+                  <div><mat-checkbox class="example-margin" [formControlName]="'First aid kit'"></mat-checkbox>{{amenetiesList[59]}}</div>
+                </div>
+                
+                <!-- <div><mat-checkbox class="example-margin" [formControlName]="'Cleaning products'"></mat-checkbox>{{amenetiesList[2]}}</div>
                 <div><mat-checkbox class="example-margin" [formControlName]="'Shampoo'"></mat-checkbox>{{amenetiesList[3]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Conditioner'"></mat-checkbox>{{amenetiesList[4]}}</div>
                 <div><mat-checkbox class="example-margin" [formControlName]="'Body soap'"></mat-checkbox>{{amenetiesList[5]}}</div>
                 <div><mat-checkbox class="example-margin" [formControlName]="'Bidet'"></mat-checkbox>{{amenetiesList[6]}}</div>
                 <div><mat-checkbox class="example-margin" [formControlName]="'Shower gel'"></mat-checkbox>{{amenetiesList[8]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Heating'"></mat-checkbox>{{amenetiesList[17]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Refrigerator'"></mat-checkbox>{{amenetiesList[20]}}</div>
                 <div><mat-checkbox class="example-margin" [formControlName]="'Mini fridge'"></mat-checkbox>{{amenetiesList[21]}}</div>
+             
+                
                 <div><mat-checkbox class="example-margin" [formControlName]="'Coffee maker'"></mat-checkbox>{{amenetiesList[22]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Fire pit'"></mat-checkbox>{{amenetiesList[26]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Free street parking'"></mat-checkbox>{{amenetiesList[30]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Dishwasher'"></mat-checkbox>{{amenetiesList[40]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Satellite television'"></mat-checkbox>{{amenetiesList[42]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Smart television'"></mat-checkbox>{{amenetiesList[43]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Integrated sound system'"></mat-checkbox>{{amenetiesList[44]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Wi-Fi'"></mat-checkbox>{{amenetiesList[45]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Air conditioning'"></mat-checkbox>{{amenetiesList[46]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Extra pillows and blankets'"></mat-checkbox>{{amenetiesList[51]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'TV'"></mat-checkbox>{{amenetiesList[52]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Smoke alarm'"></mat-checkbox>{{amenetiesList[57]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Fire extinguisher'"></mat-checkbox>{{amenetiesList[58]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'First aid kit'"></mat-checkbox>{{amenetiesList[59]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Kitchen'"></mat-checkbox>{{amenetiesList[60]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Cooking basics'"></mat-checkbox>{{amenetiesList[61]}}</div>
-                <div><mat-checkbox class="example-margin" [formControlName]="'Dishes and silverware'" ></mat-checkbox>{{amenetiesList[62]}}</div>  
+                <div><mat-checkbox class="example-margin" [formControlName]="'Smart television'"></mat-checkbox>{{amenetiesList[43]}}</div> -->
+
+           
+
+                 
+              </div>
+              
               </form>
+
+              
+              <a
+              type="button"
+              id="seeMore"
+              (click)="collapse.toggle()"
+              (click)="seeMore()"
+              [attr.aria-expanded]="!isCollapsed"
+              aria-controls="collapseExample"
+            >
+              Show more
+            </a>
             </div>
           
     </div>
+<hr>
+    <div class="languages">
+      <div class="languagesHeading">
+        <h1>Host language</h1>    
+    </div>
+    <br>
+    <!-- <select class="form-select" aria-label="Default select example" required [(ngModel)]="language">
+      <option value="English">English</option>
+      <option value="Russian">Russian</option>
+      <option value="French">French</option>
+      <option value="German">German</option>
+      <option value="Japanese">Japanese</option>
+    
+    </select> -->
+    <form [formGroup]="languageForm" class="languageForm">
+    <div><mat-checkbox class="example-margin" [formControlName]="'English'"></mat-checkbox>English</div>
+    <div><mat-checkbox class="example-margin" [formControlName]="'Russian'"></mat-checkbox>Russian</div>
+    <div><mat-checkbox class="example-margin" [formControlName]="'French'"></mat-checkbox>French</div>
+  </form>
+    </div>
+  
  
 </div>
 
 
         <div class="modal-footer">
+          <a (click)="clear()" type="submit">Clear All</a>
+
           <button
           (click)="onFilterClick()"
           (click)="modal.close('Save click')"
-          mat-raised-button
+          class="btn-white"
           [routerLink]="['/filtered']"
 
           >
           
-            Show results
+            Show homes
           </button>
         </div>
       </div>
-  
+
+   
+      
+     
 </ng-template>
 <!-- 
   [queryParams]="{
