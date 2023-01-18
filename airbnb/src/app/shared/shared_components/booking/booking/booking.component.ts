@@ -69,13 +69,15 @@ export class BookingComponent implements OnInit {
       userId: string;
       holder: string;
       number: number;
-      expirationDate: string;
+      expMonth: string;
+      expYear:string;
       cvv: number;
     } = {
       userId: this.user.uid,
       holder: addBankCard.value.holder,
       number: addBankCard.value.number,
-      expirationDate: `${addBankCard.value.start}-${addBankCard.value.end}`,
+      expMonth: addBankCard.value.start,
+      expYear: addBankCard.value.end,
       cvv: addBankCard.value.cvv,
     };
     this.bankCardServ.createBankCard(bankCard);

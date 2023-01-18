@@ -23,13 +23,13 @@ export class CategoryFilterComponent implements OnInit {
   priceFrom!: number;
   priceTo!: number;
   typeOfPlace!: string;
-  rooms!: number;
-  beds!: number;
-  bathrooms!: number;
+  rooms:string[]=[];
+  beds:string[]=[];
+  bathrooms:string[]=[];
   chosenTypeOfPlaces:string[] =[];
-   chosenAmeneties:string[] = [];
-   amenetiesForm!:FormGroup;
-   typeOfPlaceForm!:FormGroup;
+  chosenAmeneties:string[] = [];
+  amenetiesForm!:FormGroup;
+  typeOfPlaceForm!:FormGroup;
 
    language!:any;
 
@@ -92,7 +92,8 @@ export class CategoryFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
+
     this.getAllCategory();
     this.getAllAmeneties();
     this.chosenAmeneties = [];
@@ -156,8 +157,9 @@ export class CategoryFilterComponent implements OnInit {
           PriceFrom:this.priceFrom,
           PriceTo: this.priceTo,
           typeOfPlace:this.chosenTypeOfPlaces,
-          RoomsCount:this.rooms,
-          BedsPerRoomCount:this.bathrooms,
+          RoomsCount:this.rooms[0]?.substring(4,5),
+          BedsPerRoomCount:this.beds[0]?.substring(3,4),
+          BathRoomsCount:this.bathrooms[0]?.substring(4,5),
           //  propertyType:this.chosenTypeOfPlaces,
            HostLanguages: this.language
         },
@@ -178,11 +180,99 @@ export class CategoryFilterComponent implements OnInit {
 
 
   }
+  roomChose(id:string){
 
+if(id == "anyRoom"){
+  var anyRoomBtn = document.getElementById("anyRoom");
+  anyRoomBtn?.classList.remove("btn-light");
+  anyRoomBtn?.classList.add("btn-dark");
 
-  filterPopUp() {
-    this.displayStyle = 'block';
+  var lastBtnId= this.rooms.pop()!?.toString();
+  var lastBtn = document.getElementById(lastBtnId);
+  lastBtn?.classList.add("btn-light");
+  lastBtn?.classList.remove("btn-dark");
+}
+else if(id != "anyRoom"){
+  var anyRoomBtn = document.getElementById("anyRoom");
+  anyRoomBtn?.classList.remove("btn-dark");
+  anyRoomBtn?.classList.add("btn-light");
+
+  var lastBtnId= this.rooms.pop()!?.toString();
+  var lastBtn = document.getElementById(lastBtnId);
+  lastBtn?.classList.add("btn-light");
+  lastBtn?.classList.remove("btn-dark");
+
+  this.rooms.push(id);
+
+  var btn = document.getElementById(id);
+  btn?.classList.remove("btn-light");
+  btn?.classList.add("btn-dark");
+}
+
+}
+
+bedChose(id:string){
+  if(id == "anyBed"){
+    var anyBedBtn = document.getElementById("anyBed");
+    anyBedBtn?.classList.remove("btn-light");
+    anyBedBtn?.classList.add("btn-dark");
+  
+    var lastBtnId= this.beds.pop()!?.toString();
+    var lastBtn = document.getElementById(lastBtnId);
+    lastBtn?.classList.add("btn-light");
+    lastBtn?.classList.remove("btn-dark");
   }
+  else if(id != "anyBed"){
+    var anyBedBtn = document.getElementById("anyBed");
+    anyBedBtn?.classList.remove("btn-dark");
+    anyBedBtn?.classList.add("btn-light");
+  
+    var lastBtnId= this.beds.pop()!?.toString();
+    var lastBtn = document.getElementById(lastBtnId);
+    lastBtn?.classList.add("btn-light");
+    lastBtn?.classList.remove("btn-dark");
+  
+    this.beds.push(id);
+  
+    var btn = document.getElementById(id);
+    btn?.classList.remove("btn-light");
+    btn?.classList.add("btn-dark");
+  }
+  
+}
+bathChose(id:string){
+  if(id == "anyBath"){
+    var anyBathBtn = document.getElementById("anyBath");
+    anyBathBtn?.classList.remove("btn-light");
+    anyBathBtn?.classList.add("btn-dark");
+  
+    var lastBtnId= this.bathrooms.pop()!?.toString();
+    var lastBtn = document.getElementById(lastBtnId);
+    lastBtn?.classList.add("btn-light");
+    lastBtn?.classList.remove("btn-dark");
+  }
+  else if(id != "anyBath"){
+    var anyBathBtn = document.getElementById("anyBath");
+    anyBathBtn?.classList.remove("btn-dark");
+    anyBathBtn?.classList.add("btn-light");
+  
+    var lastBtnId= this.bathrooms.pop()!?.toString();
+    var lastBtn = document.getElementById(lastBtnId);
+    lastBtn?.classList.add("btn-light");
+    lastBtn?.classList.remove("btn-dark");
+  
+    this.bathrooms.push(id);
+  
+    var btn = document.getElementById(id);
+    btn?.classList.remove("btn-light");
+    btn?.classList.add("btn-dark");
+  }
+  
+}
+
+  // filterPopUp() {
+  //   this.displayStyle = 'block';
+  // }
 
 
   // onHomePropertyTypeClick() {

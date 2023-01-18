@@ -127,36 +127,51 @@
 <div class="roomsCountSectionContent">
           <div class="rooms">
             <label>Rooms</label>
-            <select class="form-select" aria-label="Default select example" required [(ngModel)]="rooms">
+            <!-- <select class="form-select" aria-label="Default select example" required [(ngModel)]="rooms">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
-            </select>
+            </select> -->
+     <div class="roomsButtonGroup">
+      <button class="btn btn-dark" (click)="roomChose('anyRoom')" id="anyRoom">Any</button>
+      <button (click)="roomChose('room1')" id="room1" class="btn btn-light">1</button>
+      <button (click)="roomChose('room2')" id="room2" class="btn btn-light">2</button>
+      <button (click)="roomChose('room3')" id="room3" class="btn btn-light">3</button>
+      <button (click)="roomChose('room4')" id="room4" class="btn btn-light">4</button>
+      <button (click)="roomChose('room5')" id="room5" class="btn btn-light">5</button>
+      <button (click)="roomChose('room6')" id="room6" class="btn btn-light">6</button>
+      <button (click)="roomChose('room7')" id="room7" class="btn btn-light">7</button>
+     </div>
+
           </div>
           <div class="beds">
             <label>Beds</label>
-            <select class="form-select" aria-label="Default select example" required [(ngModel)]="beds">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
+            <div class="bedsButtonGroup">
+              <button class="btn btn-dark" (click)="bedChose('anyBed')" id="anyBed">Any</button>
+              <button (click)="bedChose('bed1')" id="bed1" class="btn btn-light">1</button>
+              <button (click)="bedChose('bed2')" id="bed2" class="btn btn-light">2</button>
+              <button (click)="bedChose('bed3')" id="bed3" class="btn btn-light">3</button>
+              <button (click)="bedChose('bed4')" id="bed4" class="btn btn-light">4</button>
+              <button (click)="bedChose('bed5')" id="bed5" class="btn btn-light">5</button>
+              <button (click)="bedChose('bed6')" id="bed6" class="btn btn-light">6</button>
+              <button (click)="bedChose('bed7')" id="bed7" class="btn btn-light">7</button>
+             </div>
           </div>
           <div class="baths">
             <label>Bathrooms</label>
-            <select class="form-select" aria-label="Default select example" required [(ngModel)]="bathrooms">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
+            <div class="bathsButtonGroup">
+              <button class="btn btn-dark" (click)="bathChose('anyBath')" id="anyBath">Any</button>
+              <button (click)="bathChose('bath1')" id="bath1" class="btn btn-light">1</button>
+              <button (click)="bathChose('bath2')" id="bath2" class="btn btn-light">2</button>
+              <button (click)="bathChose('bath3')" id="bath3" class="btn btn-light">3</button>
+              <button (click)="bathChose('bath4')" id="bath4" class="btn btn-light">4</button>
+              <button (click)="bathChose('bath5')" id="bath5" class="btn btn-light">5</button>
+              <button (click)="bathChose('bath6')" id="bath6" class="btn btn-light">6</button>
+              <button (click)="bathChose('bath7')" id="bath7" class="btn btn-light">7</button>
+             </div>
           </div>
         </div>
       </div>
