@@ -4,8 +4,7 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { NgForm } from '@angular/forms';
 import {
-  ModalDismissReasons,
-  NgbDatepickerModule,
+
   NgbModal,
 } from '@ng-bootstrap/ng-bootstrap';
 import { UserFrService } from 'src/app/shared/shared_services/user-fr.service';
@@ -25,7 +24,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private userServ: UserFrService,
-    private router: Router
+    private router: Router,
+
   ) {}
 
   ngOnInit(): void {
@@ -39,9 +39,7 @@ export class NavbarComponent implements OnInit {
   continuePoPup() {
     this.displayStyle = 'block';
   }
-  close() {
-    this.displayStyle = 'none';
-  }
+
 
   onSignUpFormSubmit(signUpForm: NgForm) {
     var tmpUser = Object.assign(new User(), signUpForm.value);
@@ -51,7 +49,7 @@ export class NavbarComponent implements OnInit {
     this.userServ.signUp(tmpUser, signUpForm.value.password);
     this.userServ.userDataEmitter.subscribe((response) => {
       this.userData = response;
-      this.close();
+
     });
 
     // this.userData = JSON.parse(localStorage.getItem('user')!);
@@ -72,7 +70,7 @@ export class NavbarComponent implements OnInit {
     this.userServ.userDataEmitter.subscribe((response) => {
       this.userData = JSON.parse(localStorage.getItem('user') || 'null');
       // this.router.navigate(['dashboard']);
-      this.close();
+      
     });
 
     loginInForm.reset();
@@ -86,15 +84,15 @@ export class NavbarComponent implements OnInit {
   onSignInWithGoogleBtnClick() {
     this.userServ.googleAuth().then((response) => {
       this.userData = JSON.parse(localStorage.getItem('user') || 'null');
-      this.close();
+      
+      
     });
   }
-  // loginInWithGoogle(){s
-  //   this.userServ.googleAuth();
-  // }
 
 
   public open(modal: any): void {
     this.modalService.open(modal);
   }
+  
+  
 }

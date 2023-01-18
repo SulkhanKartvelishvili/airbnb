@@ -68,10 +68,9 @@
                                             <div>
                                               <h2>{{userBankCard.holder}}</h2>
                                               <h4>**** **** **** {{lastFourDigits}}</h4>
+                                              <h4>{{userBankCard.expMonth}} / {{userBankCard.expYear}}</h4>
                                             </div>
-                                            <div>
-                                              <fa-icon [icon]="faCreditCard" class="faCreditCard"></fa-icon>
-                                            </div>
+                                       
                                             <div>
                                                  <button (click)="deleteBankCard()" mat-raised-button color="warn">Delete</button>
                                                  <button (click)="openModal()" mat-raised-button>Update</button>
