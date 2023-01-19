@@ -71,8 +71,19 @@
 
 
 .modal-header{
-    justify-content: center;
-    padding: 0;
+    display: grid;
+      grid-template-columns: 20% 60% 20%;
+      justify-content: center;
+  }
+  .modalHeading{
+    text-align: center;
+    padding-top: 15px;
+  }
+.modal-title{
+    font-weight: 400;
+}
+.loginIn{
+    grid-column: 2;
 }
 .continue{
     background: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;

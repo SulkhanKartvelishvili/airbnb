@@ -4,7 +4,6 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { NgForm } from "@angular/forms";
 import { BankCardService } from "src/app/shared/shared_services/bankCard/bank-card.service";
 import { bankCard } from "src/app/shared/shared_models/bankCard.model";
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { HotelBookingService } from "src/app/shared/shared_services/hotelBooking/hotel-booking.service";
 
 @Component({
@@ -14,13 +13,13 @@ import { HotelBookingService } from "src/app/shared/shared_services/hotelBooking
 })
 export class BookingComponent implements OnInit {
   faStar = faStar;
-  faCreditCard = faCreditCard;
   bookedHotelData!: any;
   fetchedHotelData!: any;
   user!: any;
   // userId!:any;
   bankCards: any = [];
   userBankCard: any = null;
+  bookingBtn!:any;
   constructor(
     private hotelServ: HotelCardService,
     private bankCardServ: BankCardService,
@@ -28,20 +27,20 @@ export class BookingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    (document.getElementById("book") as HTMLInputElement).disabled = true;
+  //   if(this.userBankCard == null){
+  //   (document.getElementById("book") as HTMLInputElement).disabled = true;
+  // }
     this.bookedHotelData = JSON.parse(
       localStorage.getItem("bookedHotelData") || "null"
     );
     this.user = JSON.parse(localStorage.getItem("user") || "null");
 
-    // console.log(this.bookedHotelData[0].hotelId);
-    this.hotelServ
-      .readHotelCardById(this.bookedHotelData[0].hotelId)
-      .subscribe((response) => {
-        this.fetchedHotelData = response;
-        console.log(this.fetchedHotelData);
-      });
-
+    // this.hotelServ
+    //   .readHotelCardById(this.bookedHotelData[0].hotelId)
+    //   .subscribe((response) => {
+    //     this.fetchedHotelData = response;
+    //   });
+     this.bookingBtn = document.getElementById("book");
     this.bankCardServ.getBankCardList().subscribe((res) => {
       this.bankCards = res.map((e) => {
         return {
@@ -54,8 +53,9 @@ export class BookingComponent implements OnInit {
           this.userBankCard = item;
           this.userBankCard.number = this.userBankCard.number.substring(12, 16);
         }
-        if (this.userBankCard != null) {
-          (document.getElementById("book") as HTMLInputElement).disabled =
+        
+        if (this.bookingBtn != null && this.userBankCard != null) {
+          (this.bookingBtn as HTMLInputElement).disabled =
             false;
         }
       });
@@ -67,38 +67,47 @@ export class BookingComponent implements OnInit {
       userId: string;
       holder: string;
       number: number;
-      expirationDate: string;
+      expMonth: string;
+      expYear:string;
       cvv: number;
     } = {
       userId: this.user.uid,
       holder: addBankCard.value.holder,
       number: addBankCard.value.number,
-      expirationDate: `${addBankCard.value.start}-${addBankCard.value.end}`,
+      expMonth: addBankCard.value.start,
+      expYear: addBankCard.value.end,
       cvv: addBankCard.value.cvv,
     };
     this.bankCardServ.createBankCard(bankCard);
 
- 
-    (document.getElementById("book") as HTMLInputElement).disabled = false;
+    
+    if (this.bookingBtn != null && this.userBankCard != null) {
+      (this.bookingBtn as HTMLInputElement).disabled =
+        false;
+    }
   }
 
   bookhotel(){
     const bookedHotel: {
       userId: string;
       hotelId:string;
+      hotelName:string;
       bedroomName: number;
       checkInDate: Date;
       checkOutDate: Date;
       nights:number;
+      guestsCount:number;
       price:number;
       imageUrl:string
   } = {
     userId: this.user.uid,
     hotelId:this.bookedHotelData[0].hotelId,
+    hotelName:this.bookedHotelData[0].hotelName,
     bedroomName:this.bookedHotelData[0].roomName,
     checkInDate:this.bookedHotelData[0].checkInDate,
     checkOutDate:this.bookedHotelData[0].checkOutDate,
     nights:this.bookedHotelData[0].dayCount,
+    guestsCount:this.bookedHotelData[0].guestsCount,
     price:this.bookedHotelData[0].priceSum,
     imageUrl:this.bookedHotelData[0].imageUrl
 

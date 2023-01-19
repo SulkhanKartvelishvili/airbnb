@@ -27,16 +27,20 @@ export class HotelInnerComponent implements OnInit {
  faStar=faStar;
  lat!:number;
  lng!:number;
-  bookedHotelData: { hotelId: number; hotelName:string, roomName: string, pricePerNight:number, priceSum: number, dayCount:string, checkInDate:string, checkOutDate:string, guestsCount:number, imageUrl:string, expiry:Date }[]=[];
-  
+ userData!:any;
+  bookedHotelData: { userId:string, hotelId: number; hotelName:string, roomName: string, pricePerNight:number, priceSum: number, dayCount:string, checkInDate:string, checkOutDate:string, guestsCount:number, imageUrl:string, expiry:Date }[]=[];
+  currentDate = new Date();
   dateRange = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
   });
+
   
   constructor(private httpClient:HttpClient, private activatedRoute:ActivatedRoute, private hotelCardServ:HotelCardService) { }
 
   ngOnInit(): void {
+    this.userData = JSON.parse(localStorage.getItem('user') || 'null');
+
     this.activatedRoute.params.subscribe(response =>{
       
       this.hotelId = response["id"];
@@ -71,7 +75,11 @@ export class HotelInnerComponent implements OnInit {
      }
      
     })
-   
+    const box = document.getElementById('bookingSection');
+
+    if (box != null) {
+      box.classList.remove('none');
+    }
    }
 
 
@@ -97,7 +105,7 @@ export class HotelInnerComponent implements OnInit {
 
   
   continueToBookTheRoom(){
-  this.bookedHotelData.push({ hotelId: this.hotelId, hotelName:this.hotel.name, roomName: this.chosenRoom.name, pricePerNight:this.chosenRoom.price, priceSum:this.dayCountSumPrice, dayCount:this.dayCount, checkInDate:this.dateRange.value.start, checkOutDate:this.dateRange.value.end, guestsCount:this.chosenRoom.personsCount, imageUrl:this.hotel.mainImages[0], expiry: new Date()});
+  this.bookedHotelData.push({userId:this.userData.uid, hotelId: this.hotelId, hotelName:this.hotel.name, roomName: this.chosenRoom.name, pricePerNight:this.chosenRoom.price, priceSum:this.dayCountSumPrice, dayCount:this.dayCount, checkInDate:this.dateRange.value.start, checkOutDate:this.dateRange.value.end, guestsCount:this.chosenRoom.personsCount, imageUrl:this.hotel.mainImages[0], expiry: this.currentDate});
   localStorage.setItem("bookedHotelData", JSON.stringify(this.bookedHotelData));
 }
 

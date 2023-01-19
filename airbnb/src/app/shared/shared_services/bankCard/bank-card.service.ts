@@ -23,6 +23,7 @@ export class BankCardService {
           (error) => reject(error)
         );
     });
+    console.log(bankCard);
   }
 
   getBankCardList() {
@@ -37,13 +38,14 @@ export class BankCardService {
       .doc(cardId)
       .delete();
   }
-  // updateBankCard(bankCard: bankCard, bankCardId:any) {
-  //   return this.angularFirestore.collection('card').doc(bankCardId).update({
-  //     holder: bankCard.holder,
-  //     number: bankCard.number,
-  //     expirationDate: bankCard.expirationDate,
-  //     cvv:bankCard.cvv
-  //   });
-  // }
+  updateBankCard(updatedBankCard: any, updatedBankCardId:any) {
+    return this.angularFirestore.collection('card').doc(updatedBankCardId).update({
+      holder: updatedBankCard.updatedHolder,
+      number: updatedBankCard.updatedNumber,
+      expMonth: updatedBankCard.updatedExpMonth,
+      expYear:updatedBankCard.updatedExpYear,
+      cvv:updatedBankCard.updatedCvv
+    });
+  }
 
 }

@@ -1,5 +1,6 @@
 
-<div class="container">
+
+<div class="container" *ngIf="hotel !=null">
      <div class="row">
         <div class="col-md-10">
         <div class="hotelHeading">
@@ -63,7 +64,7 @@
     <div class="roomsSectionHeading">
         <h1>Rooms</h1>
       </div>
- 
+
            
             <div class="col-md-12 col-lg-6 ">
             <div class="card" style="width: 18rem;" *ngFor="let room of hotel.rooms">
@@ -95,7 +96,7 @@
               </div>
             </div>
             <div class="col-md-4 ">
-                <div class="bookingSection">
+                <div class="bookingSection none" id="bookingSection">
                 <div class="bookingSectionHeading">
                     <div>
                     <h2>{{hotel.name}}</h2>
@@ -136,7 +137,7 @@
             </div>
             
            
-    <div *ngIf="valid ==1">
+    <div *ngIf="valid == 1" >
                 <button class="continue" routerLink='/innerHotel/{{hotel.id}}/booking' (click)="continueToBookTheRoom()" >Continue</button>
                 <hr>
                 </div>

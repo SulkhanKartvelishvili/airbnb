@@ -1,9 +1,8 @@
 <app-category-filter></app-category-filter>
 
-<br />
-<br />
+
 <div class="col-md-12">
-  <div class="row row-cols-1 row-cols-md-6 g-4 cardsArea">
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea">
     <app-hotel-card
       *ngFor="let hotelCard of categoryFilteredHotelCardList"
       [hotelCardItem]="hotelCard"
