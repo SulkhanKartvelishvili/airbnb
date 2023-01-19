@@ -55,9 +55,12 @@
       
           
         <div class="modal-header">
-        
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          <div class="modalHeading">
+
           <h2 class="modal-title" id="modal-basic-title">Sign up
           </h2>
+          </div>
         </div>
         <div class="modal-body">
         <form #signUpForm="ngForm" (ngSubmit)="onSignUpFormSubmit(signUpForm)">
@@ -133,9 +136,11 @@
         
   <br>
         <div class="modal-header">
-        
+          <div class="modalHeading loginIn">
+
           <h2 class="modal-title" id="modal-basic-title">Login in
           </h2>
+          </div>
         </div>
         <div class="modal-body">
           <form #loginInForm="ngForm" (ngSubmit)="onloginInFormSubmit(loginInForm)">

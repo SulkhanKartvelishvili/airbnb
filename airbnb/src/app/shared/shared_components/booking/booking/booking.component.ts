@@ -4,7 +4,6 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { NgForm } from "@angular/forms";
 import { BankCardService } from "src/app/shared/shared_services/bankCard/bank-card.service";
 import { bankCard } from "src/app/shared/shared_models/bankCard.model";
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { HotelBookingService } from "src/app/shared/shared_services/hotelBooking/hotel-booking.service";
 
 @Component({
@@ -14,7 +13,6 @@ import { HotelBookingService } from "src/app/shared/shared_services/hotelBooking
 })
 export class BookingComponent implements OnInit {
   faStar = faStar;
-  faCreditCard = faCreditCard;
   bookedHotelData!: any;
   fetchedHotelData!: any;
   user!: any;

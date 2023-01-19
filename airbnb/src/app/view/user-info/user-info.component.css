@@ -68,6 +68,27 @@
   .col-md-8{
     padding-top: 40px;
   }
-  .btn-close{
-    margin: 5px;
+
+.modal-header{
+  display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+.modalHeading{
+  text-align: center;
+  padding-top: 15px;
+}
+.btn-white{
+  border-width: thin;
+    background: white;
+    border-color: #abb0b540;
+    display: flex;
+    height: auto;
+    padding-top: 12px;
+    font-size: 15px;
+    padding-bottom: 12px;
+    border-radius: 10px;
+}
+.mb-3 input {
+  border-color: black;
+  border-radius: 0px;
 }

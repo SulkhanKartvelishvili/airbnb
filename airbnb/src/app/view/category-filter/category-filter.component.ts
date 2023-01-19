@@ -137,10 +137,8 @@ export class CategoryFilterComponent implements OnInit {
 
   
   onFilterClick(){
-    // this.displayStyle = 'none';
-   
-    console.log(this.priceForm.value);
-
+ 
+  
     Object.keys(this.languageForm.controls).forEach((key:string) => {
       
      
@@ -384,35 +382,9 @@ seeMore(){
 }
   
 
-  // filterPopUp() {
-  //   this.displayStyle = 'block';
-  // }
 
-
-  // onHomePropertyTypeClick() {
-   
-  //   this.propertyType[0]="home";
-  //   var x = document.getElementById("home");
-  //   if(x!=null){
-  //   x.classList.remove("btn-light");
-  //   x.classList.add("btn-dark");
-  // }
-  // }
-  // onVillaProperyTypeClick() {
-    
-  //   this.propertyType[1]="villa";
-  //   var x = document.getElementById("villa");
-  //   if(x!=null){
-  //   x.classList.remove("btn-light");
-  //   x.classList.add("btn-dark");
-  // }
-  // }
   public open(modal: any): void {
     this.modalService.open(modal, { size: 'lg',  scrollable: true  });
   }
-  // console.log(this.queryParams);
-  // this.close();
 
-  // this.close();
-  // this.activatedRoute.queryParams.subscribe(queryParams => {
 }
