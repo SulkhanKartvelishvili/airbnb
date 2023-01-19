@@ -11,15 +11,21 @@ import { HotelBookingService } from 'src/app/shared/shared_services/hotelBooking
 export class DashboardComponent implements OnInit{
    
 
- bookedHotelsList:any=[]=[];
- usersBookedHotelList:bookedHotel[]=[];
+ bookedHotelsList:any=[];
+ usersBookedHotelList:any=[];
  bookedHotelImages:any=[]=[];
  backToBookingHotel!:any;
  userData!:any;
+ currentDate = new Date();
+ backToBookingHotelExpiryDate!:any;
+ expirationDayCount!:number;
 
-  constructor(private hotelBookingServ: HotelBookingService, private hotelCardServ:HotelCardService){}
+  constructor(private hotelBookingServ: HotelBookingService, private hotelCardServ:HotelCardService, private hotelCardserv:HotelCardService){}
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user') || 'null');
+
+    this.bookedHotelsList = [];
     this.userData = JSON.parse(localStorage.getItem('user') || 'null');
 
      this.hotelBookingServ.getBookedHotelList().subscribe((res) => {
@@ -30,24 +36,39 @@ export class DashboardComponent implements OnInit{
           ...(e.payload.doc.data() as bookedHotel),
         };
       });
+     this.usersBookedHotelList= [];
+     
+
+      this.bookedHotelsList.forEach((item:any) => {
+       
+ if(item.userId== this.userData.uid){
+          this.usersBookedHotelList.push(item);
+        
+        }
+    
+        // console.log(this.usersBookedHotelList);
+      })
      
 
 
-        this.bookedHotelsList.forEach((item:any) => {
-          if(item.userId== this.userData.uid){
-            this.usersBookedHotelList.push(item);
-          }
-        })
+   
+    
    
     }); 
-     
 
-
+    let oneDay=1000*60*60*24;
     this.backToBookingHotel = JSON.parse(localStorage.getItem('bookedHotelData') || 'null');
+    if(this.backToBookingHotel !=null){
+    if(this.backToBookingHotel[0].userId == this.userData.uid){
+    this.backToBookingHotelExpiryDate  = new Date(this.backToBookingHotel[0].expiry)
+   this.expirationDayCount= (this.currentDate.getTime() - this.backToBookingHotelExpiryDate.getTime())/oneDay;
+   if(this.expirationDayCount >1){
+    localStorage.removeItem("bookedHotelData");
 
+   }
   }
-
-
+}
+}
 
 
 

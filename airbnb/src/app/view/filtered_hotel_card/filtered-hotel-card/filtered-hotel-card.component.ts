@@ -20,49 +20,15 @@ export class FilteredHotelCardComponent implements OnInit  {
   ngOnInit(): void {
  
     this.activatedRoute.queryParams.subscribe(queryParams => {
+      console.log(queryParams);
+
       this.hotelCardServ.readAllfilteredHotelCard(queryParams).subscribe(response => {
-        console.log(response);
         this.hotelCardList = response;
       })
     })
   }
 
 
-  getAllHotelCard(){
-    this.hotelCardServ.readAllHotelCard().subscribe(response => {
-    
-       this.hotelCardList = response;
-      
-    });
-
-  }
-
-  getCategoryCardItemId(id:any){
-    
-   
-    this.showAllHotelCard=false;
-
-    
-
-    this.categoryFilteredHotelCardList = [];
-
-  
-    this.hotelCardList.forEach((obj:any) => {
-    
-      obj.categories.forEach((categoryId:any) =>{
-
-        if(categoryId.id == id){
-          
-           this.categoryFilteredHotelCardList.push(obj);
-        }
-      } )
-     
-     })
-    
-
-
- 
-    };
 
     
      

@@ -17,6 +17,7 @@ const routes: Routes = [
   {path:"innerHotel/:id", component:HotelInnerComponent},
   {path:"category-filtered/:id/innerHotel/:id", component:HotelInnerComponent},
   {path:"filtered/innerHotel/:id", component:HotelInnerComponent},
+  {path:"dashboard/innerHotel/:id", component:HotelInnerComponent, canActivate:[AuthGuard]},
   {path:"dashboard", component:DashboardComponent, canActivate:[AuthGuard]},
   {path:'dashboard/userInfo', component:UserInfoComponent, canActivate:[AuthGuard]},
   {path:'filtered', component:FilteredHotelCardComponent},

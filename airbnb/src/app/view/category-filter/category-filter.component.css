@@ -69,7 +69,7 @@
     height: 2px;
   }
 
-  .btn{
+ .category .btn-white{
     border-width: thin;
     background: white;
     margin-top: 20px!important;
@@ -96,7 +96,7 @@
    display: flex;
   }
   .type .entirePlaceText, .type .privateRoomText, .type .sharedRoomText {
-    margin-left: 20px;
+    margin-left: 15px;
   }
 
   .type div input{
@@ -110,22 +110,206 @@
     width: 700px!important;
     max-width: inherit;
   }
-  .typeOfPlaceSection{
+  /* .typeOfPlaceSection{
     display: grid;
     grid-template-columns:50% 50%;
-  }
+  } */
   .entirePlace{
     grid-column: 1;
   }
-  .bedrooms button:checked{
+  .bedrooms button:checked{ 
    background-color: black;
   }
   .category{
     margin-bottom: 30px;
   }
+  .priceRangeSection, .typeOfPlaceSection, .roomsCountSection, .propertyType, .ameneties, .languages{
+    margin-bottom:10px;
+  }
+
+
+  .roomsCountSectionContent div label{
+    padding-right: 5px;
+  }
+  select{
+    width: 60%;
+    height: 35px;
+
+  }
+  .form-control{
+    height: 35px;
+  }
+  .twoDiv .typeOfPlaceSection, .twoDiv .languages {
+    width: 60%;
+  }
+  .priceRangeSection span:nth-child(4){
+    padding-left:5px;
+  }
+  .modal-body h1{
+    margin-bottom:5px;
+  }
+  .propertyType button{
+    font-size: 15px;
+  }
+  .propertyType button:nth-child(4){
+ margin-left:10px;
+  }
+  /* .amenetiesForm{
+    display: grid;
+    grid-template-columns: 50% 50%;
+  } */
+  .amenetiesForm mat-checkbox, .languageForm .mat-checkbox{
+    padding-right: 10px;
+  }
+  .priceRangeSectionContent form{
+    display: flex;
+  }
+  .priceRangeSectionContent input{
+   width: 40%;
+  }
+  .priceRangeSectionContent span{
+    font-size: 18px;
+    padding: 7px;
+  }
+  .btn-close{
+    margin: 5px;
+}
+.roomsButtonGroup button, .bedsButtonGroup button, .bathsButtonGroup button{
+  padding: 10px 20px !important;
+    border-radius: 30px !important;
+    min-width: 59px !important;
+    margin-left: 15px;
+}
+.roomsButtonGroup #anyRoom, .bedsButtonGroup #anyBed, .bathsButtonGroup #anyBath{
+  margin-left: 0px;
+}
+span.mat-checkbox-frame {
+  border-width: thin;
+  border: 1px solid rgba(0,0,0,.25);
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+}
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: black !important;
+}
+
+::ng-deep .mat-checkbox-frame { 
+  border-width: thin!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+}
+.typeOfPlaceSection .mat-checkbox{
+  margin-top:10px;
+}
+.typeOfPlaceSection ::ng-deep .mat-checkbox-inner-container, .amenetiesForm ::ng-deep .mat-checkbox-inner-container, .languageForm ::ng-deep .mat-checkbox-inner-container{
+ 
+  width: 24px;
+  height: 24px;
+}
+.typeOfPlaceForm, .languageForm {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.active{
+  background-color: black;
+}
+.propertyType li{
+  list-style: none;
+  padding-bottom: 25px;
+}
+.propertyType img{
+
+  width: 32px;
+  height: 32px;
+}
+.propertyType button{
+  text-align: inherit;
+  width: 163px;
+  height: 122px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.defaultPropertyTypeBtn{
+  background-color: rgb(255, 255, 255) !important;
+  border-color: rgba(128, 128, 128, 0.452);
+}
+.activePropertyTypeBtn{
+  background-color: rgb(255, 255, 255) !important;
+  border-color: black;
+  border-width: 2px;
+}
+.amenetieCategorySection h3{
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.amenetiesHeading h1{
+  font-weight: 500;
+}
+.essentials, .features, .safety{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.essentials div, .features div, .safety div, .languageForm div{
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.modal-body h1{
+  font-weight: 500;
+}
+.priceRangeSection, .typeOfPlaceSection, .roomsCountSection, .propertyType, .ameneties{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.bedsHeading, .bathsHeading{
+  margin-top:20px;
+}
+.btn-light{
+  background:white!important;
+  border-color: rgba(128, 128, 128, 0.452);
+
+}
+.modal-footer{
+  justify-content: space-between;
+}
+.modal-footer a{
+  text-decoration: underline!important;
+  font-weight: 500!important;
+  font-size: 16px;
+}
+.modal-footer .btn-white{
+  border-width: thin;
+    background: white;
+    border-color: #abb0b540;
+    display: flex;
+    height: auto;
+    padding-top: 12px;
+    font-size: 15px;
+    padding-bottom: 12px;
+    border-radius: 10px;
+}
+.priceRangeSectionContent span:nth-child(1){
+  padding-left: 0px;
+}
+.modal-header{
+  display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+.modalHeading{
+  text-align: center;
+  padding-top: 15px;
+}
+/* ::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+} */
   @media only screen and  (max-width: 764px) {
     .category{
        grid-template-columns: 20% 60% 20%!important;
+    }
+    .modal-dialog{
+      width: auto!important;
     }
        
      }

@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BankCardService } from 'src/app/shared/shared_services/bankCard/bank-card.service';
 import { UserFrService } from 'src/app/shared/shared_services/user-fr.service';
 import { bankCard } from "src/app/shared/shared_models/bankCard.model";
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
-import { NgForm } from "@angular/forms";
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-info',
@@ -16,17 +15,27 @@ export class UserInfoComponent implements OnInit{
 
   bankCards: any = [];
   userBankCard: any = null;
-  faCreditCard = faCreditCard;
   bankCard!:FormGroup;
+  updateBankCard!:FormGroup;
   lastFourDigits!:any;
+  displayStyle = 'none';
+
   // @ViewChild('addBankCard') form!: NgForm;
-constructor(private userServ : UserFrService, private bankCardServ: BankCardService,){
+constructor(private userServ : UserFrService, private bankCardServ: BankCardService,private modalService: NgbModal ){
   this.bankCard = new FormGroup({
     "holder":new FormControl(null),
     "number":new FormControl(null),
     "expMonth":new FormControl(null),
     "expYear":new FormControl(null),
     "cvv":new FormControl(null)
+    
+  });
+  this.updateBankCard = new FormGroup({
+    "updatedHolder":new FormControl(null),
+    "updatedNumber":new FormControl(null),
+    "updatedExpMonth":new FormControl(null),
+    "updatedExpYear":new FormControl(null),
+    "updatedCvv":new FormControl(null)
     
   });
 }
@@ -48,8 +57,7 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
   onAddBankCard() {
 
     this.bankCard.value["userId"]= this.userData.uid;
-    this.bankCardServ.createBankCard(this.bankCard.value);
- 
+     this.bankCardServ.createBankCard(this.bankCard.value);
     this.bankCard.reset();
     
 
@@ -75,6 +83,7 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
 
       });
     });
+
   }
 
 
@@ -84,18 +93,29 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
 
    this.userBankCard = null;
   }
-  updateBankCard(){
- 
-    this.bankCardServ.deleteBankCard(this.userBankCard.id);
-    this.bankCard.controls['holder'].setValue(this.userBankCard.holder);
-    this.bankCard.controls['number'].setValue(this.userBankCard.number);
-    this.bankCard.controls['expMonth'].setValue(this.userBankCard.expMonth);
-    this.bankCard.controls['expYear'].setValue(this.userBankCard.expYear);
-   this.bankCard.controls['cvv'].setValue(this.userBankCard.cvv);
-   this.userBankCard = null;
+
+
+  OnUpdateBankCard(){
+   
+    this.updateBankCard.value["userId"]= this.userData.uid;
+
+  this.bankCardServ.updateBankCard(this.updateBankCard.value, this.userBankCard.id);
+
+   
+
+this.getBankCard();
+
 
 
   }
-
+ 
+  public open(modal: any): void {
+    this.updateBankCard.controls['updatedHolder'].setValue(this.userBankCard.holder);
+    this.updateBankCard.controls['updatedNumber'].setValue(this.userBankCard.number);
+    this.updateBankCard.controls['updatedExpMonth'].setValue(this.userBankCard.expMonth);
+    this.updateBankCard.controls['updatedExpYear'].setValue(this.userBankCard.expYear);
+   this.updateBankCard.controls['updatedCvv'].setValue(this.userBankCard.cvv);
+    this.modalService.open(modal, { size: 'md'  });
+  }
 
 }
