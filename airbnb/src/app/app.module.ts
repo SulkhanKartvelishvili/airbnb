@@ -20,20 +20,14 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './view/home/home/home.component';
 import { DashboardComponent } from './view/dashboard/dashboard/dashboard.component';
-
 import { MatInputModule } from '@angular/material/input';
-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { UserInfoComponent } from './view/user-info/user-info.component';
 import { CategoryFilterComponent } from './view/category-filter/category-filter.component';
 import { CategoryFilterCardComponent } from './view/category_filter_card/category-filter-card/category-filter-card.component';
-
 import {MatButtonModule} from '@angular/material/button';
-// import {MatIconModule} from '@angular/material/icon';
-
 import {RouterModule} from '@angular/router';
 import { FilteredHotelCardComponent } from './view/filtered_hotel_card/filtered-hotel-card/filtered-hotel-card.component';
 import { CategoryFilterHotelCardComponent } from './view/category_filter_hotel_card/category-filter-hotel-card/category-filter-hotel-card.component';
@@ -79,7 +73,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSelectModule,
     MatSidenavModule,
     MatButtonModule,
-    // MatIconModule,
     RouterModule,
     MatDatepickerModule,
     ReactiveFormsModule,
