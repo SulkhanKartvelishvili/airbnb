@@ -7,7 +7,6 @@
 .aboutHotelHeadingImage{
     width: 150px !important;
     height: 135px!important;
-    
 }
 .aboutHotelHeadingImage img{
     width: 100%;
@@ -29,16 +28,13 @@
 }
 .confirmationContentHeading h1{
     font-weight: 500 !important;
-
 }
 .confirmationContentDates h3, .confirmationContentGuests h3{
     font-weight: 500 !important;
     margin-bottom: 0px;
-
 }
 .confirmationContentDates h4, .confirmationContentGuests h4{
     font-weight: 200 !important;
-
 }
 .aboutHotelHeadingContent{
     position: relative;
@@ -72,7 +68,6 @@
     font-size:22px;
     padding:7px;
 }
-
 .mb-3 input{
     border-color: black;
     border-radius: 0px;
@@ -100,25 +95,21 @@
 }
 .exp-wrapper {
     position: relative;
-    border: 1px solid  black ;
- 
+    border: 1px solid black ;
     display: flex;
-    
     justify-content: space-around;
     color:black;
     line-height: 36px;
     font-size: 24px;
-  }
-  
-  .exp-wrapper:after {
+}
+.exp-wrapper:after {
     content: '/';
     position: absolute;
     left: 50%;
     margin-left: -4px;
     color: #aaa;
-  }
-  
-  input.exp {
+}
+input.exp {
     float: left;
     font-family: monospace;
     border: 0;
@@ -126,24 +117,23 @@
     outline: none;
     appearance: none;
     font-size: 14px;
-  }
-  .bankCardContent h2, h4{
+}
+.bankCardContent h2, h4{
     margin-bottom: 0px;
-  }
- .bankCardContent h4{
+}
+.bankCardContent h4{
     font-weight: 500;
     color: #b2b5b9;
- }
-
-
- .aboutHotelContent{
+}
+.aboutHotelContent{
     padding-bottom: 25px;
- }
- .bankCardContent{
+}
+.bankCardContent{
     box-shadow: 0px 0px 5px 2px #abb0b51a;
     display: grid;
     border-radius: 10px;
     padding: 20px;
+<<<<<<< Updated upstream
    }
    .addBankCardForm .mb-3:nth-child(3){
     display: grid;
@@ -170,3 +160,6 @@
         width: 100%;
       }
 }
+=======
+}
+>>>>>>> Stashed changes

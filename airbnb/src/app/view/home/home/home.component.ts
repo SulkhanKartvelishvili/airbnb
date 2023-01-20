@@ -1,67 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
-import { CategoryFilterCardComponent } from 'src/app/view/category_filter_card/category-filter-card/category-filter-card.component';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { HotelCardService } from "src/app/core/http/hotel_card/hotel-card.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
+  hotelCardList: string[] = [];
+  categoryFilteredHotelCardList: string[] = [];
 
-hotelCardList: string[]=[];
-categoryFilteredHotelCardList: string[]=[];
-
-params!:string;
-  constructor(private hotelCardServ:HotelCardService,  private activatedRoute:ActivatedRoute) { }
+  params!: string;
+  constructor(private hotelCardServ: HotelCardService) {}
 
   ngOnInit(): void {
     this.getAllHotelCard();
-
-    
-
   }
- 
 
-  getAllHotelCard(){
-    this.hotelCardServ.readAllHotelCard().subscribe(response => {
-    
-       this.hotelCardList = response;
-      
+  getAllHotelCard() {
+    this.hotelCardServ.readAllHotelCard().subscribe((response) => {
+      this.hotelCardList = response;
     });
-
   }
 
-  getCategoryCardItemId(id:any){
-    
-   
-
-    
-
+  getCategoryCardItemId(id: any) {
     this.categoryFilteredHotelCardList = [];
 
-  
-    this.hotelCardList.forEach((obj:any) => {
-    
-      obj.categories.forEach((categoryId:any) =>{
-
-        if(categoryId.id == id){
-          
-           this.categoryFilteredHotelCardList.push(obj);
+    this.hotelCardList.forEach((obj: any) => {
+      obj.categories.forEach((categoryId: any) => {
+        if (categoryId.id == id) {
+          this.categoryFilteredHotelCardList.push(obj);
         }
-      } )
-     
-     })
-    
-
-
- 
-    };
-
-    
-  
-   
+      });
+    });
+  }
 }
- 
-

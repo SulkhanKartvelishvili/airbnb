@@ -1,124 +1,102 @@
-
-
 <div class="container" *ngIf="hotel !=null">
-     <div class="row">
-        <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-10">
         <div class="hotelHeading">
-            <h1>{{hotel.name}}</h1>
+          <h1>{{hotel.name}}</h1>
         </div>
         <div class="hotelShortDescription">
-           
-            <fa-icon [icon]="faStar" class="faStar"></fa-icon>
-           
-            <a>{{hotel.starCount}}</a>
-            <ul>
-          
-          <li>  <a class="streetAdd">{{hotel.address}}</a></li>
-        </ul>
+          <fa-icon [icon]="faStar" class="faStar"></fa-icon>
+          <a>{{hotel.starCount}}</a>
+          <ul>
+            <li>
+              <a class="streetAdd">{{hotel.address}}</a>
+            </li>
+          </ul>
         </div>
-    </div>
-    </div> 
-    <br>
-    <div class="row">
-        <div class="col-md-10">
-        <ngb-carousel>
-
-            <ng-template ngbSlide *ngFor="let hotelCardImageUrl of hotel.mainImages">
-                <div class="picsum-img-wrapper mainSlider">
-                    <img [src]="hotelCardImageUrl" class="hotelInnerImage" alt="Random first slide" />
-                </div>
-            </ng-template>
-           
-        </ngb-carousel>
-    </div>
-</div>
-    <br>
-    
-    <div class="row">
-        <div class="col-md-10 hotelInnerDescriptionColumn">
-            <div class="col-md-7">
-        <div class="hotelInnerDescription">
-            <div class="hotelInnerShortDescription">
-                <div class="hotelInnerOverviewText">
-                    <h1>{{hotel.typeOfPlace}} hosted by {{hotel.hostInformation.hostName}}</h1>
-                    
-                </div>
-           
-        </div>
-        <hr>
-        <div class="hotelInnerTextDescription">
-       <p>Perched high on an ocean hillside, built on 30 ft tall steel legs, the cozy quarters above are akin to an old ship’s cabin. With 360 views at 30ft up you can chart the sun and stars across the sky, set your rhythm to the ebb & flow of the tide and scout the surf from above. Greet the evenings with a cozy woodstove, sunset with drinks on the deck, moonrise with a dip in the hottub & mornings with fresh espresso. Permit yourself to depart land for a while and come stand watch at The Tower.</p>
-        </div>
-    </div>
-        </div>
-        <div class="col-md-1">
-
-        </div>
- 
-        
-    </div>
-        </div>
-        <div class="row">
-            
-<div class="col-md-10 roomsSection">
-    <div class="roomsSectionHeading">
-        <h1>Rooms</h1>
       </div>
-
-           
-            <div class="col-md-12 col-lg-6 ">
-            <div class="card" style="width: 18rem;" *ngFor="let room of hotel.rooms">
-                <ngb-carousel [interval]="100000000">
-                    <ng-template ngbSlide *ngFor="let roomImageUrl of room.images">
-                        <div class="picsum-img-wrapper">
-                            <img [src]="roomImageUrl" class="image" alt="Random first slide"/>
-                        </div>
-         
-                    </ng-template>
-    
-                </ngb-carousel>
-                <div class="card-body">
-                    <h3 class="card-title">{{room.name}}</h3>
-                    <div class="hotelInnerDetails">
-                        <ul>
-                            <li>{{room.bathRoomsCount}} bathrooms</li>
-                           
-                            <li><span>{{room.bedsCount}} beds</span></li>
-                           
-                         
-                            <li><span>{{room.personsCount}} persons</span></li>
-                           </ul>
-                        </div>
-               
-                  
-                  <button class="btn" (click)="bookRoom(room.name)">Book for {{room.price}}$</button>
-                </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-10">
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let hotelCardImageUrl of hotel.mainImages">
+            <div class="picsum-img-wrapper mainSlider">
+              <img [src]="hotelCardImageUrl" class="hotelInnerImage" alt="Random first slide" />
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-10 hotelInnerDescriptionColumn">
+        <div class="col-md-7">
+          <div class="hotelInnerDescription">
+            <div class="hotelInnerShortDescription">
+              <div class="hotelInnerOverviewText">
+                <h1>{{hotel.typeOfPlace}} hosted by {{hotel.hostInformation.hostName}}</h1>
               </div>
             </div>
-            <div class="col-md-4 ">
-                <div class="bookingSection none" id="bookingSection">
-                <div class="bookingSectionHeading">
-                    <div>
-                    <h2>{{hotel.name}}</h2>
+            <hr>
+            <div class="hotelInnerTextDescription">
+              <p>Perched high on an ocean hillside, built on 30 ft tall steel legs, the cozy quarters above are akin to an old ship’s cabin. With 360 views at 30ft up you can chart the sun and stars across the sky, set your rhythm to the ebb & flow of the tide and scout the surf from above. Greet the evenings with a cozy woodstove, sunset with drinks on the deck, moonrise with a dip in the hottub & mornings with fresh espresso. Permit yourself to depart land for a while and come stand watch at The Tower.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 roomsSection">
+        <div class="roomsSectionHeading">
+          <h1>Rooms</h1>
+        </div>
+        <div class="col-md-12 col-lg-6 ">
+          <div class="card" style="width: 18rem;" *ngFor="let room of hotel.rooms">
+            <ngb-carousel [interval]="100000000">
+              <ng-template ngbSlide *ngFor="let roomImageUrl of room.images">
+                <div class="picsum-img-wrapper">
+                  <img [src]="roomImageUrl" class="image" alt="Random first slide" />
                 </div>
-                <div>
-                    <h4 id="roomName"></h4>
-                </div>
-                <div>
-                    <h1 class="price" id="pricePerNight"></h1>
-                </div>
-                <div class="hotelShortDescription">
-               
-                    <fa-icon [icon]="faStar" class="faStar"></fa-icon>
-                   
-                    <a>5.0</a>
-                    <ul>
-                   
+              </ng-template>
+            </ngb-carousel>
+            <div class="card-body">
+              <h3 class="card-title">{{room.name}}</h3>
+              <div class="hotelInnerDetails">
+                <ul>
+                  <li>{{room.bathRoomsCount}} bathrooms</li>
+                  <li>
+                    <span>{{room.bedsCount}} beds</span>
+                  </li>
+                  <li>
+                    <span>{{room.personsCount}} persons</span>
+                  </li>
                 </ul>
-                </div>
+              </div>
+              <button class="btn" (click)="bookRoom(room.name)">Book for {{room.price}}$</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 ">
+          <div class="bookingSection none" id="bookingSection">
+            <div class="bookingSectionHeading">
+              <div>
+                <h2>{{hotel.name}}</h2>
+              </div>
+              <div>
+                <h4 id="roomName"></h4>
+              </div>
+              <div>
+                <h1 class="price" id="pricePerNight"></h1>
+              </div>
+              <div class="hotelShortDescription">
+                <fa-icon [icon]="faStar" class="faStar"></fa-icon>
+                <a>5.0</a>
+                <ul></ul>
+              </div>
             </div>
             <div class="bookingSectionContent">
-                <div class="calendar">
+              <div class="calendar">
                 <mat-form-field appearance="legacy">
                   <mat-label>Choose Date Range</mat-label>
                   <mat-date-range-input [rangePicker]="rangePicker" [formGroup]="dateRange">
@@ -128,55 +106,52 @@
                   <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
                   <mat-date-range-picker #rangePicker>
                     <mat-date-range-picker-actions>
-                        <button mat-button matDateRangePickerCancel>Cancel</button>
-                        <button mat-raised-button color="primary" matDateRangePickerApply (click)="Calculate()">Apply</button>
-                      </mat-date-range-picker-actions>
+                      <button mat-button matDateRangePickerCancel>Cancel</button>
+                      <button mat-raised-button color="primary" matDateRangePickerApply (click)="Calculate()">Apply</button>
+                    </mat-date-range-picker-actions>
                   </mat-date-range-picker>
-               
                 </mat-form-field>
-            </div>
-            
-           
-    <div *ngIf="valid == 1" >
-                <button class="continue" routerLink='/innerHotel/{{hotel.id}}/booking' (click)="continueToBookTheRoom()" >Continue</button>
+              </div>
+              <div *ngIf="valid == 1">
+                <button class="continue" routerLink='/innerHotel/{{hotel.id}}/booking' (click)="continueToBookTheRoom()">Continue</button>
                 <hr>
-                </div>
-    
-    <div>
-        <span><a id="price"></a><a id="days"></a></span>
-        <span id="daysPriceSum"></span>
-    </div>
-    
-    </div>
+              </div>
+              <div>
+                <span>
+                  <a id="price"></a>
+                  <a id="days"></a>
+                </span>
+                <span id="daysPriceSum"></span>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    </div>
-        <div class="row">
-            <div class="col-md-10 ameneties">
-              <div class="amenetiesHeading">
-                <h1>What this place offers</h1>    
+    <div class="row">
+      <div class="col-md-10 ameneties">
+        <div class="amenetiesHeading">
+          <h1>What this place offers</h1>
+        </div>
+        <div class="amenetiesContent">
+          <div class="amenetieCategorySection">
+            <div *ngFor="let amenitie of hotel.placeOffers">
+              <fa-icon class="faCheck" [icon]="faCheck"></fa-icon> {{amenitie}}
             </div>
-            <div class="amenetiesContent">
-                <div class="amenetieCategorySection">
-                    <div *ngFor="let amenitie of hotel.placeOffers"><fa-icon class="faCheck" [icon]="faCheck"></fa-icon> {{amenitie}}</div>
-                   
-                </div>
-
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-md-10">
+    <br>
+    <div class="row">
+      <div class="col-md-10">
         <div class="mapHeading">
-            <h1>Location</h1>
-            
-            <h4>{{hotel.address}}</h4>
+          <h1>Location</h1>
+          <h4>{{hotel.address}}</h4>
         </div>
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map>
-</div>
-</div>
-</div>
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+  </div>

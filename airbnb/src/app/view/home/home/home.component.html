@@ -1,24 +1,6 @@
-
-
-<app-category-filter  (categoryCardItemIdEmitter)="getCategoryCardItemId($event)"></app-category-filter> 
-
-
-
+<app-category-filter (categoryCardItemIdEmitter)="getCategoryCardItemId($event)"></app-category-filter>
 <div class="col-md-12">
-
-    
-<div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea">
-   
-        <app-hotel-card *ngFor="let hotelCard of  hotelCardList" [hotelCardItem]="hotelCard" ></app-hotel-card>
-    </div>
-   
- 
-
-
-
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea">
+    <app-hotel-card *ngFor="let hotelCard of  hotelCardList" [hotelCardItem]="hotelCard"></app-hotel-card>
+  </div>
 </div>
-
-      
-    
-<!-- 
-<app-footer></app-footer> -->

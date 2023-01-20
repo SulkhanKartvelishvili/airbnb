@@ -3,25 +3,15 @@
     <ngb-carousel [interval]="100000000">
       <ng-template ngbSlide *ngFor="let imageUrl of hotelCardItem.mainImages">
         <div class="picsum-img-wrapper">
-          <img
-            [src]="imageUrl"
-            class="image"
-            alt="Random first slide"
-            (click)="navigate()"
-          />
+          <img [src]="imageUrl" class="image" alt="Random first slide" (click)="navigate()" />
         </div>
       </ng-template>
     </ngb-carousel>
-
     <div class="cardBody">
       <h4 class="cardTitle">
         {{ hotelCardItem.name }}, {{ hotelCardItem.city }}
       </h4>
       <h4 class="cardPrice">{{ hotelCardItem.rooms.length }} rooms</h4>
-
-    
-   
     </div>
   </div>
 </div>
-            <!-- routerLink="innerHotel/{{ hotelCardItem.id }}" -->

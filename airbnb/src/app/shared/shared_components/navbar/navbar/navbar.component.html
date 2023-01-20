@@ -1,12 +1,10 @@
-
-
 <div class="col-md-12 navbar">
   <div class="container-fluid logo">
     <a class="navbar-brand" routerLink="">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png" alt="Logo" class="d-inline-block align-text-top">
-      
     </a>
   </div>
+<<<<<<< Updated upstream
 
 
   <div class="userNavigator">
@@ -34,165 +32,97 @@
   
 
 <!-- 
-  </div>
-</div> -->
-  
-  
-<ng-template #content let-modal>
-
-    
-   
-      
-          
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-          <div class="modalHeading">
-
-          <h2 class="modal-title" id="modal-basic-title">Sign up
-          </h2>
-          </div>
-        </div>
-        <div class="modal-body">
-        <form #signUpForm="ngForm" (ngSubmit)="onSignUpFormSubmit(signUpForm)">
-          <div class="form-group">
-            <label for="">Enter your email</label>
-            <div class="input-group mb-3">
-            <input
-              required
-              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
-              ngModel
-              name="email"
-              #email="ngModel"
-              type="email"
-              placeholder="Enter here"
-              class="form-control"
-              [ngStyle]="{
-                'border-color':
-                  !email.valid && email.dirty ? 'red' : '#ced4da'
-              }"
-            />
-          </div>
-        
-          </div>
-        
-          
-          <div class="form-group">
-            <label for="">Enter your password</label>
-            <div class="input-group mb-3">
-            <input
-              required
-              ngModel
-              name="password"
-              type="password"
-              #password="ngModel"
-              placeholder="Enter here"
-              class="form-control"
-              minlength="6"
-              maxlength="40"
-              [ngStyle]="{
-                'border-color':
-                  !password.valid && password.touched ? 'red' : '#ced4da'
-              }"
-            
-            />
-          </div>
-  
-  </div>
-  <div class="modal-footer">
-          <div class="form-group">
-            <button
-           
-            
-            [disabled]="!signUpForm.valid"
-              type="submit"
-              class="btn btn-dark col-md-12 d-block continue"
-              (click)="modal.close('Save click')"
-            >
-           
-              Continue
-            </button>
-            <button type="button" class="Auth" (click)="onSignInWithGoogleBtnClick()" (click)="modal.close('Save click')"><fa-icon class="faGoogle"  [icon]="faGoogle"></fa-icon>Continue with Google   </button>
-
-          </div>
-          </div>
-        </form>
-        
-     
-        
-      
-        </div>
- 
-        <div class="modal-header">
-          <div class="modalHeading loginIn">
-
-          <h2 class="modal-title" id="modal-basic-title">Login in
-          </h2>
-          </div>
-        </div>
-        <div class="modal-body">
-          <form #loginInForm="ngForm" (ngSubmit)="onloginInFormSubmit(loginInForm)">
-            <div class="form-group">
-              <label for="">Enter your email</label>
-              <div class="input-group mb-3">
-              <input
-              required
-              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
-              ngModel
-              name="email"
-              #email="ngModel"
-              type="email"
-              placeholder="Enter here"
-              class="form-control"
-              [ngStyle]="{
-                'border-color':
-                  !email.valid && email.dirty ? 'red' : '#ced4da'
-              }"
-              />
-            </div>
-            </div>
-          
-            
-            <div class="form-group">
-              <label for="">Enter your password</label>
-              <div class="input-group mb-3">
-              <input
-              required
-              ngModel
-              name="password"
-              type="password"
-              #password="ngModel"
-              placeholder="Enter here"
-              class="form-control"
-              minlength="6"
-              maxlength="40"
-              [ngStyle]="{
-                'border-color':
-                  !password.valid && password.touched ? 'red' : '#ced4da'
-              }"
-              />
-            </div>
-    
+=======
+  <div class="userNavigator">
+    <div ngbDropdown class="d-inline-block dropdown">
+      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+        <ul class="bars">
+          <li>
+            <fa-icon [icon]="faBars"></fa-icon>
+          </li>
+        </ul>
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="open(content)" *ngIf="userData == null ">Continue</button>
+        <button ngbDropdownItem routerLink="dashboard" *ngIf="userData != null ">Dashboard</button>
+        <button ngbDropdownItem routerLink="dashboard/userInfo" *ngIf="userData != null ">Settings</button>
+        <hr *ngIf="userData != null ">
+        <button ngbDropdownItem (click)="logout()" *ngIf="userData != null ">Log out</button>
+      </div>
     </div>
-    <div class="modal-footer">
-            <div class="form-group">
-              <button
-            
-              [disabled]="!loginInForm.valid"
-              type="submit"
-              class="btn btn-dark col-md-12 d-block continue"
-              (click)="modal.close('Save click')"
-            >
-              Continue
-              </button>
-               <!-- <button type="button" class="googleAuth Auth" (click)="loginInWithGoogle()"><fa-icon class="faFacebook" [icon]="faFacebook"></fa-icon>Continue with Facebook  </button> -->
-               <button type="button" class="Auth" (click)="onSignInWithGoogleBtnClick()" (click)="modal.close('Save click')"><fa-icon class="faGoogle"  [icon]="faGoogle"></fa-icon>Continue with Google   </button>
-            </div>
-            </div>
-          </form>
-          
-       
-          
-        
-          </div> 
-  </ng-template>
-  
+>>>>>>> Stashed changes
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <div class="modalHeading">
+      <h2 class="modal-title" id="modal-basic-title">Sign up </h2>
+    </div>
+  </div>
+  <div class="modal-body">
+    <form #signUpForm="ngForm" (ngSubmit)="onSignUpFormSubmit(signUpForm)">
+      <div class="form-group">
+        <label for="">Enter your email</label>
+        <div class="input-group mb-3">
+          <input required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$" ngModel name="email" #email="ngModel" type="email" placeholder="Enter here" class="form-control" [ngStyle]="{
+                'border-color':
+                  !email.valid && email.dirty ? 'red' : '#ced4da'
+              }" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Enter your password</label>
+        <div class="input-group mb-3">
+          <input required ngModel name="password" type="password" #password="ngModel" placeholder="Enter here" class="form-control" minlength="6" maxlength="40" [ngStyle]="{
+                'border-color':
+                  !password.valid && password.touched ? 'red' : '#ced4da'
+              }" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <button [disabled]="!signUpForm.valid" type="submit" class="btn btn-dark col-md-12 d-block continue" (click)="modal.close('Save click')"> Continue </button>
+          <button type="button" class="Auth" (click)="onSignInWithGoogleBtnClick()" (click)="modal.close('Save click')">
+            <fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-header">
+    <div class="modalHeading loginIn">
+      <h2 class="modal-title" id="modal-basic-title">Login in </h2>
+    </div>
+  </div>
+  <div class="modal-body">
+    <form #loginInForm="ngForm" (ngSubmit)="onloginInFormSubmit(loginInForm)">
+      <div class="form-group">
+        <label for="">Enter your email</label>
+        <div class="input-group mb-3">
+          <input required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$" ngModel name="email" #email="ngModel" type="email" placeholder="Enter here" class="form-control" [ngStyle]="{
+                'border-color':
+                  !email.valid && email.dirty ? 'red' : '#ced4da'
+              }" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Enter your password</label>
+        <div class="input-group mb-3">
+          <input required ngModel name="password" type="password" #password="ngModel" placeholder="Enter here" class="form-control" minlength="6" maxlength="40" [ngStyle]="{
+                'border-color':
+                  !password.valid && password.touched ? 'red' : '#ced4da'
+              }" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <button [disabled]="!loginInForm.valid" type="submit" class="btn btn-dark col-md-12 d-block continue" (click)="modal.close('Save click')"> Continue </button>
+          <button type="button" class="Auth" (click)="onSignInWithGoogleBtnClick()" (click)="modal.close('Save click')">
+            <fa-icon class="faGoogle" [icon]="faGoogle"></fa-icon>Continue with Google
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,91 +1,67 @@
-.logo img{
+.logo img {
     width: 115px;
 }
-.logo{
+.logo {
     grid-column: 2;
 }
-.userNavigator{
+.userNavigator {
     grid-column: 4;
 }
-.userNavigator button{
+.userNavigator button {
     border-radius: 10px;
     border-color: grey;
     display: flex;
 }
-.userNavigator button ul{
- list-style: none;
- padding-left: 10px;
- margin: 0px;
-
+.userNavigator button ul {
+    list-style: none;
+    padding-left: 10px;
+    margin: 0px;
 }
-.navbar{
+.navbar {
     display: grid;
     grid-template-columns: 10% 50% 25% 15%;
 }
-.logout{
+.logout {
     padding-right: 30px;
 }
-.logout button{
+.logout button {
     float: right;
 }
-.bars{
-    padding-left:0px!important;
+.bars {
+    padding-left: 0px !important;
 }
 .userNavigator button fa-icon {
     font-size: 18px;
-    color:black;
-    /* float: right; */
-    /* position: relative;
-    bottom:5px;
-    left:10px; */
+    color: black;
 }
-.bars li fa-icon{
-    font-size:15px
+.bars li fa-icon {
+    font-size: 15px 
 }
 #dropdownBasic1::after {
     content: none;
 }
-.btn:hover{
+.btn:hover {
     background: none;
 }
-.btn:focus{
-    background:none;
+.btn:focus {
+    background: none;
 }
-/* .navbar{
+.modal-header {
     display: grid;
-    grid-template-columns: 25% 50% 15% 10%;
-    margin:auto;
-  
-} */
-/* .logo{
-    grid-column: 1;
+    grid-template-columns: 20% 60% 20%;
+    justify-content: center;
 }
-
-.userNavigator{
-    grid-column: 4;
-  
-}
-.userNavigator .row{
-    float:left;
-} */
-
-
-.modal-header{
-    display: grid;
-      grid-template-columns: 20% 60% 20%;
-      justify-content: center;
-  }
-  .modalHeading{
+.modalHeading {
     text-align: center;
     padding-top: 15px;
-  }
-.modal-title{
+}
+.modal-title {
     font-weight: 400;
 }
-.loginIn{
+.loginIn {
     grid-column: 2;
 }
-.continue{
+.continue {
     background: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
     color: white;
     width: 90%;
@@ -96,10 +72,10 @@
     border-radius: 7px;
     margin-top: 10px;
 }
-.btn-close{
+.btn-close {
     margin: 5px;
 }
-.Auth{
+.Auth {
     width: 90%;
     margin: auto;
     border: none;
@@ -108,62 +84,54 @@
     border-radius: 7px;
     margin-top: 10px;
 }
-.faFacebook{
+.faFacebook {
     float: left;
     position: relative;
     left: 15px;
     font-size: 19px;
 }
-.faGoogle{
+.faGoogle {
     float: left;
     position: relative;
     left: 15px;
     font-size: 19px;
     color: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
-
 }
-.MyClass{
-    display:block;
-}
-.modal-footer {
-     display: block;
-}
-button{
+.MyClass {
     display: block;
 }
-.userEmail ul{
-    float: right;
-   position: relative;
-   top:15px;
-    list-style: none;
-    font-size:16px;
+.modal-footer {
+    display: block;
 }
-.navbar{
+button {
+    display: block;
+}
+.userEmail ul {
+    float: right;
+    position: relative;
+    top: 15px;
+    list-style: none;
+    font-size: 16px;
+}
+.navbar {
     margin-top: 20px;
     margin-bottom: 30px;
 }
-@media only screen and  (max-width: 600px) {
-    .dropdown-menu.show{
+@media only screen and (max-width: 600px) {
+    .dropdown-menu.show {
         margin-left: -100px;
-    }
-    .bars li fa-icon{
-        font-size: 12px!important;
-    }
-   
-  }
-
-
-  @media only screen and (min-width: 600px) and (max-width: 900px) {
-    .dropdown-menu.show{
+   }
+    .bars li fa-icon {
+        font-size: 12px !important;
+   }
+}
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+    .dropdown-menu.show {
         margin-left: -70px;
-    }
-    
-  }
-  @media only screen and (min-width: 900px) and (max-width: 1024px) {
-    .dropdown-menu.show{
+   }
+}
+@media only screen and (min-width: 900px) and (max-width: 1024px) {
+    .dropdown-menu.show {
         margin-left: -40px;
-    }
-    
- 
-    
-  }
+   }
+}

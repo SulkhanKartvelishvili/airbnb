@@ -2,103 +2,68 @@
   <div class="dashboard">
     <a routerLink="dashboard">Dashboard</a>
   </div>
-<div class="settings">
-    <a  type="submit" (click)="userInfoNavigate()">Settings</a>
+  <div class="settings">
+    <a type="submit" (click)="userInfoNavigate()">Settings</a>
   </div>
 </div>
 <br>
 <br>
-
-          <div class="col-md-8 m-auto " > 
-
-            <div class="backToBookIngCardsHeading"  *ngIf="backToBookingHotel !=null && expirationDayCount<1">
-              <h1>Finish your booking</h1>
-            </div>
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea " *ngIf="backToBookingHotel !=null && expirationDayCount<1">
-              <div class="card" style="width: 18rem;"  >
-              
-          
-                          <div class="cardImage">
-                              <img [src]="backToBookingHotel[0].imageUrl" class="image" routerLink="innerHotel/{{ backToBookingHotel[0].hotelId }}" />
-                          </div>
-                     
-               
-          
-              
-                <div class="cardBody">
-                    <h3 class="cardTitle">{{backToBookingHotel[0].hotelName}}</h3>
-                    <div class="hotelInnerDetails">
-                        <ul>
-                            
-                           
-                            <li>{{backToBookingHotel[0].priceSum}}$,</li>
-                           
-                            <li>{{backToBookingHotel[0].dayCount}} nights</li>
-  
-                           </ul>
-                           </div>
-                           <div class="hotelBookingDates">
-                            <ul>
-                              <li>{{backToBookingHotel[0].checkInDate | date}}</li> 
-                              <li> - </li>
-                              <li>{{backToBookingHotel[0].checkOutDate | date}}</li>
-                            </ul>
-                           </div>
-                         </div>
-               
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="bookedCardsHeading">
-              <h1>Your Bookings</h1>
-            </div>
-            <div *ngIf="usersBookedHotelList.length == 0">
-              <h3>You don't have bookings</h3>
-            </div>
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea">
-
-            <div class="card" style="width: 18rem;" *ngFor="let bookedHotel of usersBookedHotelList" >
-              
-              <!-- <div *ngIf="bookedHotel.payload.doc.data().userId == userData.uid"> -->
-        
-                        <div class="cardImage">
-                            <img [src]="bookedHotel.imageUrl" class="image" routerLink="innerHotel/{{ bookedHotel.hotelId }}"/>
-                        </div>
-                   
-             
-        
-            
-              <div class="cardBody">
-                  <h3 class="cardTitle">{{bookedHotel.hotelName}}</h3>
-                  <div class="hotelInnerDetails">
-                      <ul>
-                          
-                         
-                          <li>{{bookedHotel.price}}$,</li>
-                         
-                          <li>{{bookedHotel.nights}} nights</li>
-
-                          <!-- <li><span>{{bookedHotel.personsCount}} persons</span></li> -->
-                         </ul>
-                         </div>
-                         <div class="hotelBookingDates">
-                          <ul>
-                            <li>{{bookedHotel.checkInDate | date}}</li> 
-                            <li> - </li>
-                            <li>{{bookedHotel.checkOutDate | date}}</li>
-                          </ul>
-                         </div>
-                       </div>
-             
-                <!-- <button class="btn" routerLink="hotel_inner/${{bookedHotel.payload.doc.data().hotelId}}/booking">Continue</button> -->
-              </div>
-            </div>
-            </div>
-          
-    
-
-                  
-                  
-            
-  
+<div class="col-md-8 m-auto ">
+  <div class="backToBookIngCardsHeading" *ngIf="backToBookingHotel !=null && expirationDayCount<1">
+    <h1>Finish your booking</h1>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea " *ngIf="backToBookingHotel !=null && expirationDayCount<1">
+    <div class="card" style="width: 18rem;">
+      <div class="cardImage">
+        <img [src]="backToBookingHotel[0].imageUrl" class="image" routerLink="innerHotel/{{ backToBookingHotel[0].hotelId }}" />
+      </div>
+      <div class="cardBody">
+        <h3 class="cardTitle">{{backToBookingHotel[0].hotelName}}</h3>
+        <div class="hotelInnerDetails">
+          <ul>
+            <li>{{backToBookingHotel[0].priceSum}}$,</li>
+            <li>{{backToBookingHotel[0].dayCount}} nights</li>
+          </ul>
+        </div>
+        <div class="hotelBookingDates">
+          <ul>
+            <li>{{backToBookingHotel[0].checkInDate | date}}</li>
+            <li> - </li>
+            <li>{{backToBookingHotel[0].checkOutDate | date}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="bookedCardsHeading">
+    <h1>Your Bookings</h1>
+  </div>
+  <div *ngIf="usersBookedHotelList.length == 0">
+    <h3>You don't have bookings</h3>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea">
+    <div class="card" style="width: 18rem;" *ngFor="let bookedHotel of usersBookedHotelList">
+      <div class="cardImage">
+        <img [src]="bookedHotel.imageUrl" class="image" routerLink="innerHotel/{{ bookedHotel.hotelId }}" />
+      </div>
+      <div class="cardBody">
+        <h3 class="cardTitle">{{bookedHotel.hotelName}}</h3>
+        <div class="hotelInnerDetails">
+          <ul>
+            <li>{{bookedHotel.price}}$,</li>
+            <li>{{bookedHotel.nights}} nights</li>
+          </ul>
+        </div>
+        <div class="hotelBookingDates">
+          <ul>
+            <li>{{bookedHotel.checkInDate | date}}</li>
+            <li> - </li>
+            <li>{{bookedHotel.checkOutDate | date}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

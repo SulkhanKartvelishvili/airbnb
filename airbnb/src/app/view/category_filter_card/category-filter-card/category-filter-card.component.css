@@ -11,15 +11,11 @@ a {
 .categoryCard {
     width: 100%;
 }
- .img-holder {
-    /* margin: 0 0 -12px; */
-}
 .categoryCardIcon {
     display: block;
     margin: 2px auto;
     width: 25px;
     height: 25px;
-
 }
 .categoryCardName {
     display: block;

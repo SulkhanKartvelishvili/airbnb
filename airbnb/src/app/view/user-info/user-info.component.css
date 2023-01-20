@@ -1,77 +1,70 @@
 .col-lg-6{
-    margin:auto!important;
+  margin:auto!important;
 }
 .bankCardContent h2, h4{
-    margin-bottom: 0px;
-  }
- .bankCardContent h4{
-    font-weight: 500;
-    color: #b2b5b9;
- }
- .bankCardContent{
+  margin-bottom: 0px;
+}
+.bankCardContent h4{
+  font-weight: 500;
+  color: #b2b5b9;
+}
+.bankCardContent{
   box-shadow: 0px 0px 5px 2px #abb0b51a;
   display: grid;
   border-radius: 10px;
   padding: 20px;
- }
-
-
- .bankCardContent div:nth-child(2) button{
-   float:right;
- }
- .bankCardContent div:nth-child(2) button:nth-child(2){
-   margin-right: 10px;
- }
- .faCreditCard{
-    font-size:20px;
- }
- .aboutHotelContent{
-    padding-bottom: 25px;
- }
- .bankCardHeading h1{
-    font-size: 32px !important;
-    font-weight: 500 !important;
+}
+.bankCardContent div:nth-child(2) button{
+  float:right;
+}
+.bankCardContent div:nth-child(2) button:nth-child(2){
+  margin-right: 10px;
+}
+.faCreditCard{
+  font-size:20px;
+}
+.aboutHotelContent{
+  padding-bottom: 25px;
+}
+.bankCardHeading h1{
+  font-size: 32px !important;
+  font-weight: 500 !important;
 }
 .bankCardHeading{
-    padding-top: 20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .exp-wrapper {
-    position: relative;
-    border: 1px solid  black ;
- 
-    display: flex;
-    
-    justify-content: space-around;
-    color:black;
-    line-height: 36px;
-    font-size: 24px;
-  }
-  
-  .exp-wrapper:after {
-    content: '/';
-    position: absolute;
-    left: 50%;
-    margin-left: -4px;
-    color: #aaa;
-  }
-  
-  input.exp {
-    float: left;
-    font-family: monospace;
-    border: 0;
-    width: 18px;
-    outline: none;
-    appearance: none;
-    font-size: 14px;
-  }
-  .col-md-8{
-    padding-top: 40px;
-  }
-
+  position: relative;
+  border: 1px solid black ;
+  display: flex;
+  justify-content: space-around;
+  color:black;
+  line-height: 36px;
+  font-size: 24px;
+}
+.exp-wrapper:after {
+  content: '/';
+  position: absolute;
+  left: 50%;
+  margin-left: -4px;
+  color: #aaa;
+}
+input.exp {
+  float: left;
+  font-family: monospace;
+  border: 0;
+  width: 18px;
+  outline: none;
+  appearance: none;
+  font-size: 14px;
+}
+.col-md-8{
+  padding-top: 40px;
+}
 .modal-header{
   display: grid;
-    grid-template-columns: 10% 80% 10%;
+  grid-template-columns: 10% 80% 10%;
 }
 .modalHeading{
   text-align: center;
@@ -79,39 +72,39 @@
 }
 .btn-white{
   border-width: thin;
-    background: white;
-    border-color: #abb0b540;
-    display: flex;
-    height: auto;
-    padding-top: 12px;
-    font-size: 15px;
-    padding-bottom: 12px;
-    border-radius: 10px;
+  background: white;
+  border-color: #abb0b540;
+  display: flex;
+  height: auto;
+  padding-top: 12px;
+  font-size: 15px;
+  padding-bottom: 12px;
+  border-radius: 10px;
 }
 .mb-3 input {
   border-color: black;
   border-radius: 0px;
 }
-
 .navigation{
   justify-content: center;
   display: flex;
 }
 .settings {
-    padding: 10px;
-    border-block-end: solid black thin;
+  padding: 10px;
+  border-block-end: solid black thin;
 }
 .dashboard{
-    padding: 10px;
+  padding: 10px;
 }
 .dashboard a, .settings a{
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 .forgotPassword{
   display: inline-grid;
 }
 .forgotPassword button{
+<<<<<<< Updated upstream
   margin-top:5px
 }
 .addBankCardForm .mb-3:nth-child(3){
@@ -120,4 +113,20 @@
 }
 .mb-3 .col-md-12:nth-child(2){
   grid-column: 3;
+=======
+  margin-top:5px 
+}
+.bankCardForm .mb-3:nth-child(3){
+  grid-template-columns: 50% 10% 40%;
+  display: grid;
+
+}
+.mb-3 .col-md-12:nth-child(2){
+  grid-column: 3;
+
+}
+@media only screen and (max-width: 764px) {
+ 
+
+>>>>>>> Stashed changes
 }
