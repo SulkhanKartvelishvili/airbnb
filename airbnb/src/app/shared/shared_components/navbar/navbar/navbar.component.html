@@ -7,20 +7,10 @@
       
     </a>
   </div>
-  <!-- <div class="userEmail">
-    <ul>
-      <li *ngIf="userData != null"> {{userData.email}}
-      </li>
-    </ul>
-  </div> -->
-  <!-- <div class="logout">
-      <button *ngIf="userData != null"   class="btn btn-dark"> logout
-      </button>
-  </div> -->
+
 
   <div class="userNavigator">
-      <!-- <div class="row">
-          <div class="col"> -->
+
               <div ngbDropdown class="d-inline-block dropdown">
                   <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
                       <ul class="bars">
@@ -32,7 +22,7 @@
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                       <button ngbDropdownItem  (click)="open(content)" *ngIf="userData == null ">Continue</button>
                       <button ngbDropdownItem  routerLink="dashboard"  *ngIf="userData != null ">Dashboard</button>
-                      <button ngbDropdownItem  routerLink="dashboard/userInfo"  *ngIf="userData != null ">Settings</button>
+                      <button ngbDropdownItem  routerLink="userInfo"  *ngIf="userData != null ">Settings</button>
 
                       <hr  *ngIf="userData != null ">
                       <button ngbDropdownItem (click)="logout()"  *ngIf="userData != null ">Log out</button>

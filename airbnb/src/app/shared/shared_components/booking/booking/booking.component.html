@@ -1,13 +1,13 @@
 <div class="container" *ngIf="bookedHotelData != null">
   <div class="row">
-    <div class="col-md-10 m-auto d-flex">
+    <div class="col-md-10 m-auto">
       <div class="confirmationHeading">
         <h1>Confirm and pay</h1>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-10 m-auto d-flex">
+    <div class="col-lg-10 col-md-12 m-auto">
       <div class="col-md-6 ">
         <div class="confirmation">
           <div class="confirmationContent">
@@ -29,7 +29,7 @@
               <h1>Add Card Details</h1>
             </div>
             <div class="addBankCard">
-              <form #addBankCard="ngForm" (ngSubmit)="onAddBankCard(addBankCard)">
+              <form #addBankCard="ngForm" class="addBankCardForm"  (ngSubmit)="onAddBankCard(addBankCard)">
                 <div class="mb-3">
                   <label class="form-label">Card Holder Name</label>
                   <div class="input-group">
@@ -42,27 +42,27 @@
                     <input type="text" class="form-control" ngModel type="number" required inputmode="numeric" pattern="[0-9\s]{13,19}" minlength="16" maxlength="16" autocomplete="cc-number" maxlength="19" name="number" aria-describedby="basic-addon3" placeholder="1234 5678 9876 5432">
                   </div>
                 </div>
-                <div class="mb-3 d-flex">
-                  <div class="col-md-6">
+                <div class="mb-3">
+                  <div class="col-md-12">
                     <label class="form-label">Card Expiration Date</label>
-                    <!-- <div class="input-group expDate"><input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3"><span>/</span><input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3" max ="4" required></div> -->
                     <div class="exp-wrapper">
                       <input autocomplete="off" class="exp " id="month" ngModel name="start" maxlength="2" required pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
                       <input autocomplete="off" class="exp" id="year" ngModel name="end" maxlength="2" required pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
                     </div>
                   </div>
-                  <div class="col-md-2"></div>
-                  <div class="col-md-4">
+               
+                  <div class="col-md-12">
                     <label class="form-label">Card CVV Number</label>
                     <div class="input-group">
                       <input type="number" class="form-control" ngModel name="cvv" required id="basic-url" aria-describedby="basic-addon3" placeholder="123">
                     </div>
                   </div>
                 </div>
-                <button [disabled]="!addBankCard.valid" type="submit" class="btn btn-dark col-md-12 d-block continue"> Continue </button>
+                <button [disabled]="!addBankCard.valid" type="submit" class="btn btn-dark col-sm-12 col-12 col-md-12 d-block continue"> Continue </button>
               </form>
             </div>
           </div>
+          <br>
           <div class="bankCard" *ngIf="userBankCard !=null">
             <div class="bankCardContent">
               <div>
@@ -75,6 +75,7 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="col-md-6 ">
         <div class="aboutHotel">
           <div class="aboutHotelHeading d-flex">
@@ -103,7 +104,7 @@
             </div>
           </div>
           <div class="bookingSection" *ngIf="userBankCard !=null">
-            <button id="book" type="submit" class="btn btn-dark col-md-12 d-block continue" (click)="bookhotel()"> Continue </button>
+            <button id="book" type="submit" class="btn btn-dark col-sm-12 col-12 col-md-12 d-block continue" (click)="bookhotel()"> Continue </button>
           </div>
         </div>
       </div>

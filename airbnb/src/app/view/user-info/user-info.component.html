@@ -40,7 +40,7 @@
                                             <h1>Add Card Details</h1>
                                           </div>
                                           <div class="addBankCard">
-                                            <form [formGroup]="bankCard" (ngSubmit)="onAddBankCard()">
+                                            <form [formGroup]="bankCard" class="addBankCardForm" (ngSubmit)="onAddBankCard()">
                                               <div class="mb-3">
                                                 <label class="form-label">Card Holder Name</label>
                                                 <div class="input-group">
@@ -53,23 +53,22 @@
                                                   <input type="text" class="form-control"  type="tel" formControlName="number" required inputmode="numeric" pattern="[0-9\s]{13,19}" minlength="16" maxlength="16" autocomplete="cc-number" maxlength="19" name="number" aria-describedby="basic-addon3" placeholder="1234 5678 9876 5432">
                                                 </div>
                                               </div>
-                                              <div class="mb-3 d-flex">
-                                                <div class="col-md-6">
+                                              <div class="mb-3">
+                                                <div class="col-md-12">
                                                   <label class="form-label">Card Expiration Date</label>
                                                   <div class="exp-wrapper input-group">
                                                     <input autocomplete="off" class="exp " id="ExpMonth"  name="start" maxlength="2" formControlName="expMonth" required pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
                                                     <input autocomplete="off" class="exp" id="ExpYear"  name="end" maxlength="2" formControlName="expYear" required pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
                                                   </div>
                                                 </div>
-                                                <div class="col-md-2"></div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-12">
                                                   <label class="form-label">Card CVV Number</label>
                                                   <div class="input-group">
                                                     <input type="number" class="form-control" formControlName="cvv" name="cvv"  required id="basic-url" aria-describedby="basic-addon3" placeholder="123">
                                                   </div>
                                                 </div>
                                               </div>
-                                              <button [disabled]="!bankCard.valid" type="submit" class="btn btn-dark col-md-12 d-block continue"> Continue </button>
+                                              <button [disabled]="!bankCard.valid" type="submit" class="btn btn-dark col-12 col-md-12 d-block continue"> Continue </button>
                                             </form>
                                           </div>
                                         </div>    

@@ -145,4 +145,28 @@
     border-radius: 10px;
     padding: 20px;
    }
-  
+   .addBankCardForm .mb-3:nth-child(3){
+    display: grid;
+    grid-template-columns: 50% 10% 40%;
+  }
+  .mb-3 .col-md-12:nth-child(2){
+    grid-column: 3;
+  }
+  .container .col-lg-10{
+    display: flex;
+  }
+  .addBankCardForm .mb-3:nth-child(3){
+    display: grid;
+    grid-template-columns: 50% 10% 40%;
+  }
+  .mb-3 .col-md-12:nth-child(2){
+    grid-column: 3;
+  }
+  @media only screen and (max-width: 768px)  {
+    .container .col-md-12{
+        display: block;
+      }
+      .aboutHotel{
+        width: 100%;
+      }
+}
