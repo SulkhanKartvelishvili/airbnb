@@ -92,3 +92,25 @@
   border-color: black;
   border-radius: 0px;
 }
+
+.navigation{
+  justify-content: center;
+  display: flex;
+}
+.settings {
+    padding: 10px;
+    border-block-end: solid black thin;
+}
+.dashboard{
+    padding: 10px;
+}
+.dashboard a, .settings a{
+    text-decoration: none;
+    color: black;
+}
+.forgotPassword{
+  display: inline-grid;
+}
+.forgotPassword button{
+  margin-top:5px
+}

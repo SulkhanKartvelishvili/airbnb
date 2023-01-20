@@ -7,7 +7,7 @@ import {
 
   NgbModal,
 } from '@ng-bootstrap/ng-bootstrap';
-import { UserFrService } from 'src/app/shared/shared_services/user-fr.service';
+import { UserFrService } from 'src/app/shared/shared_services/user/user-fr.service';
 import { User } from 'src/app/shared/shared_models/user.model';
 import { Router } from '@angular/router';
 
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  // userEmail!:null;
+ 
 
   userData!: any;
 
@@ -44,32 +44,22 @@ export class NavbarComponent implements OnInit {
   onSignUpFormSubmit(signUpForm: NgForm) {
     var tmpUser = Object.assign(new User(), signUpForm.value);
 
-    // var tmpUser = Object.assign(new User(),signUpForm.value);
-    // this.signUpServ.SignUp(signUpForm.value.email, signUpForm.value.password);
+   
     this.userServ.signUp(tmpUser, signUpForm.value.password);
     this.userServ.userDataEmitter.subscribe((response) => {
       this.userData = response;
 
     });
 
-    // this.userData = JSON.parse(localStorage.getItem('user')!);
-
     signUpForm.reset();
-    // UserFrService.signUp(signUpForm.value.email, signUpForm.value.password);
-    // this.signUpServ.signUp(tmpUser,signUpForm.value.password ).then(response => {
-    //   console.log(response);
-    // });
+ 
   }
   onloginInFormSubmit(loginInForm: NgForm) {
     this.userServ.signIn(loginInForm.value.email, loginInForm.value.password);
-    // this.userServ.emailEmitter.subscribe(response => {
-
-    //   this.userEmail = response;
-    // })
-    // this.userData = JSON.parse(localStorage.getItem('user')!);
+   
     this.userServ.userDataEmitter.subscribe((response) => {
       this.userData = JSON.parse(localStorage.getItem('user') || 'null');
-      // this.router.navigate(['dashboard']);
+     
       
     });
 

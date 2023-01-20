@@ -1,9 +1,19 @@
+<div class="col-md-12 navigation">
+  <div class="dashboard">
+    <a type="submit" (click)="dashboardNavigate()">Dashboard</a>
+  </div>
+<div class="settings">
+    <a routerLink="userInfo" >Settings</a>
+  </div>
+</div>
+<br>
+<br>
 <div class="container">
        <div class="row">
               <div class="col-md-12 col-lg-6">
                      <div class="userInfo col-md-12">
                             <div class="userInfoHeading">
-                              <h1>User Information</h1>       
+                              <h1>Your Information</h1>       
                             </div>
                             <div class="userInfoContent">
                                <div class="username">
@@ -12,10 +22,10 @@
                                </div>   
                                <div class="forgotPassword">
                                    <label>Did you forget your password?</label> 
-                                   <br>
+                                  
                                    <button 
                                    (click)="onForgotPasswordBtnClick()"
-                                   type="button" mat-raised-button> Forgot Password</button> 
+                                   type="button" mat-raised-button> Recover Password</button> 
                                </div>
                             
 

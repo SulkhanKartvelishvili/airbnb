@@ -1,18 +1,15 @@
-<div class="col-md-3 sideNav">
-
-    <a routerLink="userInfo">My information</a>
+<div class="col-md-12 navigation">
+  <div class="dashboard">
+    <a routerLink="dashboard">Dashboard</a>
+  </div>
+<div class="settings">
+    <a  type="submit" (click)="userInfoNavigate()">Settings</a>
+  </div>
 </div>
+<br>
+<br>
 
-<!-- <tbody>
-    <tr *ngFor="let bookedHotel of bookedHotelsList">
-       <td>{{ bookedHotel.payload.doc.data().hotelId }}</td>
-     
-    </tr>
-    </tbody> -->
-
-    <!-- <div class="container" *ngIf="usersBookedHotelList != null">
-        <div class="row">-->
-          <div class="col-md-12 " > 
+          <div class="col-md-8 m-auto " > 
 
             <div class="backToBookIngCardsHeading"  *ngIf="backToBookingHotel !=null && expirationDayCount<1">
               <h1>Finish your booking</h1>
@@ -20,10 +17,9 @@
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea " *ngIf="backToBookingHotel !=null && expirationDayCount<1">
               <div class="card" style="width: 18rem;"  >
               
-                <!-- <div *ngIf="bookedHotel.payload.doc.data().userId == userData.uid"> -->
           
                           <div class="cardImage">
-                              <img [src]="backToBookingHotel[0].imageUrl" class="image" routerLink="innerHotel/{{ backToBookingHotel[0].hotelId }}"/>
+                              <img [src]="backToBookingHotel[0].imageUrl" class="image" routerLink="innerHotel/{{ backToBookingHotel[0].hotelId }}" />
                           </div>
                      
                
@@ -39,7 +35,6 @@
                            
                             <li>{{backToBookingHotel[0].dayCount}} nights</li>
   
-                            <!-- <li><span>{{bookedHotel.personsCount}} persons</span></li> -->
                            </ul>
                            </div>
                            <div class="hotelBookingDates">
@@ -51,7 +46,6 @@
                            </div>
                          </div>
                
-                  <!-- <button class="btn" routerLink="hotel_inner/${{bookedHotel.payload.doc.data().hotelId}}/booking">Continue</button> -->
                 </div>
             </div>
             <br>
@@ -64,7 +58,6 @@
             </div>
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-4 cardsArea">
 
-            <!-- <div class="bookedCards"> -->
             <div class="card" style="width: 18rem;" *ngFor="let bookedHotel of usersBookedHotelList" >
               
               <!-- <div *ngIf="bookedHotel.payload.doc.data().userId == userData.uid"> -->
@@ -103,18 +96,9 @@
             </div>
             </div>
           
-        <!-- </div>
-        </div> 
-      </div> -->
-                <!-- <div class="col" *ngFor="let bookedHotel of bookedHotelsList" >
-                  <div >
-                  -->
+    
 
                   
                   
             
-        
-    <!-- </div> -->
-
-<!-- <button (click)="showbookings()">show</button> -->
-
+  

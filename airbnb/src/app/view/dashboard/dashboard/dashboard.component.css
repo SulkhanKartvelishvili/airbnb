@@ -1,20 +1,18 @@
-.sideNav{
-    float:left;
-    /* background-color: black; */
-    height: 100vh;
+.navigation{
+  justify-content: center;
+  display: flex;
 }
-/* img{
-    width: 200px;
+.settings {
+    padding: 10px;
 }
-.bookedCards{
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
+.dashboard{
+    padding: 10px;
+    border-block-end: solid black thin;
 }
-.card{
-    margin-bottom: 30px;
-    border: none;
-} */
-
+.dashboard a, .settings a{
+    text-decoration: none;
+    color: black;
+}
 .cardImage img{
     
   
@@ -31,7 +29,9 @@
     width: 90%;
     margin: auto;
     } */
-
+   .cardsArea{
+    margin: auto;
+   }
     .card{
         border: none;
         width:16rem!important;

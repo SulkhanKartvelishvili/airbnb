@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { User } from '../shared_models/user.model';
+import { User } from '../../shared_models/user.model';
 import * as firebase from 'firebase/auth';
 import { Router } from '@angular/router';
 @Injectable({
@@ -15,17 +15,7 @@ export class UserFrService {
 
   constructor( public afs: AngularFirestore,
   public auth: AngularFireAuth, private router:Router) { 
- 
-  // this.auth.authState.subscribe((user) => {
-  //   if (user) {
-  //     this.userData = user;
-  //     localStorage.setItem('user', JSON.stringify(this.userData));
-  //     JSON.parse(localStorage.getItem('user')!);
-  //   } else {
-  //     localStorage.setItem('user', 'null');
-  //     JSON.parse(localStorage.getItem('user')!);
-  //   }
-  // });
+
 }
 
 
@@ -99,9 +89,7 @@ getUserDoc(id: string): any {
 }
 
 
-// googleAuth() {
-//   return this.authLogin(new firebase.GoogleAuthProvider());
-// }
+
 
 googleAuth() {
   return this.authLogin(new firebase.GoogleAuthProvider()).then((res: any) => {
@@ -135,14 +123,6 @@ forgotPassword(passwordResetEmail: string) {
       window.alert(error);
     });
 }
-
-// public loginUser(user:any):void{
-//   this.authUser = user;
-// }
-
-// public isUserLoggedIn():boolean{
-// return this.authUser !=null;
-// }
 
 
 

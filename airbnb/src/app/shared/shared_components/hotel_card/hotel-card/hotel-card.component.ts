@@ -1,8 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgIf } from '@angular/common';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
+import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-hotel-card',
@@ -15,11 +14,14 @@ export class HotelCardComponent implements OnInit, OnChanges {
   @Input()
   hotelCardItem: any;
 
-  constructor() {}
+  constructor(private router:Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
   }
 
   ngOnInit(): void {}
   faStar = faStar;
+  navigate(){
+    this.router.navigate(['innerHotel/', this.hotelCardItem.id]);
+  }
 }

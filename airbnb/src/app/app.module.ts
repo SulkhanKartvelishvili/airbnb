@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
-import { FooterComponent } from './shared/shared_components/footer/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './shared/shared_components/navbar/navbar/navbar.component';
 import { HotelCardComponent } from './shared/shared_components/hotel_card/hotel-card/hotel-card.component';
@@ -18,7 +18,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-import {NgForm} from '@angular/forms';
 import { HomeComponent } from './view/home/home/home.component';
 import { DashboardComponent } from './view/dashboard/dashboard/dashboard.component';
 
@@ -33,16 +32,15 @@ import { CategoryFilterComponent } from './view/category-filter/category-filter.
 import { CategoryFilterCardComponent } from './view/category_filter_card/category-filter-card/category-filter-card.component';
 
 import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+// import {MatIconModule} from '@angular/material/icon';
 
 import {RouterModule} from '@angular/router';
 import { FilteredHotelCardComponent } from './view/filtered_hotel_card/filtered-hotel-card/filtered-hotel-card.component';
 import { CategoryFilterHotelCardComponent } from './view/category_filter_hotel_card/category-filter-hotel-card/category-filter-hotel-card.component';
-// import { FilteredHotelCardComponent } from './shared/shared_components/filtered_hotel_card/filtered-hotel-card/filtered-hotel-card.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AgmCoreModule } from '@agm/core';
-import { UserFrService } from './shared/shared_services/user-fr.service';
+import { UserFrService } from './shared/shared_services/user/user-fr.service';
 import { AuthGuard } from './core/guards/auth/auth.guard';
 import { BookingComponent } from './shared/shared_components/booking/booking/booking.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -52,7 +50,6 @@ import { TripsComponent } from './view/trips/trips/trips.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     NavbarComponent,
     HotelCardComponent,
     HotelInnerComponent,
@@ -84,7 +81,7 @@ import { TripsComponent } from './view/trips/trips/trips.component';
     MatSelectModule,
     MatSidenavModule,
     MatButtonModule,
-    MatIconModule,
+    // MatIconModule,
     RouterModule,
     MatDatepickerModule,
     ReactiveFormsModule,
@@ -92,7 +89,10 @@ import { TripsComponent } from './view/trips/trips/trips.component';
     AgmCoreModule.forRoot({
       apiKey: ''
     }),
-    MatCheckboxModule
+    MatCheckboxModule,
+    CommonModule,
+    HttpClientModule
+
     
    
     

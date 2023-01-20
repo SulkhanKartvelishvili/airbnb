@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BankCardService } from 'src/app/shared/shared_services/bankCard/bank-card.service';
-import { UserFrService } from 'src/app/shared/shared_services/user-fr.service';
+import { UserFrService } from 'src/app/shared/shared_services/user/user-fr.service';
 import { bankCard } from "src/app/shared/shared_models/bankCard.model";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-info',
@@ -21,7 +23,7 @@ export class UserInfoComponent implements OnInit{
   displayStyle = 'none';
 
   // @ViewChild('addBankCard') form!: NgForm;
-constructor(private userServ : UserFrService, private bankCardServ: BankCardService,private modalService: NgbModal ){
+constructor(private userServ : UserFrService, private bankCardServ: BankCardService,private modalService: NgbModal, private router:Router ){
   this.bankCard = new FormGroup({
     "holder":new FormControl(null),
     "number":new FormControl(null),
@@ -59,7 +61,13 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
     this.bankCard.value["userId"]= this.userData.uid;
      this.bankCardServ.createBankCard(this.bankCard.value);
     this.bankCard.reset();
-    
+    Swal.fire({
+      // position: 'top-end',
+      icon: 'success',
+      title: 'Your credit card has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
   
   }
@@ -88,15 +96,40 @@ constructor(private userServ : UserFrService, private bankCardServ: BankCardServ
 
 
   deleteBankCard(){
-    
-   this.bankCardServ.deleteBankCard(this.userBankCard.id);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your credit card has been deleted.',
+          'success'
+        )
+        this.bankCardServ.deleteBankCard(this.userBankCard.id);
 
    this.userBankCard = null;
+      }
+    })
+   
   }
 
 
   OnUpdateBankCard(){
    
+    Swal.fire({
+      // position: 'top-end',
+      icon: 'success',
+      title: 'Your credit card has been updated',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    
     this.updateBankCard.value["userId"]= this.userData.uid;
 
   this.bankCardServ.updateBankCard(this.updateBankCard.value, this.userBankCard.id);
@@ -116,6 +149,11 @@ this.getBankCard();
     this.updateBankCard.controls['updatedExpYear'].setValue(this.userBankCard.expYear);
    this.updateBankCard.controls['updatedCvv'].setValue(this.userBankCard.cvv);
     this.modalService.open(modal, { size: 'md'  });
+  }
+
+  dashboardNavigate(){
+    this.router.navigate(['dashboard'], {replaceUrl: true });
+
   }
 
 }

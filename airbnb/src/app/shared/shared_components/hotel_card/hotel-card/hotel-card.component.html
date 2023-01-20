@@ -7,7 +7,7 @@
             [src]="imageUrl"
             class="image"
             alt="Random first slide"
-            routerLink="innerHotel/{{ hotelCardItem.id }}"
+            (click)="navigate()"
           />
         </div>
       </ng-template>
@@ -24,3 +24,4 @@
     </div>
   </div>
 </div>
+            <!-- routerLink="innerHotel/{{ hotelCardItem.id }}" -->

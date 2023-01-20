@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HotelCardService } from 'src/app/core/http/hotel_card/hotel-card.service';
 import { bookedHotel } from 'src/app/shared/shared_models/bookedHotel.model';
 import { HotelBookingService } from 'src/app/shared/shared_services/hotelBooking/hotel-booking.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit{
  backToBookingHotelExpiryDate!:any;
  expirationDayCount!:number;
 
-  constructor(private hotelBookingServ: HotelBookingService, private hotelCardServ:HotelCardService, private hotelCardserv:HotelCardService){}
+  constructor(private hotelBookingServ: HotelBookingService, private hotelCardServ:HotelCardService, private hotelCardserv:HotelCardService, private router:Router){}
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('user') || 'null');
@@ -70,6 +71,11 @@ export class DashboardComponent implements OnInit{
 }
 }
 
+
+userInfoNavigate(){
+  this.router.navigate(['userInfo'], {replaceUrl: true });
+
+}
 
 
 
