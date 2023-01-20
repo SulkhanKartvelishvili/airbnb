@@ -133,7 +133,6 @@ input.exp {
     display: grid;
     border-radius: 10px;
     padding: 20px;
-<<<<<<< Updated upstream
    }
    .addBankCardForm .mb-3:nth-child(3){
     display: grid;
@@ -160,6 +159,3 @@ input.exp {
         width: 100%;
       }
 }
-=======
-}
->>>>>>> Stashed changes
