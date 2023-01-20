@@ -113,3 +113,6 @@ input.exp {
 .mb-3 .col-md-12:nth-child(2){
   grid-column: 3;
 }
+.settings a, .dashboard a{
+  font-size: 16px;
+}

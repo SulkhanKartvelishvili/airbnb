@@ -56,3 +56,6 @@ ul{
 .hotelBookingDates ul li:nth-child(2), .hotelBookingDates ul li:nth-child(3){
     padding-left: 5px;
 }
+.settings a, .dashboard a{
+    font-size: 16px;
+}
