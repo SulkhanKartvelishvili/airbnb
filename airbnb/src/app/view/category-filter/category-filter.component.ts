@@ -297,12 +297,10 @@ export class CategoryFilterComponent implements OnInit {
       var villaBtn = document.getElementById(this.chosenpropertyTypes[1]);
       if (homeBtn) {
         homeBtn?.classList.add("defaultPropertyTypeBtn");
-
         homeBtn.classList.remove("activePropertyTypeBtn");
       }
       if (villaBtn) {
         villaBtn?.classList.add("defaultPropertyTypeBtn");
-
         villaBtn.classList.remove("activePropertyTypeBtn");
       }
       this.chosenpropertyTypes = [];
